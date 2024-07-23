@@ -3,13 +3,16 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "docs": "turbo dev --filter docs",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
     "pre-commit": "echo \"Running pre-commit hook\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "commit": "./commit.sh",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cypress:docs": "cd apps/docs && cypress open",
+    "cypress:test:docs:headless": "cd apps/docs && cypress run --headless --spec 'cypress/e2e/*.cy.ts'"
   },
   "devDependencies": {
     "husky": "^9.1.1",
