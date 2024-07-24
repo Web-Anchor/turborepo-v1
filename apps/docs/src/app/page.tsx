@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { serverAction } from '../server/actions';
 import { Card } from '@repo/ui/card';
-import { Button } from '@repo/components/button';
+import { Button } from '@repo/components';
 
 function Gradient({
   conic,
