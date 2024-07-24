@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { Card } from '@repo/ui/card';
 import { serverAction } from '../server/actions';
+import { Card } from '@repo/ui/card';
+import { Button } from '@repo/components/button';
 
 function Gradient({
   conic,
@@ -79,12 +80,11 @@ export default function Page(): JSX.Element {
           </a>
         </div>
 
-        <section
-          className="flex w-fit gap-4 text-xs text-white bg-blue-500 rounded-lg p-2"
+        <Button
+          className="bg-blue-500"
           onClick={onClickHandler}
-        >
-          SSR Action
-        </section>
+          text="Server Action"
+        />
       </div>
 
       <div className="relative flex place-items-center ">
