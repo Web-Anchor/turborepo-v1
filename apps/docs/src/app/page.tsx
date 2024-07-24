@@ -101,7 +101,7 @@ function Header() {
   return (
     <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
       <p className="text-white">
-        examples/with-tailwind -&nbsp;
+        Component examples/with-tailwind -&nbsp;
         <code className="font-mono font-bold">docs</code>
       </p>
       <div className="flex items-center gap-5">
@@ -125,7 +125,14 @@ function Header() {
           </svg>
         </div>
         <p className="text-sm font-mono text-white">By</p>
-        <p className="text-xl font-mono text-white font-bold">Vercel</p>
+        <Image
+          alt="Vercel Logo"
+          className="invert"
+          height={24}
+          priority
+          src="/vercel.svg"
+          width={100}
+        />
       </div>
     </div>
   );
