@@ -1,5 +1,8 @@
-import Image from "next/image";
-import { Card } from "@repo/ui/card";
+'use client';
+
+import Image from 'next/image';
+import { Card } from '@repo/ui/card';
+import { serverAction } from '../server/actions';
 
 function Gradient({
   conic,
@@ -13,37 +16,43 @@ function Gradient({
   return (
     <span
       className={`absolute mix-blend-normal will-change-[filter] rounded-[100%] ${
-        small ? "blur-[32px]" : "blur-[75px]"
-      } ${conic ? "bg-glow-conic" : ""} ${className}`}
+        small ? 'blur-[32px]' : 'blur-[75px]'
+      } ${conic ? 'bg-glow-conic' : ''} ${className}`}
     />
   );
 }
 
 const LINKS = [
   {
-    title: "Docs",
-    href: "https://turbo.build/repo/docs",
-    description: "Find in-depth information about Turborepo features and API.",
+    title: 'Docs',
+    href: 'https://turbo.build/repo/docs',
+    description: 'Find in-depth information about Turborepo features and API.',
   },
   {
-    title: "Learn",
-    href: "https://turbo.build/repo/docs/handbook",
-    description: "Learn more about monorepos with our handbook.",
+    title: 'Learn',
+    href: 'https://turbo.build/repo/docs/handbook',
+    description: 'Learn more about monorepos with our handbook.',
   },
   {
-    title: "Templates",
-    href: "https://turbo.build/repo/docs/getting-started/from-example",
-    description: "Choose from over 15 examples and deploy with a single click.",
+    title: 'Templates',
+    href: 'https://turbo.build/repo/docs/getting-started/from-example',
+    description: 'Choose from over 15 examples and deploy with a single click.',
   },
   {
-    title: "Deploy",
-    href: "https://vercel.com/new",
+    title: 'Deploy',
+    href: 'https://vercel.com/new',
     description:
-      "Instantly deploy your Turborepo to a shareable URL with Vercel.",
+      'Instantly deploy your Turborepo to a shareable URL with Vercel.',
   },
 ];
 
 export default function Page(): JSX.Element {
+  async function onClickHandler() {
+    const count = await serverAction({ a: 1, b: 2 });
+
+    console.log('🚀 COUNT:', count);
+  }
+
   return (
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
       <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
@@ -58,7 +67,7 @@ export default function Page(): JSX.Element {
             rel="noopener noreferrer"
             target="_blank"
           >
-            By{" "}
+            By{' '}
             <Image
               alt="Vercel Logo"
               className="invert"
@@ -69,6 +78,13 @@ export default function Page(): JSX.Element {
             />
           </a>
         </div>
+
+        <section
+          className="flex w-fit gap-4 text-xs text-white bg-blue-500 rounded-lg p-2"
+          onClick={onClickHandler}
+        >
+          SSR Action
+        </section>
       </div>
 
       <div className="relative flex place-items-center ">
