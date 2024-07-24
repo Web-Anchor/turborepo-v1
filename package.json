@@ -12,7 +12,8 @@
     "commit": "./commit.sh",
     "prepare": "husky",
     "cypress:docs": "cd apps/docs && cypress open",
-    "cypress:test:docs:headless": "cd apps/docs && cypress run --headless --spec 'cypress/e2e/*.cy.ts'"
+    "cypress:test:docs:headless": "cd apps/docs && cypress run --headless --spec 'cypress/e2e/*.cy.ts'",
+    "test": "./run-tests.sh"
   },
   "devDependencies": {
     "husky": "^9.1.1",
