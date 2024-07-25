@@ -1,4 +1,5 @@
 import { classNames } from '../../lib/helpers';
+import './styles.css';
 
 type Props = {
   title?: string | React.ReactNode;
@@ -35,8 +36,9 @@ export function Button(props: Props): React.ReactElement | null {
     <button
       type={props.type}
       className={classNames(
+        'flex flex-row gap-2 relative truncate items-center',
         styles[props.style || 'primary'],
-        props.disabled && 'opacity-45 cursor-not-allowed',
+        props.disabled && 'bg-opacity-45 cursor-not-allowed',
         props.fetching && 'bg-opacity-45 cursor-wait',
         props.className
       )}
@@ -44,17 +46,15 @@ export function Button(props: Props): React.ReactElement | null {
       onClick={props.onClick}
     >
       {props.fetching && (
-        <span
-          className={classNames(
-            'loading loading-spinner bg-white z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-white',
-            (props.style === 'ghost' || props.style === 'link') &&
-              'bg-indigo-600'
-          )}
-        ></span>
+        <section>
+          <svg className={`animate-spin h-5 w-5`} viewBox="0 0 24 24"></svg>
+        </section>
       )}
-      <span className={classNames(props.fetching && 'opacity-45')}>
-        {content}
-      </span>
+      <section className="w-fill truncate">
+        <span className={classNames(props.fetching && 'opacity-45')}>
+          {content}
+        </span>
+      </section>
     </button>
   );
 }

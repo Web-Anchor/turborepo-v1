@@ -22,7 +22,7 @@ export function Gradient({
 
 export function Footer() {
   return (
-    <div className="relative flex justify-center text-white">
+    <div className="relative flex justify-center text-white z-0">
       <div className="font-sans w-auto items-center flex-col relative z-0">
         <div className="z-50 flex items-center justify-center w-full">
           <div className="absolute min-w-[614px] min-h-[614px]">
@@ -43,7 +43,7 @@ export function Footer() {
           </div>
         </div>
         <Gradient
-          className="top-[-500px] opacity-[0.15] w-[1000px] h-[1000px]"
+          className="top-[-500px] opacity-[0.15] w-[100px] h-[100px]"
           conic
         />
         <div className="z-50 flex flex-col items-center justify-center gap-5 pt-16 text-center lg:gap-6">
