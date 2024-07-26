@@ -16,19 +16,30 @@
     "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "lint": "eslint src/",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "cypress": "npx cypress open",
     "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^17.0.2"
   },
   "devDependencies": {
+    "@cypress/react": "^8.0.2",
+    "@cypress/react18": "^2.0.1",
+    "@cypress/webpack-dev-server": "^3.10.0",
     "@repo/eslint-config": "*",
     "@repo/tailwind-config": "*",
     "@repo/typescript-config": "*",
     "@types/react": "^18.2.61",
     "autoprefixer": "^10.4.18",
+    "css-loader": "^7.1.2",
+    "cypress": "^13.13.1",
     "postcss": "^8.4.35",
+    "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.1",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "tailwind-merge": "^2.4.0"
   }
 }

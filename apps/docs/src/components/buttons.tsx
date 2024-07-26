@@ -14,7 +14,12 @@ export default function Page(): JSX.Element {
     <section className="flex flex-col gap-10">
       <h1 className="text-2xl font-semibold text-gray-800">Buttons</h1>
       <section className="flex flex-row gap-5">
-        <Button onClick={onClickHandler} title="Primary" className="w-24" />
+        <Button
+          onClick={onClickHandler}
+          title="Primary"
+          className="w-24"
+          dataAttr="button-primary"
+        />
         <Button
           onClick={onClickHandler}
           title="Secondary"

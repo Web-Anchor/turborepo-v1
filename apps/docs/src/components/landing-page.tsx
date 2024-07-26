@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import vercelLogo from '../../public/vercel.svg';
 
 export function Gradient({
   conic,
@@ -22,14 +23,11 @@ export function Gradient({
 
 export function Footer() {
   return (
-    <div className="relative flex justify-center text-white z-0">
+    <div className="relative flex justify-center text-white z-0 bg-gradient-to-br from-indigo-800 to-transparent py-24">
       <div className="font-sans w-auto items-center flex-col relative z-0">
         <div className="z-50 flex items-center justify-center w-full">
           <div className="absolute min-w-[614px] min-h-[614px]">
             <Image alt="Turborepo" height={614} src="circles.svg" width={614} />
-          </div>
-          <div className="absolute z-50 flex items-center justify-center w-64 h-64">
-            <Gradient className="opacity-90 w-[120px] h-[120px]" conic small />
           </div>
 
           <div className="w-[120px] h-[120px] z-50">
@@ -72,7 +70,7 @@ export function Footer() {
 
 export function Header() {
   return (
-    <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
+    <div className="z-10 items-center justify-between w-full font-mono text-sm lg:flex py-24 px-16">
       <p className="text-white">
         Component examples/with-tailwind -&nbsp;
         <code className="font-mono font-bold">docs</code>
@@ -103,7 +101,7 @@ export function Header() {
           className="invert"
           height={24}
           priority
-          src="/vercel.svg"
+          src={vercelLogo}
           width={100}
         />
       </div>
