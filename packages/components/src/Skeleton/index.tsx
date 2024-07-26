@@ -7,7 +7,7 @@ type Props = {
 export function Skeleton(props: Props): React.ReactElement | null {
   if (props.type === 'user') {
     return (
-      <div className="flex flex-row gap-2 items-center max-w-sm w-full mx-auto">
+      <div className="flex flex-row gap-2 items-center max-w-sm w-full">
         <div>
           <div className="rounded-full bg-slate-700 h-10 w-10"></div>
         </div>
@@ -21,7 +21,7 @@ export function Skeleton(props: Props): React.ReactElement | null {
 
   if (props.type === 'list') {
     return (
-      <div className="flex flex-col gap-2 items-center max-w-sm w-full mx-auto">
+      <div className="flex flex-col gap-2 items-center max-w-sm w-full">
         <div className="h-2 bg-slate-700 rounded w-full"></div>
         <div className="h-2 bg-slate-700 rounded w-full"></div>
         <div className="h-2 bg-slate-700 rounded w-4/6"></div>
@@ -33,7 +33,7 @@ export function Skeleton(props: Props): React.ReactElement | null {
 
   if (props.type === 'table') {
     return (
-      <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+      <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full">
         <div className="animate-pulse flex space-x-4">
           <div className="flex-1 space-y-4 py-1">
             <div className="h-2 bg-slate-700 rounded"></div>
@@ -49,7 +49,7 @@ export function Skeleton(props: Props): React.ReactElement | null {
   }
 
   return (
-    <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+    <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full">
       <div className="animate-pulse flex space-x-4">
         <div className="rounded-full bg-slate-700 h-10 w-10"></div>
         <div className="flex-1 space-y-6 py-1">
