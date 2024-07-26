@@ -33,6 +33,10 @@ export function Button(props: Props): React.ReactElement | null {
     link: 'bg-transparent items-center px-0 text-sm font-semibold text-indigo-600 shadow-none hover:bg-transparent hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
   };
 
+  function onClickHandler() {
+    props.onClick?.();
+  }
+
   return (
     <button
       type={props.type}
@@ -44,7 +48,7 @@ export function Button(props: Props): React.ReactElement | null {
         props.className
       )}
       disabled={props.disabled || props.fetching}
-      onClick={props.onClick}
+      onClick={onClickHandler}
       data-cy={props.dataAttr}
     >
       {props.fetching && (
