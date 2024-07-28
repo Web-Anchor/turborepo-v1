@@ -1,7 +1,7 @@
 'use client';
 
 import { serverAction } from '@server/actions';
-import { Badge } from '@repo/components';
+import { Badge, Divider } from '@repo/components';
 
 export default function Page(): JSX.Element {
   async function onClickHandler() {
@@ -12,7 +12,7 @@ export default function Page(): JSX.Element {
 
   return (
     <section className="flex flex-col gap-10">
-      <h1 className="text-2xl font-semibold text-gray-800">Buttons</h1>
+      <Divider text="Badges" textAlign="center" />
       <section className="flex flex-row flex-wrap gap-5">
         <Badge
           type="default"

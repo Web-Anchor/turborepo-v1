@@ -1,11 +1,11 @@
 'use client';
 
-import { Skeleton, BounceWrapper } from '@repo/components';
+import { Skeleton, BounceWrapper, Divider } from '@repo/components';
 
 export default function Page(): JSX.Element {
   return (
     <section className="flex flex-col gap-10">
-      <h1 className="text-2xl font-semibold text-gray-800">Bounce Wrapper</h1>
+      <Divider text="Bounce Wrappers" textAlign="center" />
       <section className="flex flex-row flex-wrap gap-10">
         <BounceWrapper>
           <Skeleton type="user" />

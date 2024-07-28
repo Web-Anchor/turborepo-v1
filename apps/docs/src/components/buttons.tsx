@@ -1,7 +1,7 @@
 'use client';
 
 import { serverAction } from '@server/actions';
-import { Button } from '@repo/components';
+import { Button, Divider } from '@repo/components';
 
 export default function Page(): JSX.Element {
   async function onClickHandler() {
@@ -12,7 +12,7 @@ export default function Page(): JSX.Element {
 
   return (
     <section className="flex flex-col gap-10">
-      <h1 className="text-2xl font-semibold text-gray-800">Buttons</h1>
+      <Divider text="Buttons" textAlign="center" />
       <section className="flex flex-row gap-5">
         <Button
           onClick={onClickHandler}
