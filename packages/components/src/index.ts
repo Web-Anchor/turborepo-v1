@@ -6,3 +6,4 @@ export * from './Skeleton/index';
 export * from './BounceWrapper/index';
 export * from './Badge/index';
 export * from './Divider/index';
+export * from './Accordion/index';
