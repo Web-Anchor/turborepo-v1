@@ -21,6 +21,7 @@ export type Props = {
     | 'purple'
     | 'pink';
   onClick?: (props?: any) => void;
+  hasCloseCta?: boolean;
   className?: string;
   hide?: boolean;
 };
@@ -34,6 +35,7 @@ export function Badge({
   onClick,
   className,
   hide = false,
+  hasCloseCta = true,
 }: Props) {
   const [state, setState] = React.useState<{ hidden?: boolean }>({});
 
@@ -80,6 +82,7 @@ export function Badge({
           className
         )}
         onClick={() => onClick?.()}
+        data-cy="badge"
       >
         <svg
           className={classNames('h-1.5 w-1.5', iconClasses[type])}
@@ -90,20 +93,25 @@ export function Badge({
         </svg>
         <section>{title}</section>
 
-        <button
-          type="button"
-          className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
-          onClick={() => setState((prev) => ({ ...prev, hidden: true }))}
-        >
-          <span className="sr-only">Remove</span>
-          <svg
-            viewBox="0 0 14 14"
-            className="h-3.5 w-3.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+        {hasCloseCta && (
+          <button
+            type="button"
+            className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+            onClick={(e) => {
+              e.stopPropagation();
+              setState((prev) => ({ ...prev, hidden: true }));
+            }}
           >
-            <path d="M4 4l6 6m0-6l-6 6" />
-          </svg>
-          <span className="absolute -inset-1" />
-        </button>
+            <span className="sr-only">Remove</span>
+            <svg
+              viewBox="0 0 14 14"
+              className="h-3.5 w-3.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+            >
+              <path d="M4 4l6 6m0-6l-6 6" />
+            </svg>
+            <span className="absolute -inset-1" />
+          </button>
+        )}
 
         {tooltip && (
           <span

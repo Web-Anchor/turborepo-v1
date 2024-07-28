@@ -35,7 +35,7 @@ describe('Badge Component', () => {
   it('should call onClick when clicked', () => {
     const onClick = cy.stub();
     mount(<Badge title="Clickable Badge" onClick={onClick} />);
-    cy.get('span').click();
+    cy.get('[data-cy=badge]').click();
     cy.wrap(onClick).should('have.been.called');
   });
 
@@ -62,5 +62,14 @@ describe('Badge Component', () => {
   it('should render the badge with pink type', () => {
     mount(<Badge title="Pink Badge" type="pink" />);
     cy.get('span').should('have.class', 'bg-pink-200 text-pink-700');
+  });
+
+  it('should have close badge cta', () => {
+    mount(<Badge title="Close Badge" hasCloseCta={true} />);
+    cy.get('button').should('exist');
+  });
+  it('should not have close badge cta', () => {
+    mount(<Badge title="Close Badge" hasCloseCta={false} />);
+    cy.get('button').should('not.exist');
   });
 });
