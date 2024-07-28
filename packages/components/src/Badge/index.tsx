@@ -35,7 +35,9 @@ export function Badge({
   className,
   hide = false,
 }: Props) {
-  if (hide) {
+  const [state, setState] = React.useState<{ hidden?: boolean }>({});
+
+  if (hide || state?.hidden) {
     return null;
   }
 
@@ -87,6 +89,22 @@ export function Badge({
           <circle cx={3} cy={3} r={3} />
         </svg>
         <section>{title}</section>
+
+        <button
+          type="button"
+          className="group relative -mr-1 h-3.5 w-3.5 rounded-sm hover:bg-gray-500/20"
+          onClick={() => setState((prev) => ({ ...prev, hidden: true }))}
+        >
+          <span className="sr-only">Remove</span>
+          <svg
+            viewBox="0 0 14 14"
+            className="h-3.5 w-3.5 stroke-gray-600/50 group-hover:stroke-gray-600/75"
+          >
+            <path d="M4 4l6 6m0-6l-6 6" />
+          </svg>
+          <span className="absolute -inset-1" />
+        </button>
+
         {tooltip && (
           <span
             className={classNames(
