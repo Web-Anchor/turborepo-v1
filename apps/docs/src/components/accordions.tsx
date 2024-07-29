@@ -19,6 +19,25 @@ export default function Page(): JSX.Element {
               body: 'Officia sunt occaecat pariatur occaecat minim aliquip non cillum eu in sit incididunt non.',
               open: true,
             },
+            {
+              title: 'React Node',
+              body: (
+                <section className="flex flex-row gap-5">
+                  <p>
+                    React is a JavaScript library for building user interfaces.
+                    It is maintained by Facebook and a community of individual
+                    developers and companies. React can be used as a base in the
+                    development of single-page or mobile applications.
+                  </p>
+                  <p>
+                    Node.js is an open-source, cross-platform, back-end
+                    JavaScript runtime environment that runs on the V8 engine
+                    and executes JavaScript code outside a web browser.
+                  </p>
+                </section>
+              ),
+              open: true,
+            },
           ]}
         />
       </section>

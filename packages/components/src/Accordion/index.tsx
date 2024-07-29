@@ -3,7 +3,7 @@ import './styles.css';
 
 type AccordionItem = {
   title?: string;
-  body?: string;
+  body?: string | JSX.Element;
   open?: boolean;
   dataAttr?: string;
   className?: string;

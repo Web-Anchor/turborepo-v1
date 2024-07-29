@@ -27,6 +27,26 @@ describe('Accordion Component', () => {
       open: false,
       dataAttr: 'item4',
     },
+    {
+      title: 'Renders react node?',
+      body: (
+        <section className="flex flex-row gap-5">
+          <p>
+            React is a JavaScript library for building user interfaces. It is
+            maintained by Facebook and a community of individual developers and
+            companies. React can be used as a base in the development of
+            single-page or mobile applications.
+          </p>
+          <p>
+            Node.js is an open-source, cross-platform, back-end JavaScript
+            runtime environment that runs on the V8 engine and executes
+            JavaScript code outside a web browser.
+          </p>
+        </section>
+      ),
+      open: true,
+      dataAttr: 'item5',
+    },
   ];
 
   beforeEach(() => {
@@ -44,7 +64,9 @@ describe('Accordion Component', () => {
           'have.attr',
           'open'
         );
-        cy.get(`details[data-attr=${item.dataAttr}] p`).should('be.visible');
+        cy.get(`details[data-attr=${item.dataAttr}] .group-open\\:flex`).should(
+          'be.visible'
+        );
       } else {
         cy.get(`details[data-attr=${item.dataAttr}]`).should(
           'not.have.attr',
