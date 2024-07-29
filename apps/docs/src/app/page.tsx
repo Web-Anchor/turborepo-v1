@@ -7,15 +7,16 @@ import Accordions from '@components/accordions';
 
 export default function Page(): JSX.Element {
   return (
-    <main className="flex flex-col gap-10 min-h-screen overflow-hidden">
-      <Header />
-
-      <section className="flex flex-col gap-10 bg-slate-100 p-5 rounded-2xl mx-10">
-        <Accordions />
-        <Badges />
-        <Buttons />
-        <Skeletons />
-        <BounceWrapper />
+    <main className="flex flex-col gap-10 items-center min-h-screen overflow-hidden">
+      <section className="flex flex-col flex-1 max-w-6xl">
+        <Header />
+        <section className="flex flex-col gap-10 bg-slate-100 p-5 lg:rounded-2xl lg:mx-10 py-24">
+          <Accordions />
+          <Badges />
+          <Buttons />
+          <Skeletons />
+          <BounceWrapper />
+        </section>
       </section>
 
       <Footer />

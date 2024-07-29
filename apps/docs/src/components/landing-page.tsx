@@ -23,7 +23,7 @@ export function Gradient({
 
 export function Footer() {
   return (
-    <div className="relative flex justify-center text-white z-0 bg-gradient-to-br from-indigo-800 to-transparent py-24">
+    <div className="relative flex justify-center text-white z-0 py-24 w-ful`">
       <div className="font-sans w-auto items-center flex-col relative z-0">
         <div className="z-50 flex items-center justify-center w-full">
           <div className="absolute min-w-[614px] min-h-[614px]">
@@ -70,13 +70,13 @@ export function Footer() {
 
 export function Header() {
   return (
-    <div className="z-10 items-center justify-between w-full font-mono text-sm lg:flex py-24 px-16">
+    <div className="flex flex-col lg:flex-row gap-10 items-center justify-between w-full font-mono text-sm py-24 px-16">
       <p className="text-white">
         Component examples/with-tailwind -&nbsp;
         <code className="font-mono font-bold">docs</code>
       </p>
       <div className="flex items-center gap-5">
-        <div className="z-50 flex flex-col items-center justify-center gap-5 px-6 text-center lg:gap-6">
+        <div className="z-50 flex flex-col items-center justify-center gap-5 text-center lg:gap-6">
           <svg
             className="w-[160px] md:w-[200px] fill-white"
             viewBox="0 0 506 50"

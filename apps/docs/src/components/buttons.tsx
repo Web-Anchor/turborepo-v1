@@ -13,7 +13,7 @@ export default function Page(): JSX.Element {
   return (
     <section className="flex flex-col gap-10">
       <Divider text="Buttons" textAlign="center" />
-      <section className="flex flex-row gap-5">
+      <section className="flex flex-row flex-wrap gap-5">
         <Button
           onClick={onClickHandler}
           title="Primary"
