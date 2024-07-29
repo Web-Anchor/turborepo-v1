@@ -5,6 +5,8 @@ type AccordionItem = {
   title?: string;
   body?: string;
   open?: boolean;
+  dataAttr?: string;
+  className?: string;
 };
 
 type AccordionProps = {
@@ -13,9 +15,14 @@ type AccordionProps = {
 
 export function Accordion({ items }: AccordionProps) {
   return (
-    <section className="w-full divide-y rounded divide-slate-200">
+    <section className={classNames('w-full divide-y rounded divide-slate-200')}>
       {items.map((item, index) => (
-        <details className="p-4 group" key={index} open={item.open}>
+        <details
+          className={classNames('p-4 group', item.className)}
+          key={index}
+          open={item.open}
+          data-attr={item.dataAttr}
+        >
           <summary className="relative cursor-pointer list-none pr-8 font-medium text-slate-700 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
             {item.title}
             <svg
@@ -38,7 +45,9 @@ export function Accordion({ items }: AccordionProps) {
               />
             </svg>
           </summary>
-          <p className="mt-4 text-slate-500">{item.body}</p>
+          <p className="mt-4 text-slate-500 hidden group-open:flex">
+            {item.body}
+          </p>
         </details>
       ))}
     </section>
