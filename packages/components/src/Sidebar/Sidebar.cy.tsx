@@ -5,7 +5,7 @@ import { Button } from '../Button';
 const mainMenu = ['Home Link', 'About Link', 'Contact Link'];
 const secondaryMenu = ['Link 1', 'Link 2', 'Link 3'];
 
-describe('Sidebar Component', () => {
+describe('Sidebar Component Mobile iPhone-6', () => {
   beforeEach(() => {
     mount(
       <Sidebar
@@ -88,5 +88,77 @@ describe('Sidebar Component', () => {
 
     cy.get('button[data-cy="Close sidebar"]').click();
     cy.get('a[data-cy="Logo Container"]').should('not.be.visible');
+  });
+});
+
+// desctop mac 13 inch devices
+describe('Desktop Mac-13 inch laptop', () => {
+  beforeEach(() => {
+    mount(
+      <Sidebar
+        navigation={mainMenu.map((item) => ({
+          component: (
+            <Button
+              title={item}
+              style="link"
+              onClick={() => {}}
+              className="px-2 my-5"
+            />
+          ),
+        }))}
+        secondaryNavTitle="Secondary Navigation"
+        secondaryNav={secondaryMenu.map((item) => ({
+          component: (
+            <Button
+              title={item}
+              style="link"
+              onClick={() => {}}
+              className="px-2 my-5"
+            />
+          ),
+        }))}
+        user={{
+          name: 'User Profile',
+          imageUrl: 'https://via.placeholder.com/150',
+          linkUrl: 'https://via.placeholder.com/100',
+        }}
+        logoSrc={{
+          imageUrl: 'https://via.placeholder.com/150',
+        }}
+      />
+    );
+    cy.viewport('macbook-13');
+  });
+
+  it('should display main navigation items', () => {
+    cy.get('li[data-cy="Sidebar Main Navigation"]').should(
+      'have.length',
+      mainMenu?.length
+    );
+
+    //  li with data-cy="Sidebar Main Navigation" have to have text content
+    cy.get('li[data-cy="Sidebar Main Navigation"]').each((item, index) => {
+      cy.wrap(item).should('contain.text', mainMenu[index]);
+    });
+  });
+
+  it('should display secondary navigation items', () => {
+    cy.get('li[data-cy="Sidebar Secondary Navigation"]').should(
+      'have.length',
+      secondaryMenu?.length
+    );
+
+    //  li with data-cy="Sidebar Secondary Navigation" have to have text content
+    cy.get('li[data-cy="Sidebar Secondary Navigation"]').each((item, index) => {
+      cy.wrap(item).should('contain.text', secondaryMenu[index]);
+    });
+  });
+
+  it('should display the user profile', () => {
+    cy.get('a[data-cy="User Profile"]').should('contain.text', 'User Profile');
+  });
+
+  it('should display the logo', () => {
+    cy.get('a[data-cy="Logo Container"]').should('be.visible');
   });
 });
