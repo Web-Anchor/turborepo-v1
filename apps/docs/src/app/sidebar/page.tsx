@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Sidebar } from '@repo/components';
+import { Breadcrumb, Button, Sidebar } from '@repo/components';
 
 export default function Page(): JSX.Element {
   return (
@@ -109,6 +109,25 @@ export default function Page(): JSX.Element {
         ]}
       >
         <section className="flex flex-col gap-10 font-semibold">
+          <Breadcrumb
+            components={[
+              <a
+                href="#"
+                key="Projects"
+                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                Projects
+              </a>,
+              <a
+                href="#"
+                key="ProjectNero"
+                aria-current="page"
+                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                Project Nero
+              </a>,
+            ]}
+          />
           <p>Page content goes here...</p>
         </section>
       </Sidebar>
