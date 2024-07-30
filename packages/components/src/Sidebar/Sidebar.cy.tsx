@@ -6,6 +6,9 @@ const mainMenu = ['Home Link', 'About Link', 'Contact Link'];
 const secondaryMenu = ['Link 1', 'Link 2', 'Link 3'];
 
 describe('Sidebar Component Mobile iPhone-6', () => {
+  // --------------------------------------------------------------------------------
+  // 📌  Mobile device UI e2e tests
+  // --------------------------------------------------------------------------------
   beforeEach(() => {
     mount(
       <Sidebar
@@ -91,8 +94,10 @@ describe('Sidebar Component Mobile iPhone-6', () => {
   });
 });
 
-// desctop mac 13 inch devices
 describe('Desktop Mac-13 inch laptop', () => {
+  // --------------------------------------------------------------------------------
+  // 📌  Desktop Mac-13 inch laptop UI e2e tets
+  // --------------------------------------------------------------------------------
   beforeEach(() => {
     mount(
       <Sidebar
