@@ -7,3 +7,4 @@ export * from './BounceWrapper/index';
 export * from './Badge/index';
 export * from './Divider/index';
 export * from './Accordion/index';
+export * from './Sidebar/index';

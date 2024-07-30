@@ -1,3 +1,5 @@
+'use client';
+
 import { classNames } from '../../lib/helpers';
 import './styles.css';
 
@@ -19,7 +21,7 @@ export function Button(props: Props): React.ReactElement | null {
     return null;
   }
 
-  const content = props.children || props.title;
+  const content = props.children || props.title || 'Button';
 
   const styles = {
     primary:
@@ -56,7 +58,7 @@ export function Button(props: Props): React.ReactElement | null {
           <svg className={`animate-spin h-5 w-5`} viewBox="0 0 24 24"></svg>
         </section>
       )}
-      <section className="w-fill truncate">
+      <section className="w-fill truncate mx-auto">
         <span className={classNames(props.fetching && 'opacity-45')}>
           {content}
         </span>

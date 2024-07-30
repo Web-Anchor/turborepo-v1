@@ -19,9 +19,6 @@
     "cypress": "npx cypress open",
     "type-check": "tsc --noEmit"
   },
-  "peerDependencies": {
-    "react": "^17.0.2"
-  },
   "devDependencies": {
     "@cypress/react": "^8.0.2",
     "@cypress/react18": "^2.0.1",
@@ -40,6 +37,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
+    "react": "^18.3.1",
     "tailwind-merge": "^2.4.0"
   }
 }
