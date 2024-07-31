@@ -14,8 +14,8 @@
     "prepare": "husky",
     "cypress:docs": "cd apps/docs && cypress open",
     "cypress:components": "cd packages/components && cypress open",
-    "cypress:components:headless": "cd packages/components && cypress run --headless --spec 'src/*.cy.tsx'",
-    "cypress:test:docs:headless": "cd apps/docs && cypress run --headless --spec 'cypress/e2e/*.cy.ts'",
+    "cypress:components:headless": "cd packages/components && cypress run-ct --spec 'src/**/*.cy.{js,jsx,ts,tsx}'",
+    "cypress:docs:headless": "cd apps/docs && cypress run --headless --spec 'cypress/e2e/*.cy.ts'",
     "cypress:test:components:headless": "cd apps/components && cypress run --headless --spec 'cypress/e2e/*.cy.ts'",
     "test": "./run-tests.sh"
   },

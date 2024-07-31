@@ -8,10 +8,9 @@ export default defineConfig({
       bundler: 'webpack',
       webpackConfig,
     },
-    specPattern: '**/*.cy.{ts,tsx}', // Adjust the spec pattern as needed
+    specPattern: 'src/**/*.cy.{ts,tsx}', // Adjust the spec pattern as needed
     supportFile: false, // Disable the support file
   },
-
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
