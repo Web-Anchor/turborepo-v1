@@ -11,6 +11,7 @@ export * from './Sidebar/index';
 export * from './Breadcrumb/index';
 export * from './Header/index';
 export * from './Wrapper/index';
+export * from './Footer/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config
