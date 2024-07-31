@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <Wrapper className="h-full">
       <Header />
-      <p>Home page</p>
+      <p className="min-h-[100vh] bg-slate-100">Home page</p>
 
       <Footer
         className="mt-auto"

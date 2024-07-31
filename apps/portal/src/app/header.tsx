@@ -4,10 +4,25 @@ import { useUser } from '@clerk/nextjs';
 import Logo from '@components/Logo';
 import { Header } from '@repo/components';
 import Link from '@components/Link';
+import { useVerticalScroll } from '@repo/lib';
 
 export default function Page() {
   let { isSignedIn, user, isLoaded } = useUser();
   const menu = isSignedIn ? ['Dashboard', 'Facts'] : ['Facts'];
+
+  function scrollUp(props: number) {
+    console.log('scrolling up', props);
+  }
+
+  function scrollDown(props: number) {
+    console.log('scrolling down', props);
+  }
+
+  useVerticalScroll({
+    onScrollUp: (props) => scrollUp(props),
+    onScrollDown: (props) => scrollDown(props),
+    threshold: 10,
+  });
 
   return (
     <Header
