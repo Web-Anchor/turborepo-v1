@@ -4,6 +4,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "docs": "turbo dev --filter docs",
+    "portal": "turbo dev --filter portal",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
