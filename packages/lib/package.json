@@ -6,10 +6,14 @@
     "build": "tsc"
   },
   "exports": {
-    "./add": "./src/add.ts"
+    "./add": "./src/add.ts",
+    ".": "./src/index.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
     "typescript": "latest"
+  },
+  "dependencies": {
+    "tailwind-merge": "^2.4.0"
   }
 }
