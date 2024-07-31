@@ -36,9 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full bg-white text-gray-800 duration-300" lang="en">
+    <html className="bg-white text-gray-800 duration-300" lang="en">
       <ClerkProvider>
-        <body className={classNames(fonts.className, 'h-full')}>
+        <body className={classNames(fonts.className, 'h-screen')}>
           <Toaster
             // richColors // enable rich colors
             // closeButton // close button cta on toast

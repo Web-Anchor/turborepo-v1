@@ -18,8 +18,8 @@ export function Header(props: HeaderProps) {
   return (
     <header className={classNames(props.className)}>
       <nav
+        className="flex flex-row gap-10 h-fit mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8"
         aria-label="Global"
-        className="flex flex-row gap-10 mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
         {props.logo && (
           <div className="flex" data-cy="logo-container">
@@ -122,8 +122,8 @@ export function Header(props: HeaderProps) {
                     className="flex flex-col gap-5 py-10"
                     data-cy="mobile-menu"
                   >
-                    {props.menuList?.map((item) => (
-                      <div key={item.key}>{item}</div>
+                    {props.menuList?.map((item, key) => (
+                      <div key={key}>{item}</div>
                     ))}
                   </div>
                 )}
