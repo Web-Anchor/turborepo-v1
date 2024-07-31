@@ -18,7 +18,7 @@ export default function Page(): JSX.Element {
           onClick={onClickHandler}
           title="Primary"
           className="w-24"
-          dataAttr="button-primary"
+          dataAttribute="button-primary"
         />
         <Button
           onClick={onClickHandler}

@@ -81,7 +81,7 @@ describe('Button Component', () => {
   });
 
   it('should have a data attribute set to "button-primary"', () => {
-    mount(<Button title="Click me!" dataAttr="button-primary" />);
+    mount(<Button title="Click me!" dataAttribute="button-primary" />);
     cy.get('button').should('have.attr', 'data-cy', 'button-primary');
   });
 });

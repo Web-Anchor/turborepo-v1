@@ -10,3 +10,4 @@ export * from './Accordion/index';
 export * from './Sidebar/index';
 export * from './Breadcrumb/index';
 export * from './Header/index';
+export * from './Wrapper/index';

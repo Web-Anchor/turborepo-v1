@@ -13,7 +13,7 @@ type Props = {
   style?: 'primary' | 'secondary' | 'ghost' | 'badge' | 'link'; // Defaults to 'primary'
   type?: 'button' | 'submit' | 'reset';
   hide?: boolean;
-  dataAttr?: string;
+  dataAttribute?: string;
 };
 
 export function Button(props: Props): React.ReactElement | null {
@@ -51,7 +51,7 @@ export function Button(props: Props): React.ReactElement | null {
       )}
       disabled={props.disabled || props.fetching}
       onClick={onClickHandler}
-      data-cy={props.dataAttr}
+      data-cy={props.dataAttribute}
     >
       {props.fetching && (
         <section>

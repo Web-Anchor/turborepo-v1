@@ -5,7 +5,7 @@ type AccordionItem = {
   title?: string;
   body?: string | JSX.Element;
   open?: boolean;
-  dataAttr?: string;
+  dataAttribute?: string;
   className?: string;
 };
 
@@ -21,7 +21,7 @@ export function Accordion({ items }: AccordionProps) {
           className={classNames('p-4 group', item.className)}
           key={index}
           open={item.open}
-          data-attr={item.dataAttr}
+          data-cy={item.dataAttribute}
         >
           <summary className="relative cursor-pointer list-none pr-8 font-medium text-slate-700 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
             {item.title}
