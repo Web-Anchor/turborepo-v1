@@ -21,7 +21,7 @@ export default function Page() {
   useVerticalScroll({
     onScrollUp: (props) => scrollUp(props),
     onScrollDown: (props) => scrollDown(props),
-    // threshold: 10,
+    threshold: 10,
   });
 
   return (
