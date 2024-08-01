@@ -10,18 +10,18 @@ export default function Page() {
   let { isSignedIn, user, isLoaded } = useUser();
   const menu = isSignedIn ? ['Dashboard', 'Facts'] : ['Facts'];
 
-  function scrollUp(props: number) {
+  function scrollUp(props: any) {
     console.log('scrolling up', props);
   }
 
-  function scrollDown(props: number) {
+  function scrollDown(props: any) {
     console.log('scrolling down', props);
   }
 
   useVerticalScroll({
     onScrollUp: (props) => scrollUp(props),
     onScrollDown: (props) => scrollDown(props),
-    threshold: 10,
+    // threshold: 10,
   });
 
   return (

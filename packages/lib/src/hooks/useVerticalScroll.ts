@@ -2,14 +2,21 @@
 
 import { useEffect, useState } from 'react';
 
-type ScrollDirection = 'up' | 'down' | null;
-
-interface UseVerticalScrollProps {
-  onScrollUp?: (distance: number) => void;
-  onScrollDown?: (distance: number) => void;
+type UseVerticalScrollProps = {
+  onScrollUp?: (props: ScrollTypes) => void;
+  onScrollDown?: (props: ScrollTypes) => void;
   onScrollEnd?: () => void;
   threshold?: number; // Optional threshold for triggering scroll events
-}
+};
+
+type ScrollTypes = {
+  lastScrollTop: number;
+  scrollDirection: string | null;
+  scrollDistance: number;
+  distanceFromTop: number;
+  distanceFromBottom: number;
+  windowHeight: number;
+};
 
 export const useVerticalScroll = ({
   onScrollUp,
@@ -17,31 +24,55 @@ export const useVerticalScroll = ({
   onScrollEnd,
   threshold = 0,
 }: UseVerticalScrollProps) => {
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(null);
-  const [scrollDistance, setScrollDistance] = useState(0);
+  const [scrollState, setScrollTypes] = useState<ScrollTypes>({
+    lastScrollTop: 0,
+    scrollDirection: null,
+    scrollDistance: 0,
+    distanceFromTop: 0,
+    distanceFromBottom: 0,
+    windowHeight: 0,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      if (Math.abs(currentScrollTop - lastScrollTop) <= threshold) {
+      if (Math.abs(currentScrollTop - scrollState.lastScrollTop) <= threshold) {
         return;
       }
 
-      const distance = Math.abs(currentScrollTop - lastScrollTop);
-      setScrollDistance((prevDistance) => prevDistance + distance);
+      const distance = Math.abs(currentScrollTop - scrollState.lastScrollTop);
 
-      if (currentScrollTop > lastScrollTop) {
-        setScrollDirection('down');
-        if (onScrollDown) onScrollDown(distance);
-      } else {
-        setScrollDirection('up');
-        if (onScrollUp) onScrollUp(distance);
-      }
+      setScrollTypes((prevState) => {
+        const newScrollDistance = prevState.scrollDistance + distance;
+        const newDistanceFromTop = currentScrollTop;
+        const newDistanceFromBottom =
+          document.documentElement.scrollHeight -
+          currentScrollTop -
+          window.innerHeight;
 
-      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // For Mobile or negative scrolling
+        let stats: ScrollTypes = {
+          lastScrollTop: currentScrollTop <= 0 ? 0 : currentScrollTop,
+          scrollDirection: null,
+          scrollDistance: newScrollDistance,
+          distanceFromTop: newDistanceFromTop,
+          distanceFromBottom: newDistanceFromBottom,
+          windowHeight: window.innerHeight,
+        };
+
+        if (currentScrollTop > prevState.lastScrollTop) {
+          stats.scrollDirection = 'down';
+          onScrollDown?.(stats);
+
+          return stats;
+        } else {
+          stats.scrollDirection = 'up';
+          onScrollUp?.(stats);
+
+          return stats;
+        }
+      });
 
       if (
         window.innerHeight + currentScrollTop >=
@@ -56,7 +87,13 @@ export const useVerticalScroll = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollTop, onScrollDown, onScrollUp, onScrollEnd, threshold]);
+  }, [
+    scrollState.lastScrollTop,
+    onScrollDown,
+    onScrollUp,
+    onScrollEnd,
+    threshold,
+  ]);
 
-  return { scrollDirection, scrollDistance };
+  return scrollState;
 };
