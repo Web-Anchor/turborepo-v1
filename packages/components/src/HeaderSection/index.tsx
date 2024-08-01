@@ -3,7 +3,7 @@ import { classNames } from '../../lib/helpers';
 type HeaderSectionProps = {
   title?: string;
   subtitle?: string;
-  description?: string;
+  description?: string[];
   className?: string;
   theme?: 'light' | 'dark';
 };
@@ -12,7 +12,7 @@ export function HeaderSection(props: HeaderSectionProps) {
   return (
     <div
       className={classNames(
-        'px-6 py-24 sm:py-32 lg:px-8',
+        'px-6 py-10 sm:py-16 lg:px-8',
         props.theme === 'dark' && 'bg-gray-800',
         props.className
       )}
@@ -22,7 +22,7 @@ export function HeaderSection(props: HeaderSectionProps) {
           <h2
             className={classNames(
               'text-base font-semibold leading-7 text-indigo-600',
-              props.theme === 'dark' && 'text-gray-400'
+              props.theme === 'dark' && 'text-indigo-400'
             )}
           >
             {props.subtitle}
@@ -38,15 +38,20 @@ export function HeaderSection(props: HeaderSectionProps) {
             {props.title}
           </h1>
         )}
-        {props.description && (
-          <p
-            className={classNames(
-              'mt-6 text-lg leading-8 text-gray-600',
-              props.theme === 'dark' && 'text-gray-400'
-            )}
-          >
-            {props.description}
-          </p>
+        {props.description?.length && (
+          <div className={classNames('mt-6')}>
+            {props.description?.map((desc, index) => (
+              <p
+                key={index}
+                className={classNames(
+                  'text-lg leading-8 text-gray-600',
+                  props.theme === 'dark' && 'text-gray-200'
+                )}
+              >
+                {desc}
+              </p>
+            ))}
+          </div>
         )}
       </div>
     </div>
