@@ -1,4 +1,4 @@
-import { Footer, Wrapper } from '@repo/components';
+import { Footer, HeaderSection, Wrapper } from '@repo/components';
 import Header from './header';
 import Link from 'next/link';
 
@@ -71,7 +71,12 @@ export default function Home() {
   return (
     <Wrapper className="h-full">
       <Header />
-      <p className="min-h-[100vh] bg-slate-100">Home page</p>
+
+      <HeaderSection
+        title="Welcome to Your Invoicing Portal"
+        description="Discover the ease of managing your financial activities from one central location. Our platform offers you a dedicated space where you can effortlessly view transactions from your vendor, download invoices, and make necessary adjustments such as adding notes or updating details. With these powerful features, you can keep track of all your financial dealings and ensure that your records are always up-to-date and accurate. Contact your vendor today to access your personalized invoicing portal and start experiencing the convenience of streamlined financial management."
+        subtitle="Your Gateway to Effortless Invoicing!"
+      />
 
       <Footer
         className="mt-auto"
