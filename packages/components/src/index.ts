@@ -13,6 +13,7 @@ export * from './Header/index';
 export * from './Wrapper/index';
 export * from './Footer/index';
 export * from './HeaderSection/index';
+export * from './ConnectSectionWithStickyImg/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config

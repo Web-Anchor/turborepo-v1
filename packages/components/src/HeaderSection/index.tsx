@@ -6,18 +6,19 @@ type HeaderSectionProps = {
   description?: string[];
   className?: string;
   theme?: 'light' | 'dark';
+  size?: 'small';
 };
 
 export function HeaderSection(props: HeaderSectionProps) {
   return (
     <div
       className={classNames(
-        'px-6 py-10 sm:py-16 lg:px-8',
+        'px-6 py-10 sm:py-16 lg:px-8 text-left lg:text-center',
         props.theme === 'dark' && 'bg-gray-800',
         props.className
       )}
     >
-      <div className="mx-auto max-w-2xl text-left lg:text-center">
+      <div className="mx-auto max-w-2xl">
         {props.subtitle && (
           <h2
             className={classNames(
@@ -32,7 +33,8 @@ export function HeaderSection(props: HeaderSectionProps) {
           <h1
             className={classNames(
               'mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
-              props.theme === 'dark' && 'text-white'
+              props.theme === 'dark' && 'text-white',
+              props.size === 'small' && 'sm:text-4xl'
             )}
           >
             {props.title}
