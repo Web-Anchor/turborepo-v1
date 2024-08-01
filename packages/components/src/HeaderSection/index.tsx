@@ -10,7 +10,13 @@ type HeaderSectionProps = {
 
 export function HeaderSection(props: HeaderSectionProps) {
   return (
-    <div className={classNames('px-6 py-24 sm:py-32 lg:px-8', props.className)}>
+    <div
+      className={classNames(
+        'px-6 py-24 sm:py-32 lg:px-8',
+        props.theme === 'dark' && 'bg-gray-800',
+        props.className
+      )}
+    >
       <div className="mx-auto max-w-2xl text-center">
         {props.subtitle && (
           <h2
