@@ -237,7 +237,6 @@ export default function Home() {
             ),
           },
         ]}
-        theme="dark"
       />
       <HeaderSection
         title="Welcome to Your Invoicing Portal"
