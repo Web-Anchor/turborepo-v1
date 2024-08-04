@@ -7,6 +7,7 @@ import {
 import Header from './header';
 import Link from 'next/link';
 import Image from 'next/image';
+import { GetStarted } from '@app/client-side-components';
 
 const socials = [
   {
@@ -102,7 +103,7 @@ export default function Home() {
           ],
         }}
         image={
-          <section className="bg-indigo-400 p-8 lg:rounded-tl-3xl overflow-hidden">
+          <section className="bg-indigo-400 -ml-8 p-8 lg:rounded-tl-3xl overflow-hidden">
             <Image
               src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/FfNPG8nwlceFcbMGt6p3LQBCOwKpvx1jA5UlWR5mT8g.png`}
               alt="Product screenshot"
@@ -258,6 +259,28 @@ export default function Home() {
           'Our platform is designed to provide you with a seamless and efficient invoicing experience. With our Customer Portal, you can easily manage your financial activities, view transactions, and download invoices with just a few clicks. Our user-friendly interface ensures that you can stay in control of your finances without any hassle. Join now to start enjoying the benefits of a streamlined invoicing process and experience the convenience of managing your financial activities in one central location.',
         ]}
         theme="dark"
+      />
+      <ConnectSectionWithStickyImg
+        header={{
+          subtitle: 'Join the Community of Happy Users!',
+          title: 'Ready to Simplify Your Invoicing?',
+          description: [
+            'Welcome to Your Personalized Invoicing Platform, designed to make managing your financial activities effortless and intuitive. With our portal, you can easily view transactions from your vendor, download and adjust invoices, and keep all your financial records organized. Sign up now to start experiencing the benefits of a streamlined invoicing process. Enjoy seamless and efficient financial management that saves you time and effort, allowing you to focus on what truly matters. Take the next step towards smarter financial control today!',
+          ],
+        }}
+        image={
+          <section className="-ml-8 lg:ml-10 lg:-mt-36 lg:ml-none overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
+              alt="Product screenshot"
+              width={800}
+              height={600}
+              className="w-full max-w-none bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[36rem] object-cover object-center lg:h-[740px]"
+            />
+          </section>
+        }
+        actions={<GetStarted />}
+        className="lg:py-36"
       />
 
       <Footer

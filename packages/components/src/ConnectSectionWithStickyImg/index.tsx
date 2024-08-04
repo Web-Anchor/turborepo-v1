@@ -56,7 +56,7 @@ export function ConnectSectionWithStickyImg(props: Props) {
         )}
 
         {props.image && (
-          <div className="pl-6 lg:pl-0 -ml-8 lg:-ml-12 -mt-12 lg:p-12 lg:pb-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:overflow-hidden">
+          <div className="pl-6 lg:pl-0 lg:-ml-12 -mt-12 lg:p-12 lg:pb-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:overflow-hidden">
             <section>{props.image}</section>
           </div>
         )}
