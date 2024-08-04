@@ -31,7 +31,7 @@ export function ConnectSectionWithStickyImg(props: Props) {
         props.className
       )}
     >
-      <CheckBg />
+      <CheckBg theme={props.theme} />
       <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         {props.header && (
           <div className="px-6 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -102,7 +102,7 @@ export function ConnectSectionWithStickyImg(props: Props) {
   );
 }
 
-function CheckBg() {
+function CheckBg(props: { theme?: 'light' | 'dark' }) {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       <svg
@@ -121,7 +121,14 @@ function CheckBg() {
             <path d="M100 200V.5M.5 .5H200" fill="none" />
           </pattern>
         </defs>
-        <svg x="50%" y={-1} className="overflow-visible fill-gray-50">
+        <svg
+          x="50%"
+          y={-1}
+          className={classNames(
+            'overflow-visible fill-gray-50',
+            props.theme === 'dark' && 'fill-gray-800'
+          )}
+        >
           <path
             d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
             strokeWidth={0}
