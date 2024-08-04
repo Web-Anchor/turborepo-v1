@@ -16,7 +16,12 @@ export function Header(props: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className={classNames(props.className)}>
+    <header
+      className={classNames(
+        'fixed inset-x-0 top-0 z-50 backdrop-blur bg-white bg-opacity-95',
+        props.className
+      )}
+    >
       <nav
         className="flex flex-row gap-10 h-fit mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8"
         aria-label="Global"
