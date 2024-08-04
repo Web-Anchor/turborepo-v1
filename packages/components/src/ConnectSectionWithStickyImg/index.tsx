@@ -26,7 +26,7 @@ export function ConnectSectionWithStickyImg(props: Props) {
   return (
     <div
       className={classNames(
-        'relative isolate px-6 py-24 lg:py-32 lg:overflow-visible lg:px-0',
+        'relative isolate py-16 lg:py-24 lg:overflow-visible mx-auto',
         props.theme === 'dark' && 'bg-gray-800',
         props.className
       )}
@@ -34,7 +34,7 @@ export function ConnectSectionWithStickyImg(props: Props) {
       <CheckBg />
       <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         {props.header && (
-          <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div className="px-6 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div className="lg:pr-4">
               <div className="lg:max-w-lg">
                 <HeaderSection
@@ -49,14 +49,14 @@ export function ConnectSectionWithStickyImg(props: Props) {
         )}
 
         {props.image && (
-          <div className="-ml-8 lg:-ml-12 -mt-12 lg:p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+          <div className="pl-6 lg:pl-0 -ml-8 lg:-ml-12 -mt-12 lg:p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
             <section>{props.image}</section>
           </div>
         )}
 
         {props.perks && (
           <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-            <div className="lg:pr-4">
+            <div className="px-6 lg:px-0 lg:pr-4">
               <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
                 <ul role="list" className="mt-8 space-y-8 text-gray-600">
                   {props.perks?.map((perk, index) => (

@@ -34,7 +34,7 @@ export function HeaderSection(props: HeaderSectionProps) {
             className={classNames(
               'mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
               props.theme === 'dark' && 'text-white',
-              props.size === 'small' && 'sm:text-4xl'
+              props.size === 'small' && 'lg:text-4xl'
             )}
           >
             {props.title}
