@@ -2,9 +2,9 @@ import { classNames } from '../../lib/helpers';
 import { HeaderSection } from '../HeaderSection';
 
 type Perk = {
-  icon: React.ReactElement;
-  title: string;
-  description: string;
+  icon?: React.ReactElement;
+  title?: string;
+  description?: string;
 };
 
 type Content = {
