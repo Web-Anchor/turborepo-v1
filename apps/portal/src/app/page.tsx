@@ -90,7 +90,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
 
   return (
     <Wrapper className="h-full pt-24 lg:pt-36">
-      <Header />
+      <Header company={company} />
 
       <HeaderSection
         subtitle={landingPageHeader?.slogan!}
@@ -312,7 +312,11 @@ export default async function Home(params: { searchParams: { id: string } }) {
         description={[landingPageFooter?.description!]}
       />
 
-      <HeaderSection title="Frequently asked questions" subtitle="FAQ" />
+      <HeaderSection
+        title="Frequently asked questions"
+        subtitle="FAQ"
+        id="facts"
+      />
       <Wrapper className="mx-8">
         <Accordion
           items={[

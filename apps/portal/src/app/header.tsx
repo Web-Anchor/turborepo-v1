@@ -5,10 +5,17 @@ import Logo from '@components/Logo';
 import { Header } from '@repo/components';
 import Link from '@components/Link';
 import { useVerticalScroll } from '@repo/lib';
+import { Component } from '@tsTypes/index';
 
-export default function Page() {
+type Props = {
+  company?: Component;
+};
+
+export default function Page(props: Props) {
   let { isSignedIn, user, isLoaded } = useUser();
-  const menu = isSignedIn ? ['Dashboard', 'Facts'] : ['Facts'];
+  const menu = isSignedIn
+    ? ['Dashboard', 'Facts', props.company && props.company.title]
+    : ['Facts', props.company && props.company.title];
 
   function scrollUp(props: any) {
     console.log('scrolling up', props);
@@ -27,9 +34,10 @@ export default function Page() {
   return (
     <Header
       logo={<Logo />}
-      menuList={menu.map((item) => {
-        let link: string | undefined = item.toLowerCase();
+      menuList={menu.map((item, key) => {
+        let link: string | undefined = item?.toLowerCase() || '#';
         let hash: string | undefined;
+        let target: string | undefined;
 
         if (item === 'Dashboard') {
           link = '/';
@@ -38,12 +46,27 @@ export default function Page() {
           link = '/';
           hash = '#facts';
         }
+        if (item === props.company?.title) {
+          if (!props.company?.link)
+            return (
+              <p
+                key={key}
+                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              >
+                {props.company?.title}
+              </p>
+            );
+
+          link = props.company?.link;
+          target = '_blank';
+        }
 
         return (
           <Link
-            key={item}
+            key={key}
             href={link}
             hash={hash}
+            target={target}
             className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
           >
             {item}

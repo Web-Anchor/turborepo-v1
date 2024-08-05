@@ -7,6 +7,7 @@ type HeaderSectionProps = {
   className?: string;
   theme?: 'light' | 'dark';
   size?: 'small';
+  id?: string;
 };
 
 export function HeaderSection(props: HeaderSectionProps) {
@@ -20,6 +21,7 @@ export function HeaderSection(props: HeaderSectionProps) {
         props.theme === 'dark' && 'bg-gray-800',
         props.className
       )}
+      id={props.id}
     >
       <div className="mx-auto max-w-4xl">
         {props.subtitle && (
