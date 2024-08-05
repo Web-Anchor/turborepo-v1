@@ -18,7 +18,7 @@ export function HeaderSection(props: HeaderSectionProps) {
         props.className
       )}
     >
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-4xl">
         {props.subtitle && (
           <h2
             className={classNames(

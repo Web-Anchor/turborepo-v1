@@ -1,4 +1,5 @@
 import {
+  Accordion,
   ConnectSectionWithStickyImg,
   Footer,
   HeaderSection,
@@ -287,6 +288,58 @@ export default function Home() {
         actions={<GetStarted />}
         className="lg:py-36"
       />
+      <HeaderSection title="Frequently asked questions" subtitle="FAQ" />
+      <Wrapper className="mx-8">
+        <Accordion
+          items={[
+            {
+              title: 'Is the customer portal free to use?',
+              body: 'Yes, the customer portal is free to use. You can access your account and manage your financial activities without any additional charges. Simply follow the link provided by your vendor to access your invoices or add it via the portals dashboard page.',
+            },
+            {
+              title: 'How do I access my invoices?',
+              body: 'To access your invoices, you can log in to your account via the customer portal. Once you are logged in, you can view your transactions, download invoices, and make any necessary adjustments. If you have any questions or need assistance, please contact your vendor for more information.',
+            },
+            {
+              title: 'Where do I get my API key?',
+              body: 'Your API key is provided by your vendor. If you do not have one, please contact your vendor to request an API key. Once you have your API key, you can use it to access your account and manage your financial activities via the customer portal.',
+            },
+            {
+              title: 'Can I edit my invoice billing details?',
+              body: 'Yes, you can edit your invoice billing details directly within the portal. This includes updating your address, contact information, and any other relevant billing details.',
+            },
+            {
+              title: 'How secure is my financial information on the portal?',
+              body: 'We take the security of your financial information very seriously. Our platform uses the authentication and security protocols to ensure that your data is safe and secure.',
+            },
+            {
+              title: 'What if I have multiple vendors using the platform?',
+              body: 'You can easily manage invoices from multiple vendors within the same portal. Each vendor will provide you with a unique API key or link to access their specific invoices.',
+            },
+            {
+              title: 'How do I download my invoices?',
+              body: 'You can download your invoices directly from the portal. Simply navigate to the invoice section and select the invoices you wish to download. You can then choose to download them as a PDF file for your records. If you have any questions or need assistance, please contact your vendor for more information.',
+            },
+            {
+              title: 'Can I track my transactions on the portal?',
+              body: 'Yes, the portal allows you to track all your transactions in real-time. You can view the status of your invoices and payments at any time. This makes it easy to stay up-to-date on your financial activities and manage your records effectively.',
+            },
+            {
+              title: 'How do I get support if I encounter an issue?',
+              body: 'Our support team is available to assist you with any issues you may encounter. You can reach out to us via the contact information provided within the portal. We are here to help you with any questions or concerns you may have.',
+            },
+            {
+              title: 'Can I customize my invoices?',
+              body: "While you can edit billing details, customization options for the invoice layout itself may be limited based on the vendor's settings. Please check with your vendor for specific customization options.",
+            },
+            {
+              title: 'Do I need to download any software to use the portal?',
+              body: 'No, there is no need to download any software. The portal is web-based and can be accessed from any device with an internet connection. Simply follow the link provided by your vendor to get started.',
+            },
+            // More questions...
+          ]}
+        />
+      </Wrapper>
 
       <Footer
         className="mt-auto"

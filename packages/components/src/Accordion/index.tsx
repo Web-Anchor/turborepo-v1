@@ -18,12 +18,12 @@ export function Accordion({ items }: AccordionProps) {
     <section className={classNames('w-full divide-y rounded divide-slate-200')}>
       {items.map((item, index) => (
         <details
-          className={classNames('p-4 group', item.className)}
+          className={classNames('px-4 py-6 group', item.className)}
           key={index}
           open={item.open}
           data-cy={item.dataAttribute}
         >
-          <summary className="relative cursor-pointer list-none pr-8 font-medium text-slate-700 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
+          <summary className="relative cursor-pointer list-none pr-8 text-base font-semibold leading-7 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
             {item.title}
             <svg
               xmlns="http://www.w3.org/2000/svg"
