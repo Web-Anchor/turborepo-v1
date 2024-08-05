@@ -103,13 +103,18 @@ export default function Home() {
           ],
         }}
         image={
-          <section className="bg-indigo-400 -ml-8 p-8 lg:rounded-tl-3xl overflow-hidden">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/FfNPG8nwlceFcbMGt6p3LQBCOwKpvx1jA5UlWR5mT8g.png`}
-              alt="Product screenshot"
-              width={800}
-              height={600}
-              className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[42rem]"
+          <section className="relative bg-indigo-400 -ml-8 lg:ml-10 py-12 lg:rounded-tl-3xl overflow-hidden">
+            <div className="relative ml-12 h-96 w-full z-20">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/FfNPG8nwlceFcbMGt6p3LQBCOwKpvx1jA5UlWR5mT8g.png`}
+                alt="Product screenshot"
+                layout="fill"
+                className="rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10"
+              />
+            </div>
+            <div
+              className="absolute -inset-y-px -left-3 z-10 w-full origin-bottom-left skew-x-[-30deg] bg-indigo-100 opacity-20 ring-1 ring-inset ring-white"
+              aria-hidden="true"
             />
           </section>
         }
@@ -275,7 +280,7 @@ export default function Home() {
               alt="Product screenshot"
               width={800}
               height={600}
-              className="w-full max-w-none bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[36rem] object-cover object-center lg:h-[740px]"
+              className="w-full max-w-none bg-gray-900 shadow-xl ring-1 ring-gray-400/10 lg:w-[36rem] object-cover object-center lg:h-[740px]"
             />
           </section>
         }

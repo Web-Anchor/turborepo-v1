@@ -7,7 +7,7 @@ export function GetStarted() {
   const { user, isLoaded } = useUser();
 
   return (
-    <div className="mt-10 flex items-center gap-x-6">
+    <div className="lg:mt-10 flex items-center gap-x-6">
       {!user && (
         <Link
           href="/sign-in"
