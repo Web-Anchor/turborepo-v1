@@ -4,6 +4,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@app/*": ["./src/app/*"],
+      "@db/*": ["./src/db/*"],
+      "@server/*": ["./src/server/*"],
       "@components/*": ["./src/components/*"]
     }
   },

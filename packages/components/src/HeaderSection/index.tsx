@@ -10,6 +10,9 @@ type HeaderSectionProps = {
 };
 
 export function HeaderSection(props: HeaderSectionProps) {
+  if (!props.title && !!props.description?.length && !props.subtitle)
+    return null;
+
   return (
     <div
       className={classNames(

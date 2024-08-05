@@ -9,6 +9,7 @@ import Header from './header';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStarted } from '@app/client-side-components';
+import { components } from '@server/components';
 
 const socials = [
   {
@@ -75,11 +76,27 @@ const socials = [
   },
 ];
 
-export default function Home() {
+export default async function Home(params: { searchParams: { id: string } }) {
+  const data = await components({ id: params.searchParams.id });
+  const company = data?.components?.find(
+    (component) => component?.type === 'Company'
+  );
+  const landingPageHeader = data?.components?.find(
+    (component) => component.type === 'Landing Page Header Section'
+  );
+  const landingPageFooter = data?.components?.find(
+    (component) => component.type === 'Landing Page Footer Section'
+  );
+
   return (
-    <Wrapper className="h-full">
+    <Wrapper className="h-full pt-24 lg:pt-36">
       <Header />
 
+      <HeaderSection
+        subtitle={landingPageHeader?.slogan!}
+        title={landingPageHeader?.title!}
+        description={[landingPageHeader?.description!]}
+      />
       <HeaderSection
         title="Welcome to Your Invoicing Portal"
         description={[
@@ -286,8 +303,15 @@ export default function Home() {
           </section>
         }
         actions={<GetStarted />}
-        className="lg:py-36"
+        className="lg:pt-36"
       />
+
+      <HeaderSection
+        subtitle={landingPageFooter?.slogan!}
+        title={landingPageFooter?.title!}
+        description={[landingPageFooter?.description!]}
+      />
+
       <HeaderSection title="Frequently asked questions" subtitle="FAQ" />
       <Wrapper className="mx-8">
         <Accordion
