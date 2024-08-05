@@ -18,8 +18,8 @@ export default function Page() {
 
   if (!isLoaded) {
     return (
-      <Wrapper className="h-full">
-        <Wrapper className="items-center h-[400px] w-[400px]">
+      <Wrapper className="relative h-full">
+        <Wrapper className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <LoadingDots />
         </Wrapper>
       </Wrapper>
@@ -39,10 +39,11 @@ export default function Page() {
             path="/sign-in"
           />
         </CardWrapper>
-        <Wrapper className="flex-row gap-5 w-[400px] text-nowrap items-center">
+        <Wrapper className="flex-row gap-5 text-nowrap items-center">
           <HeaderSection
             description={["Don't have an account?"]}
             className="w-fit"
+            type="page-header"
           />
           <Link
             href={`/sign-up`}

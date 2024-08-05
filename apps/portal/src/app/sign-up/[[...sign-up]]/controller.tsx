@@ -36,6 +36,7 @@ export default function Page() {
             <HeaderSection
               description={['Already have an account?']}
               className="w-fit"
+              type="page-header"
             />
             <Link
               href={`/sign-in`}

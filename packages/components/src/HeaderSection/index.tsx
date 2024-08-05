@@ -12,20 +12,21 @@ type HeaderSectionProps = {
 };
 
 export function HeaderSection(props: HeaderSectionProps) {
-  if (!props.title && !!props.description?.length && !props.subtitle)
+  if (!props.title && !props.description?.length && !props.subtitle) {
     return null;
+  }
 
   return (
     <div
       className={classNames(
         'px-6 py-10 sm:py-16 lg:px-8 text-left lg:text-center',
         props.theme === 'dark' && 'bg-gray-800',
-        props.type === 'page-header' && 'lg:text-left',
+        props.type === 'page-header' && 'lg:p-0 lg:text-left',
         props.className
       )}
       id={props.id}
     >
-      <div className={classNames('flex flex-col mx-auto max-w-4xl')}>
+      <div className={classNames('flex flex-col mx-auto max-w-4xl gap-5')}>
         {props.subtitle && (
           <h2
             className={classNames(
@@ -41,7 +42,7 @@ export function HeaderSection(props: HeaderSectionProps) {
         {props.title && (
           <h1
             className={classNames(
-              'mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
+              'text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
               props.theme === 'dark' && 'text-white',
               props.size === 'small' && 'lg:text-4xl',
               props.type === 'page-header' &&
@@ -52,7 +53,7 @@ export function HeaderSection(props: HeaderSectionProps) {
           </h1>
         )}
         {props.description?.length && (
-          <div className={classNames('mt-6')}>
+          <div className={classNames('flex flex-col gap-2')}>
             {props.description?.map((desc, index) => (
               <p
                 key={index}

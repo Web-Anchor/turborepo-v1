@@ -6,6 +6,7 @@ import { Header } from '@repo/components';
 import Link from '@components/Link';
 import { useVerticalScroll } from '@repo/lib';
 import { Component } from '@tsTypes/index';
+import { usePathname } from 'next/navigation';
 
 type Props = {
   company?: Component;
@@ -13,9 +14,16 @@ type Props = {
 
 export default function Page(props: Props) {
   let { isSignedIn, user, isLoaded } = useUser();
-  const menu = isSignedIn
-    ? ['Dashboard', 'Facts', props.company && props.company.title]
-    : ['Facts', props.company && props.company.title];
+  const path = usePathname()!;
+  const isRootPath = path === '/';
+
+  let menu = isSignedIn ? ['Dashboard'] : [];
+  if (props.company?.title) {
+    menu.push(props.company?.title);
+  }
+  if (isRootPath) {
+    menu.push('Facts');
+  }
 
   function scrollUp(props: any) {
     console.log('scrolling up', props);
