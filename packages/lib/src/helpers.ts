@@ -1,9 +1,9 @@
 type StoredValue = Record<string, unknown> | null;
 
 /**
- * Combines the given class names into a single string.
- * @param classes - The class names to combine.
- * @returns The combined class names.
+ * @description Combines the given class names into a single string.
+ * @date 2024-08-05
+ * @author Ed Ancerys
  */
 export function getFromLocalStorage<T extends StoredValue = StoredValue>(
   key: string,
@@ -25,6 +25,23 @@ export function getFromLocalStorage<T extends StoredValue = StoredValue>(
       `Error getting item from local storage: ${(error as Error).message}`
     );
     return defaultValue;
+  }
+}
+
+export function setToLocalStorage<T extends StoredValue = StoredValue>(
+  key: string,
+  value: T
+): void {
+  try {
+    if (typeof window === 'undefined') {
+      throw new Error('Local storage is not available on the server');
+    }
+
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(
+      `Error setting item to local storage: ${(error as Error).message}`
+    );
   }
 }
 

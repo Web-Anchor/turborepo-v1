@@ -7,6 +7,7 @@ import Accordions from '@components/accordions';
 import Sidebars from '@components/sidebars';
 import Breadcrumbs from '@components/breadcrumbs';
 import Headers from '@components/headers';
+import Spinners from '@components/spinners';
 
 export default function Page(): JSX.Element {
   return (
@@ -22,6 +23,7 @@ export default function Page(): JSX.Element {
           <Buttons />
           <Skeletons />
           <BounceWrapper />
+          <Spinners />
         </section>
       </section>
 

@@ -14,6 +14,7 @@ export * from './Wrapper/index';
 export * from './Footer/index';
 export * from './HeaderSection/index';
 export * from './ConnectSectionWithStickyImg/index';
+export * from './Spinner/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config

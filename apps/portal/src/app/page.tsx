@@ -5,7 +5,7 @@ import {
   HeaderSection,
   Wrapper,
 } from '@repo/components';
-import Header from './header';
+import Header from '@app/header';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStarted } from '@app/client-side-components';
