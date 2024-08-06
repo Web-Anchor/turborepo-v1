@@ -8,6 +8,7 @@ import Sidebars from '@components/sidebars';
 import Breadcrumbs from '@components/breadcrumbs';
 import Headers from '@components/headers';
 import Spinners from '@components/spinners';
+import Forms from '@components/forms';
 
 export default function Page(): JSX.Element {
   return (
@@ -24,6 +25,7 @@ export default function Page(): JSX.Element {
           <Skeletons />
           <BounceWrapper />
           <Spinners />
+          <Forms />
         </section>
       </section>
 
