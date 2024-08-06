@@ -26,14 +26,14 @@ export function HeaderSection(props: HeaderSectionProps) {
       )}
       id={props.id}
     >
-      <div className={classNames('flex flex-col mx-auto max-w-4xl gap-5')}>
+      <div className={classNames('flex flex-col mx-auto max-w-4xl gap-3')}>
         {props.subtitle && (
           <h2
             className={classNames(
               'text-base font-semibold leading-7 text-indigo-600',
               props.theme === 'dark' && 'text-indigo-400',
               props.type === 'page-header' &&
-                'text-indigo-600 font-xs leading-6 order-3'
+                'text-indigo-400 text-xs lg:text-sm leading-6 order-1'
             )}
           >
             {props.subtitle}
@@ -42,11 +42,11 @@ export function HeaderSection(props: HeaderSectionProps) {
         {props.title && (
           <h1
             className={classNames(
-              'text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
+              'text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl',
               props.theme === 'dark' && 'text-white',
               props.size === 'small' && 'lg:text-4xl',
               props.type === 'page-header' &&
-                'text-xl font-bold tracking-tight text-gray-800 order-1'
+                'text-md sm:text-xl font-bold tracking-tight order-0'
             )}
           >
             {props.title}
@@ -60,8 +60,8 @@ export function HeaderSection(props: HeaderSectionProps) {
                 className={classNames(
                   'text-lg leading-8 text-gray-600',
                   props.theme === 'dark' && 'text-gray-200',
-                  props.type === 'page-header' &&
-                    'text-sm leading-6 text-gray-600 order-2'
+                  props.type !== 'page-header' && props.title && 'mt-3',
+                  props.type === 'page-header' && 'text-sm leading-6 order-2'
                 )}
               >
                 {desc}

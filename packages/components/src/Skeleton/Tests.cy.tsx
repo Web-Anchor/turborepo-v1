@@ -49,4 +49,9 @@ describe('Skeleton Component', () => {
     cy.get('.border').should('have.class', 'rounded-lg');
     cy.get('.border').should('have.class', 'bg-gray-100');
   });
+
+  it('renders with data attribute', () => {
+    mount(<Skeleton type="table" dataAttribute="table-skeleton" />);
+    cy.get('[data-cy="table-skeleton"]').should('exist');
+  });
 });

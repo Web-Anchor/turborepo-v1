@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from 'date-fns';
+
 type StoredValue = Record<string, unknown> | null;
 
 /**
@@ -52,4 +54,31 @@ export function setToLocalStorage<T extends StoredValue = StoredValue>(
  */
 export function isString(value: unknown): boolean {
   return typeof value === 'string';
+}
+
+export function getTimeAgo(dateString?: string | number): string {
+  try {
+    if (!dateString) {
+      throw new Error('Date string is required');
+    }
+
+    return formatDistanceToNow(dateString, {
+      addSuffix: true,
+      includeSeconds: true,
+    });
+  } catch (error) {
+    console.error('Error getting time ago:', error);
+    return '';
+  }
+}
+
+export function stripeAmountToCurrency(amount?: number, currency?: string) {
+  if (!amount) {
+    return '0';
+  }
+
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency || 'usd',
+  }).format(amount / 100);
 }

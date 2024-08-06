@@ -8,6 +8,7 @@ type Props = {
   borderRadius?: string;
   className?: string;
   hide?: boolean;
+  dataAttribute?: string;
 };
 
 export function Skeleton({
@@ -17,6 +18,7 @@ export function Skeleton({
   borderRadius = 'rounded',
   className,
   hide,
+  dataAttribute,
 }: Props): React.ReactElement | null {
   if (hide) return null;
 
@@ -27,6 +29,7 @@ export function Skeleton({
           `flex flex-row gap-2 items-center ${width} ${height}`,
           className
         )}
+        data-cy={dataAttribute}
       >
         <SkeletonCircle />
         <div className="flex flex-col w-full gap-2">
@@ -44,6 +47,7 @@ export function Skeleton({
           `flex flex-col gap-2 items-center ${width} ${height}`,
           className
         )}
+        data-cy={dataAttribute}
       >
         <SkeletonLine />
         <SkeletonLine />
@@ -61,6 +65,7 @@ export function Skeleton({
           `border border-blue-300 shadow ${borderRadius} p-4 ${width} ${height}`,
           className
         )}
+        data-cy={dataAttribute}
       >
         <div className="animate-pulse flex space-x-4">
           <div className="flex-1 space-y-4 py-1">
@@ -82,6 +87,7 @@ export function Skeleton({
         `border border-blue-300 shadow ${borderRadius} p-4 ${width} ${height}`,
         className
       )}
+      data-cy={dataAttribute}
     >
       <div className="animate-pulse flex space-x-4">
         <SkeletonCircle />
