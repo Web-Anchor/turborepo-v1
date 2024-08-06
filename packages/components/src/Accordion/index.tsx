@@ -23,7 +23,7 @@ export function Accordion({ items }: AccordionProps) {
           open={item.open}
           data-cy={item.dataAttribute}
         >
-          <summary className="relative cursor-pointer list-none pr-8 text-base font-semibold leading-7 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
+          <summary className="relative cursor-pointer text-gray-800 list-none pr-8 text-base font-semibold leading-7 transition-colors duration-300 focus-visible:outline-none group-hover:text-slate-900 [&::-webkit-details-marker]:hidden">
             {item.title}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export function Accordion({ items }: AccordionProps) {
               />
             </svg>
           </summary>
-          <p className="mt-4 text-slate-500 hidden group-open:flex">
+          <p className="mt-4 text-gray-600 hidden group-open:flex">
             {item.body}
           </p>
         </details>
