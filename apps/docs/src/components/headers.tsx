@@ -44,6 +44,10 @@ export default function Page(): JSX.Element {
             </div>
           }
         />
+        <p className="text-gray-800 font-bold">
+          This is a header component with a logo, menu list, and calls to
+          action.
+        </p>
       </section>
     </section>
   );

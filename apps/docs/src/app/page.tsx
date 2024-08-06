@@ -9,6 +9,7 @@ import Breadcrumbs from '@components/breadcrumbs';
 import Headers from '@components/headers';
 import Spinners from '@components/spinners';
 import Forms from '@components/forms';
+import Testimonials from '@components/testimonials';
 
 export default function Page(): JSX.Element {
   return (
@@ -16,6 +17,7 @@ export default function Page(): JSX.Element {
       <section className="flex flex-col flex-1 max-w-6xl">
         <Header />
         <section className="flex flex-col gap-10 bg-slate-100 p-5 lg:rounded-2xl lg:mx-10 py-24">
+          <Testimonials />
           <Headers />
           <Breadcrumbs />
           <Sidebars />

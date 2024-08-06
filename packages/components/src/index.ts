@@ -16,6 +16,7 @@ export * from './HeaderSection/index';
 export * from './ConnectSectionWithStickyImg/index';
 export * from './Spinner/index';
 export * from './Select/index';
+export * from './TestimonialCard/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config
