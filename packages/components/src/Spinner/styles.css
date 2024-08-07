@@ -14,6 +14,51 @@
   }
 }
 
+.animate-bounce-lg {
+  animation: bounce-lg 1s infinite;
+}
+
+@keyframes bounce-lg {
+  0%,
+  100% {
+    transform: translateY(-50%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-xl {
+  animation: bounce-xl 1s infinite;
+}
+
+@keyframes bounce-xl {
+  0%,
+  100% {
+    transform: translateY(-100%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .animation-delay-200 {
   animation-delay: 0.2s;
 }
