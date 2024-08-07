@@ -62,7 +62,7 @@ export function Skeleton({
     return (
       <div
         className={classNames(
-          `border border-blue-300 shadow ${borderRadius} p-4 ${width} ${height}`,
+          `border border-blue-200 shadow ${borderRadius} p-4 w-hull`,
           className
         )}
         data-cy={dataAttribute}
@@ -75,6 +75,10 @@ export function Skeleton({
               <SkeletonLine />
               <SkeletonLine width="w-5/6" />
             </div>
+            <div className="space-y-2">
+              <SkeletonLine width="w-3/6" />
+              <SkeletonLine width="w-4/6" />
+            </div>
           </div>
         </div>
       </div>
@@ -84,7 +88,7 @@ export function Skeleton({
   return (
     <div
       className={classNames(
-        `border border-blue-300 shadow ${borderRadius} p-4 ${width} ${height}`,
+        `border border-blue-200 shadow ${borderRadius} p-4 ${width} ${height}`,
         className
       )}
       data-cy={dataAttribute}
@@ -114,7 +118,7 @@ function SkeletonLine({
 }) {
   return (
     <div
-      className={`${height} bg-slate-700 ${borderRadius} ${width} ${additionalClasses}`}
+      className={`${height} bg-slate-400 ${borderRadius} ${width} ${additionalClasses}`}
     ></div>
   );
 }
@@ -127,7 +131,7 @@ function SkeletonCircle({
   return (
     <section>
       <div
-        className={`${borderRadius} bg-slate-700 ${size} ${additionalClasses}`}
+        className={`${borderRadius} bg-slate-400 ${size} ${additionalClasses}`}
       ></div>
     </section>
   );

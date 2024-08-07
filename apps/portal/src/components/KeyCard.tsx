@@ -15,7 +15,7 @@ export function KeyCard(props: Props): React.ReactElement | null {
   });
 
   if (props.isLoading) {
-    return <Skeleton type="table" />;
+    return null;
   }
 
   return (
