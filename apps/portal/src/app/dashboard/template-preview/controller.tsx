@@ -1,23 +1,16 @@
 'use client';
 
-import Wrapper from '@app/components/Wrapper';
-import { Spinner } from '@app/components/Skeleton';
-import { useBuildChargeTemplate } from '@hooks/useTemplates';
+import { useBuildChargeTemplate } from '@hooks/index';
 import { useSearchParams } from 'next/navigation';
-import PageHeadings from '@app/components/PageHeadings';
 import parse from 'html-react-parser';
 import { useState } from 'react';
 import axios from 'axios';
-import {
-  classNames,
-  downloadFile,
-  stripeAmountToCurrency,
-} from '@helpers/index';
 import { toast } from 'sonner';
-import { Template } from '@appTypes/index';
-import Button from '@app/components/Button';
-import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
-import Link from '@app/components/Link';
+import { Template } from '@tsTypes/index';
+import Link from '@components/Link';
+import { Button, HeaderSection, LoadingDots, Wrapper } from '@repo/components';
+import { classNames, stripeAmountToCurrency } from '@repo/lib';
+import { downloadFile } from '@lib/index';
 
 const ParsedContent = (props: { html?: string }) => {
   const parsedHtml = parse(props?.html ?? '', {
@@ -143,21 +136,38 @@ export default function Page() {
 
   return (
     <Wrapper>
-      <Spinner hidden={!isLoading} />
+      <LoadingDots />
       {!isLoading && html && (
         <form
           className="flex flex-col items-center justify-center w-full h-full"
           onSubmit={submit}
         >
-          {/* <div
-            className={`w-full h-full max-w-4xl mx-auto p-4 min-h-[1200px] min-w-[848px]`}
-            dangerouslySetInnerHTML={{ __html: html }}
-          /> */}
           <ParsedContent html={bodyContent} />
           <section className="flex w-full flex-row gap-2 justify-center my-10">
             <Button fetching={state?.fetching} type="submit">
               <section className="flex flex-row gap-2">
-                <CloudArrowDownIcon className="h-5 w-5" />
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                >
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <rect width="24" height="24" fill="white"></rect>{' '}
+                    <path
+                      d="M17 9.5L12 14.5L7 9.5"
+                      stroke="#000000"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>{' '}
+                  </g>
+                </svg>
                 Download PDF
               </section>
             </Button>
@@ -180,10 +190,13 @@ export default function Page() {
       )}
 
       {!html && !isLoading && (
-        <PageHeadings
+        <HeaderSection
           title="Invoice Template Not Found"
-          description="No template found for the selected invoice. Please save the template to view it here."
-          slogan="Create, Save, and Preview Your Invoice Template."
+          description={[
+            'No template found for the selected invoice. Please save the template to view it here.',
+          ]}
+          subtitle="Create, Save, and Preview Your Invoice Template."
+          type="page-header"
         />
       )}
     </Wrapper>

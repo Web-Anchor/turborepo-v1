@@ -9,6 +9,7 @@
       "@server/*": ["./src/server/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@config/*": ["./src/config/*"],
+      "@lib/*": ["./src/lib/*"],
       "@components/*": ["./src/components/*"]
     }
   },

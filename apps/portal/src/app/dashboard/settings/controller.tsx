@@ -30,7 +30,7 @@ export default function Page() {
         apiKey={id}
         isValid={isValidKey}
         isLoading={isLoading}
-        path={`/dashboard/settings`}
+        link={`/dashboard/settings`}
       />
     </Wrapper>
   );
