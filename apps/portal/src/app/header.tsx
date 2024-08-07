@@ -6,6 +6,7 @@ import { Header } from '@repo/components';
 import Link from '@components/Link';
 import { Component } from '@tsTypes/index';
 import { usePathname } from 'next/navigation';
+import ProfileButton from '@components/ProfileButton';
 
 type Props = {
   company?: Component;
@@ -14,15 +15,14 @@ type Props = {
 export default function Page(props: Props) {
   let { isSignedIn, user, isLoaded } = useUser();
   const path = usePathname()!;
-  const isRootPath = path === '/';
 
   let menu = isSignedIn ? ['Dashboard'] : [];
-  if (props.company?.title) {
-    menu.push(props.company?.title);
-  }
-  if (isRootPath) {
-    menu.push('Facts');
-  }
+  menu = addToArray({
+    isTrue: !!props.company?.title,
+    value: props.company?.title || '',
+    arr: menu,
+  });
+  menu = addToArray({ isTrue: path === '/', value: 'Facts', arr: menu });
 
   return (
     <Header
@@ -33,7 +33,7 @@ export default function Page(props: Props) {
         let target: string | undefined;
 
         if (item === 'Dashboard') {
-          link = '/';
+          link = '/dashboard';
         }
         if (item === 'Facts') {
           link = '/';
@@ -66,15 +66,26 @@ export default function Page(props: Props) {
           </Link>
         );
       })}
-      callsToAction={[
-        <Link
-          href="/sign-in"
-          key={1}
-          className="mr-5 sm:mr-0 rounded-md self-center ml-auto bg-slate-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-700"
-        >
-          Sign in
-        </Link>,
-      ]}
+      callsToAction={
+        isSignedIn
+          ? [
+              <ProfileButton
+                key={1}
+                order="revere"
+                href="/dashboard"
+                name={`${user?.firstName} ${user?.lastName}`}
+              />,
+            ]
+          : [
+              <Link
+                href="/sign-in"
+                key={1}
+                className="mr-5 sm:mr-0 rounded-md self-center ml-auto bg-slate-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-700"
+              >
+                Sign in
+              </Link>,
+            ]
+      }
       footer={
         <p className="mx-4 my-2 text-xs leading-5 text-gray-500 md:order-1 md:mt-0 border-t border-gray-300 pt-4">
           &copy; {new Date()?.getFullYear()}{' '}
@@ -84,4 +95,36 @@ export default function Page(props: Props) {
       }
     />
   );
+}
+
+function addToArray({
+  isTrue,
+  value,
+  arr,
+}: {
+  isTrue: boolean;
+  value: string;
+  arr: string[];
+}) {
+  if (isTrue && value) {
+    arr.push(value);
+  }
+
+  return arr;
+}
+
+function addNodeToArray({
+  isTrue,
+  obj,
+  arr,
+}: {
+  isTrue: boolean;
+  obj: React.ReactElement;
+  arr: React.ReactElement[];
+}) {
+  if (isTrue && obj) {
+    arr.push(obj);
+  }
+
+  return arr;
 }
