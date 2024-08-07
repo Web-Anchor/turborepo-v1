@@ -180,9 +180,8 @@ export function AuthWrapper({ children }: Props) {
           component: (
             <Link
               href={item.href}
-              className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+              className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-indigo-600 leading-6"
             >
-              {item.icon}
               {item.title}
             </Link>
           ),

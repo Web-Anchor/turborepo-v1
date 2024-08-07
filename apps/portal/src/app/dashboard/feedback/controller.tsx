@@ -1,13 +1,15 @@
 'use client';
 
-import Badge from '@app/components/Badge';
-import Button from '@app/components/Button';
-import PageHeadings from '@app/components/PageHeadings';
-import Select from '@app/components/Select';
-import Wrapper from '@app/components/Wrapper';
 import { maxLength } from '@config/index';
 import { useSupportTickets } from '@hooks/index';
-import { cFetch } from '@lib/cFetcher';
+import {
+  Badge,
+  Button,
+  HeaderSection,
+  Select,
+  Wrapper,
+} from '@repo/components';
+import axios from 'axios';
 import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { mutate } from 'swr';
@@ -28,7 +30,7 @@ export default function Page() {
       const subject = form.get('subject');
       const message = form.get('message');
 
-      const { data, status, error } = await cFetch({
+      const { data, status } = await axios({
         url: '/api/v1/support/add-ticket',
         method: 'POST',
         data: { subject, message },
@@ -36,7 +38,7 @@ export default function Page() {
       console.log('🚨 logs', data, status);
 
       if (status !== 200 || data?.error) {
-        throw new Error(data?.error ?? error.message);
+        throw new Error(data?.error);
       }
 
       toast.success(
@@ -62,10 +64,13 @@ export default function Page() {
 
   return (
     <Wrapper>
-      <PageHeadings
+      <HeaderSection
         title="Share Your Thoughts."
-        description="Help us improve by sharing your feedback on our customer portal. Your insights are valuable in shaping a better experience for you and all our users."
-        slogan="Your Voice Matters, We here to Listen!"
+        description={[
+          'Help us improve by sharing your feedback on our customer portal. Your insights are valuable in shaping a better experience for you and all our users.',
+        ]}
+        subtitle="Your Voice Matters, We here to Listen!"
+        type="page-header"
       />
 
       <form
@@ -95,11 +100,10 @@ export default function Page() {
                 label="Reason for contacting"
                 name="subject"
                 data={[
-                  { key: 1, value: 'Support' },
-                  { key: 2, value: 'Feedback' },
-                  { key: 3, value: 'Bug Report' },
+                  { value: 1, title: 'Support' },
+                  { value: 2, title: 'Feedback' },
+                  { value: 3, title: 'Bug Report' },
                 ]}
-                required
               />
 
               <div>
@@ -114,7 +118,7 @@ export default function Page() {
                   <textarea
                     rows={5}
                     name="message"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your message"
                     defaultValue={''}
                     maxLength={maxLength?.comment}
