@@ -10,11 +10,12 @@ type Props = {
   name?: string;
   description?: string;
   order?: 'revere';
+  className?: string;
 };
 
 function ProfileButton(props: Props) {
   return (
-    <Link href={props?.href}>
+    <Link href={props?.href} className={classNames(props.className)}>
       <div className="flex flex-row gap-3 items-center">
         <div
           className={classNames(

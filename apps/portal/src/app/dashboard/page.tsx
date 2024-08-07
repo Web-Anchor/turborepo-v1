@@ -1,5 +1,5 @@
-import { AuthWrapper } from '@components/AuthWrapper';
 import Controller from './controller';
+import { AuthWrapper } from '@components/AuthWrapper';
 
 export default async function Page() {
   return (

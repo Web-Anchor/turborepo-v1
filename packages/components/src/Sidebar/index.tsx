@@ -160,9 +160,9 @@ export function Sidebar({
                     <SecondaryMenu navigation={secondaryNav} />
                   </ul>
                 </li>
-                <li className="-mx-6 mt-auto">
+                <section className="flex h-full items-end">
                   <Profile profile={user} />
-                </li>
+                </section>
               </ul>
             </nav>
           </div>
@@ -275,6 +275,10 @@ function Profile({
   profile?: User;
   hasName?: boolean;
 }) {
+  if (profile?.component) {
+    return profile.component;
+  }
+
   return (
     <a
       href={profile?.linkUrl || '#'}

@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @description Client side components for the landing page
+ * @date 2024-08-07
+ * @author Ed Ancerys
+ */
+
 import { useUser } from '@clerk/nextjs';
 import { useTestimonials } from '@hooks/index';
 import {

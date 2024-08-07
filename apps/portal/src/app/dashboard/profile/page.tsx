@@ -1,10 +1,10 @@
 import Controller from './controller';
-import AuthLayout from '@components/AuthLayout';
+import { AuthWrapper } from '@components/AuthWrapper';
 
 export default async function Page() {
   return (
-    <AuthLayout>
+    <AuthWrapper>
       <Controller />
-    </AuthLayout>
+    </AuthWrapper>
   );
 }

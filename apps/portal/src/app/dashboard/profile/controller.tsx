@@ -2,8 +2,7 @@
 
 import { UserProfile } from '@clerk/nextjs';
 import { useUser } from '@clerk/clerk-react';
-import { UserCardSkeleton } from '@components/Skeleton';
-import Wrapper from '@app/components/Wrapper';
+import { Skeleton, Wrapper } from '@repo/components';
 
 export default function Page() {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -12,13 +11,13 @@ export default function Page() {
   if (!isLoaded) {
     return (
       <>
-        <UserCardSkeleton />
+        <Skeleton type="card" />
       </>
     );
   }
 
   return (
-    <Wrapper class="profile-wrapper">
+    <Wrapper className="profile-wrapper">
       <UserProfile
         appearance={{
           elements: { pageScrollBox: { boxShadow: 'none' } },
