@@ -12,7 +12,7 @@ type HeaderSectionProps = {
 };
 
 export function HeaderSection(props: HeaderSectionProps) {
-  if (!props.title && !props.description?.length && !props.subtitle) {
+  if (!props.title && !props.description?.[0] && !props.subtitle) {
     return null;
   }
 

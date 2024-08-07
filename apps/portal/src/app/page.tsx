@@ -8,7 +8,7 @@ import {
 import Header from '@app/header';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GetStarted } from '@app/client-side-components';
+import { GetStarted, Testimonials } from '@app/client-side-components';
 import { components } from '@server/components';
 
 const socials = [
@@ -89,7 +89,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
   );
 
   return (
-    <Wrapper className="h-full pt-24 lg:pt-36">
+    <Wrapper className="h-full pt-16 lg:pt-24">
       <Header company={company} />
 
       <HeaderSection
@@ -311,7 +311,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
         title={landingPageFooter?.title!}
         description={[landingPageFooter?.description!]}
       />
-
+      <Testimonials />
       <HeaderSection
         title="Frequently asked questions"
         subtitle="FAQ"

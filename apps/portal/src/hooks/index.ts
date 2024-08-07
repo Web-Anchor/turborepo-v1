@@ -12,3 +12,4 @@ export function bodyFetcher(url: string, body?: any) {
 }
 
 export * from './useCharges';
+export * from './useTestimonials';

@@ -34,8 +34,8 @@ export default function Page(): JSX.Element {
       <p className="text-gray-800 font-bold">
         This is a testimonial card component pool.
       </p>
-      <Wrapper className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {Array.from({ length: 3 }).map((_, index) => (
+      <Wrapper className="flex-row flex-wrap">
+        {Array.from({ length: 5 }).map((_, index) => (
           <TestimonialCard
             key={index}
             body="I love the new design system! It's so easy to use and it looks great."
@@ -45,6 +45,7 @@ export default function Page(): JSX.Element {
               imageUrl: 'https://picsum.photos/100',
             }}
             timestamp="2021-09-01"
+            className="mx-auto"
           />
         ))}
       </Wrapper>

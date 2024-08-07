@@ -1,9 +1,9 @@
 import { classNames } from '../../lib/helpers';
 
 type Author = {
-  handle: string;
+  handle?: string;
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
 };
 
 type Props = {
