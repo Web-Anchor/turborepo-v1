@@ -23,7 +23,7 @@ export default function Link(props: Props) {
   };
   const id = isString(searchParams.get('id'))
     ? searchParams.get('id')
-    : storage?.id;
+    : storage?.id || '';
 
   let query: { id?: string; chargeid?: string } = {};
   if (id) {

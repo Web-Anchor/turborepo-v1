@@ -35,7 +35,6 @@ export default function Page() {
         method: 'POST',
         data: { subject, message },
       });
-      console.log('🚨 logs', data, status);
 
       if (status !== 200 || data?.error) {
         throw new Error(data?.error);
@@ -100,9 +99,9 @@ export default function Page() {
                 label="Reason for contacting"
                 name="subject"
                 data={[
-                  { value: 1, title: 'Support' },
-                  { value: 2, title: 'Feedback' },
-                  { value: 3, title: 'Bug Report' },
+                  { value: 'support', title: 'Support' },
+                  { value: 'feedback', title: 'Feedback' },
+                  { value: 'bug', title: 'Bug Report' },
                 ]}
               />
 

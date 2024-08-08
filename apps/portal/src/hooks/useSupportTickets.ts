@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { bodyFetcher } from '.';
+import { postFetcher } from '.';
 import { Ticket } from '../types';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 export function useSupportTickets(props: Props) {
   const { data, error, isLoading } = useSWR(
     `/api/v1/support/tickets`,
-    (url: string) => bodyFetcher(url),
+    (url: string) => postFetcher(url),
     {
       revalidateOnFocus: true,
       fallbackData: props?.tickets as any,

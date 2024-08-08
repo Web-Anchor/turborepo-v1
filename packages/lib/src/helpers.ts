@@ -53,7 +53,12 @@ export function setToLocalStorage<T extends StoredValue = StoredValue>(
  * @returns `true` if the value is a string, otherwise `false`.
  */
 export function isString(value: unknown): boolean {
-  return typeof value === 'string';
+  return (
+    typeof value === 'string' &&
+    value.trim() !== '' &&
+    value !== 'undefined' &&
+    value !== 'null'
+  );
 }
 
 export function getTimeAgo(dateString?: string | number): string {

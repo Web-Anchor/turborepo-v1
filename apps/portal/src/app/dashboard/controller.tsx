@@ -44,6 +44,8 @@ export default function Page() {
     const storage = getFromLocalStorage(process.env.NEXT_PUBLIC_APP_URL!);
 
     if (!isString(id) && storage) {
+      console.log('🚧 Redirecting to dashboard with stored id', storage);
+
       router.push(`/dashboard?id=${storage?.id}`); // 🚧 add api key form storage
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
