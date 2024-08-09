@@ -2,7 +2,7 @@ import { classNames } from '../../lib/helpers';
 import './styles.css';
 
 type Props = {
-  type?: 'card' | 'user' | 'list' | 'table';
+  type?: 'card' | 'user' | 'list' | 'table' | 'table-large';
   width?: string;
   height?: string;
   borderRadius?: string;
@@ -85,6 +85,33 @@ export function Skeleton({
     );
   }
 
+  if (type === 'table-large') {
+    return (
+      <div
+        className={classNames(
+          `animate-pulse border border-gray-200 shadow ${borderRadius} p-4 w-hull bg-gray-200`,
+          className
+        )}
+        data-cy={dataAttribute}
+      >
+        <div className="flex space-x-4">
+          <div className="flex-1 space-y-4 py-1">
+            <SkeletonLine height="h-4" />
+            <SkeletonLine width="w-4/6" height="h-4" />
+            <div className="space-y-2">
+              <SkeletonLine height="h-4" />
+              <SkeletonLine width="w-5/6" height="h-4" />
+            </div>
+            <div className="space-y-2">
+              <SkeletonLine width="w-3/6" height="h-4" />
+              <SkeletonLine width="w-4/6" height="h-4" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={classNames(
@@ -115,10 +142,11 @@ function SkeletonLine({
   height = 'h-2',
   borderRadius = 'rounded',
   additionalClasses = '',
+  bgColor = 'bg-slate-400',
 }) {
   return (
     <div
-      className={`${height} bg-slate-400 ${borderRadius} ${width} ${additionalClasses}`}
+      className={`${height} ${bgColor} ${borderRadius} ${width} ${additionalClasses}`}
     ></div>
   );
 }

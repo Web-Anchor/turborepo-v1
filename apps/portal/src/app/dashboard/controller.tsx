@@ -310,20 +310,38 @@ export default function Page() {
                     style="link"
                   >
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="absolute right-0 w-4 h-4 transition duration-300 top-1 shrink-0 stroke-slate-700 group-open:rotate-45"
-                      fill="none"
                       viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
                     >
-                      <title>Open icon</title>
-                      <desc>icon that represents the state of the summary</desc>
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 4v16m8-8H4"
-                      />
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M12 7L12 14M12 14L15 11M12 14L9 11"
+                          stroke="#1C274C"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>{' '}
+                        <path
+                          d="M16 17H12H8"
+                          stroke="#1C274C"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                        ></path>{' '}
+                        <path
+                          d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8"
+                          stroke="#1C274C"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                        ></path>{' '}
+                      </g>
                     </svg>
                   </Button>
                 ),
@@ -335,7 +353,8 @@ export default function Page() {
         hasPrevious={hasPreviousRes}
         prevCallback={prevPage}
         nextCallback={nexPage}
-        fetching={isLoading}
+        fetching
+        // fetching={isLoading}
         hidden={!isValidKey}
       />
 

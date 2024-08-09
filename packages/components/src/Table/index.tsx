@@ -30,7 +30,7 @@ export function Table({
   hidden,
 }: Props): React.ReactElement | null {
   if (fetching) {
-    return <Skeleton type="table" dataAttribute="table-skeleton" />;
+    return <Skeleton type="table-large" dataAttribute="table-skeleton" />;
   }
 
   if (hidden) {
