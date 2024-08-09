@@ -47,7 +47,8 @@ type Props = {
   secondaryNav?: SecondaryNavItem[];
   mobileNavMenu?: MobileNavMainMenu[];
   secondaryNavTitle?: string;
-  user?: User;
+  userSideBar?: React.ReactElement;
+  userHeader?: React.ReactElement;
   logoSrc?: LogoSrc;
   children?: React.ReactNode;
 };
@@ -57,7 +58,8 @@ export function Sidebar({
   secondaryNav = [],
   mobileNavMenu = [],
   secondaryNavTitle = 'Your teams',
-  user,
+  userHeader,
+  userSideBar,
   logoSrc,
   children,
 }: Props) {
@@ -141,11 +143,11 @@ export function Sidebar({
         </Dialog>
 
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+          <div className="flex grow flex-col gap-y-5 border-r border-gray-200 px-6">
             <div className="flex h-16 shrink-0 items-center">
               <LogoContainer logo={logoSrc} />
             </div>
-            <nav className="flex flex-1 flex-col">
+            <nav className="relative flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
                   <ul role="list" className="-mx-2 space-y-1">
@@ -160,9 +162,7 @@ export function Sidebar({
                     <SecondaryMenu navigation={secondaryNav} />
                   </ul>
                 </li>
-                <section className="flex h-full items-end">
-                  <Profile profile={user} />
-                </section>
+                <li className="mt-auto">{userSideBar}</li>
               </ul>
             </nav>
           </div>
@@ -196,11 +196,12 @@ export function Sidebar({
               <section key={key}>{item.component}</section>
             ))}
           </div>
-          <Profile profile={user} hasName={false} />
+
+          {userHeader}
         </div>
 
         <main className="py-6 lg:pl-72">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+          <div className="px-4 sm:px-6 lg:px-8 overflow-y-auto">{children}</div>
         </main>
       </section>
     </>
@@ -265,36 +266,6 @@ function SecondaryMenu({ navigation }: { navigation: SecondaryNavItem[] }) {
         </li>
       ))}
     </>
-  );
-}
-
-function Profile({
-  profile,
-  hasName = true,
-}: {
-  profile?: User;
-  hasName?: boolean;
-}) {
-  if (profile?.component) {
-    return profile.component;
-  }
-
-  return (
-    <a
-      href={profile?.linkUrl || '#'}
-      className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
-      data-cy="User Profile"
-    >
-      {profile?.imageUrl && (
-        <img
-          alt={profile?.name || 'User Profile'}
-          src={profile.imageUrl}
-          className="h-8 w-8 rounded-full bg-gray-50"
-        />
-      )}
-      <span className="sr-only">Your profile</span>
-      {hasName && <span aria-hidden="true">{profile?.name}</span>}
-    </a>
   );
 }
 

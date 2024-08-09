@@ -187,9 +187,12 @@ export function AuthWrapper({ children }: Props) {
           ),
         };
       })}
-      user={{
-        component: <ProfileButtonWrapper />,
-      }}
+      userSideBar={
+        <section className="pb-8">
+          <ProfileButtonWrapper />
+        </section>
+      }
+      userHeader={<ProfileButtonWrapper order="revere" />}
       logoSrc={{ component: <Logo /> }}
     >
       <section className="flex flex-col gap-10 font-semibold">

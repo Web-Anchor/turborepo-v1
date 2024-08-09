@@ -9,7 +9,10 @@ import { useUser } from '@clerk/nextjs';
 
 import ProfileButton from '@components/ProfileButton';
 
-export function ProfileButtonWrapper() {
+export function ProfileButtonWrapper(props: {
+  order?: 'revere';
+  className?: string;
+}) {
   let { isSignedIn, user, isLoaded } = useUser();
 
   return (
@@ -17,8 +20,8 @@ export function ProfileButtonWrapper() {
       href="/dashboard"
       name={`${user?.firstName || ''} ${user?.lastName || ''}`}
       imgSrc={user?.imageUrl}
-      className="mb-4"
-      order="revere"
+      className={props.className}
+      order={props.order}
     />
   );
 }
