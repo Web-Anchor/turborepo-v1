@@ -6,6 +6,53 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  /* Paper Sizes */
+  --print-size-a4: 210mm 297mm;
+  --print-size-letter: 8.5in 11in;
+  --print-size-a5: 210mm 148mm;
+}
+
+/* Clerk CSS snags */
+.profile-wrapper .cl-cardBox {
+  box-shadow: none !important;
+}
+.cl-footer,
+.cl-navbar,
+.cl-navbarMobileMenuRow {
+  display: none !important;
+}
+@media (min-width: 1024px) {
+  /* small screen snags */
+  .profile-wrapper .cl-cardBox {
+    width: fit-content;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none; /* remove scroll bar */
+}
+
+.left-popup-container {
+  transform: translateX(calc(-100% - 1.25rem)); /* account popup custom css */
+}
+
+@media print {
+  @page {
+    size: var(--print-size-a4);
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pdf-printable-content {
+    min-height: auto;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,16 +61,6 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
