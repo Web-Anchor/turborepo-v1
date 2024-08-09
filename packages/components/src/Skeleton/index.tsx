@@ -146,20 +146,36 @@ export function SkeletonLine({
 }) {
   return (
     <div
-      className={`${height} ${bgColor} ${borderRadius} ${width} ${additionalClasses}`}
+      className={classNames(
+        `animate-pulse`,
+        height,
+        width,
+        bgColor,
+        borderRadius,
+        additionalClasses
+      )}
     ></div>
   );
 }
 
 export function SkeletonCircle({
-  size = 'h-10 w-10',
   borderRadius = 'rounded-full',
   additionalClasses = '',
+  bgColor = 'bg-slate-400',
+  height = 'h-10',
+  width = 'w-10',
 }) {
   return (
     <section>
       <div
-        className={`${borderRadius} bg-slate-400 ${size} ${additionalClasses}`}
+        className={classNames(
+          `animate-pulse`,
+          height,
+          width,
+          bgColor,
+          borderRadius,
+          additionalClasses
+        )}
       ></div>
     </section>
   );
