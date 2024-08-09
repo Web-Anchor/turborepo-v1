@@ -15,9 +15,10 @@ export function ProfileButtonWrapper() {
   return (
     <ProfileButton
       href="/dashboard"
-      name={`${user?.firstName} ${user?.lastName}`}
+      name={`${user?.firstName || ''} ${user?.lastName || ''}`}
       imgSrc={user?.imageUrl}
       className="mb-4"
+      order="revere"
     />
   );
 }

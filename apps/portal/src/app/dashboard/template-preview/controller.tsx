@@ -3,7 +3,7 @@
 import { useBuildChargeTemplate } from '@hooks/index';
 import { useSearchParams } from 'next/navigation';
 import parse from 'html-react-parser';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { Template } from '@tsTypes/index';
@@ -12,13 +12,17 @@ import { Button, HeaderSection, LoadingDots, Wrapper } from '@repo/components';
 import { classNames, stripeAmountToCurrency } from '@repo/lib';
 import { downloadFile } from '@lib/index';
 
-const ParsedContent = (props: { html?: string }) => {
-  const parsedHtml = parse(props?.html ?? '', {
+// eslint-disable-next-line react/display-name
+const ParsedContent = memo(({ html }: { html?: string }) => {
+  const bodyContent = extractBodyContent(html);
+  const head = extractHeadContent(html);
+
+  const parsedHtml = parse(bodyContent ?? '', {
     replace: (domNode) => {
       if (
         domNode.type === 'tag' &&
         domNode.name === 'p' &&
-        domNode.attribs['data-input']
+        domNode.attribs?.['data-input']
       ) {
         const textNode = domNode.children.find(
           (child) => child.type === 'text'
@@ -35,15 +39,31 @@ const ParsedContent = (props: { html?: string }) => {
           />
         );
       }
+      if (
+        domNode.type === 'tag' &&
+        domNode.name === 'div' &&
+        domNode.attribs?.class?.includes('bg-white') &&
+        domNode.attribs?.class?.includes('shadow-md')
+      ) {
+        domNode.attribs.class = domNode.attribs.class.replace(
+          'min-h-full',
+          'min-h-[1200px]'
+        );
+        return domNode;
+      }
+
+      return undefined; // If no replacement is needed, return undefined
     },
   });
 
   return (
     <div className="w-full h-full max-w-4xl mx-auto p-4 min-h-[1200px] min-w-[848px]">
+      <section dangerouslySetInnerHTML={{ __html: head! }} />
+
       {parsedHtml}
     </div>
   );
-};
+});
 
 export default function Page() {
   const [state, setState] = useState<{ fetching?: boolean }>({});
@@ -53,7 +73,6 @@ export default function Page() {
   const chargeid = searchParams.get('chargeid')!;
 
   const { html, isLoading, charge } = useBuildChargeTemplate({ id, chargeid });
-  const bodyContent = extractBodyContent(html);
   //  Minimum width = 1200 pixels * 0.707 ≈ 848 pixels
 
   async function submit(e: any) {
@@ -136,13 +155,15 @@ export default function Page() {
 
   return (
     <Wrapper>
-      <LoadingDots />
+      {isLoading && (
+        <Wrapper className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <LoadingDots />
+        </Wrapper>
+      )}
       {!isLoading && html && (
-        <form
-          className="flex flex-col items-center justify-center w-full h-full"
-          onSubmit={submit}
-        >
-          <ParsedContent html={bodyContent} />
+        <form className="flex flex-col" onSubmit={submit}>
+          <ParsedContent html={html} />
+
           <section className="flex w-full flex-row gap-2 justify-center my-10">
             <Button fetching={state?.fetching} type="submit">
               <section className="flex flex-row gap-2">
@@ -150,21 +171,33 @@ export default function Page() {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="w-5 h-5"
                 >
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
-                    <rect width="24" height="24" fill="white"></rect>{' '}
                     <path
-                      d="M17 9.5L12 14.5L7 9.5"
-                      stroke="#000000"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                      d="M12 7L12 14M12 14L15 11M12 14L9 11"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{' '}
+                    <path
+                      d="M16 17H12H8"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    ></path>{' '}
+                    <path
+                      d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
                     ></path>{' '}
                   </g>
                 </svg>
@@ -205,4 +238,8 @@ export default function Page() {
 
 function extractBodyContent(html?: string) {
   return (html ?? '').match(/<body[^>]*>([\s\S.]*)<\/body>/i)?.[1];
+}
+
+function extractHeadContent(html?: string) {
+  return (html ?? '').match(/<head[^>]*>([\s\S.]*)<\/head>/i)?.[1];
 }
