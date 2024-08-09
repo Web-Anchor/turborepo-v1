@@ -137,7 +137,7 @@ export function Skeleton({
   );
 }
 
-function SkeletonLine({
+export function SkeletonLine({
   width = 'w-full',
   height = 'h-2',
   borderRadius = 'rounded',
@@ -151,7 +151,7 @@ function SkeletonLine({
   );
 }
 
-function SkeletonCircle({
+export function SkeletonCircle({
   size = 'h-10 w-10',
   borderRadius = 'rounded-full',
   additionalClasses = '',
