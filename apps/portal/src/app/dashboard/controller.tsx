@@ -353,8 +353,7 @@ export default function Page() {
         hasPrevious={hasPreviousRes}
         prevCallback={prevPage}
         nextCallback={nexPage}
-        fetching
-        // fetching={isLoading}
+        fetching={isLoading}
         hidden={!isValidKey}
       />
 

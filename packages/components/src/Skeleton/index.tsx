@@ -98,11 +98,11 @@ export function Skeleton({
           <div className="flex-1 space-y-4 py-1">
             <SkeletonLine height="h-4" />
             <SkeletonLine width="w-4/6" height="h-4" />
-            <div className="space-y-2">
+            <div className="space-y-4">
               <SkeletonLine height="h-4" />
               <SkeletonLine width="w-5/6" height="h-4" />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-4">
               <SkeletonLine width="w-3/6" height="h-4" />
               <SkeletonLine width="w-4/6" height="h-4" />
             </div>

@@ -74,17 +74,14 @@ export default function RateForm(props: Props): React.ReactElement {
       />
 
       <form className={classNames(props.class)} ref={formRef} action={submit}>
-        <div className="rating">
+        <div className="flex flex-row gap-2">
           {Array.from({ length: 5 }, (_, i) => (
             <svg
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               key={i}
-              className={classNames(
-                state.rating >= i + 1 ? 'text-orange-400' : 'text-gray-300',
-                'h-6 w-6 cursor-pointer'
-              )}
+              className={classNames('h-6 w-6 cursor-pointer')}
               onClick={() => handleRating(i + 1)}
             >
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -99,6 +96,11 @@ export default function RateForm(props: Props): React.ReactElement {
                   stroke="#1C274C"
                   strokeWidth="1.5"
                   strokeLinecap="round"
+                  fill={
+                    state.rating >= i + 1
+                      ? '#FFA500'
+                      : '#D3D3D3' /* Orange when rating is met, gray otherwise */
+                  }
                 ></path>{' '}
               </g>
             </svg>
