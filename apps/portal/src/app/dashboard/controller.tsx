@@ -249,7 +249,10 @@ export default function Page() {
           { item: 'Description' },
           { item: 'Amount' },
           { item: 'Currency', className: 'hidden md:table-cell' },
-          { item: 'Created At', className: 'hidden md:table-cell' },
+          {
+            item: 'Created At',
+            className: 'truncate hidden w-12 md:table-cell',
+          },
           { item: 'Receipt' },
           { item: 'Preview' },
           { item: 'Invoice' },
@@ -282,7 +285,11 @@ export default function Page() {
                 class: 'hidden md:table-cell',
               },
               {
-                item: <p>{getTimeAgo(item?.created! * 1000)}</p>,
+                item: (
+                  <p className="truncate ">
+                    {getTimeAgo(item?.created! * 1000)}
+                  </p>
+                ),
                 class: 'hidden md:table-cell text-nowrap',
               },
               {
@@ -313,7 +320,7 @@ export default function Page() {
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
+                      className="w-5 h-5"
                     >
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g

@@ -1,8 +1,11 @@
-import { Template } from '@appTypes/index';
+import { Template } from '@tsTypes/index';
 import { auth } from '@clerk/nextjs/server';
 import { db } from '@db/index';
 import { templates, users } from '@db/schema';
-import { subscription, validateActiveSubMiddleware } from '@lib/subscription';
+import {
+  subscription,
+  validateActiveSubMiddleware,
+} from '@server/subscription';
 import { generateTemplate } from '@lib/templates';
 import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
@@ -139,7 +142,10 @@ async function callApiWithRetry(props: { html: string }) {
         timeout: 10000, // Increased timeout for more complex pages
       });
 
-      const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+      const pdfBuffer = (await page.pdf({
+        format: 'A4',
+        printBackground: true,
+      })) as Buffer;
       await browser.close();
 
       return { pdfBuffer };
