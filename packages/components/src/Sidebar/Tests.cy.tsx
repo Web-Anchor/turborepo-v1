@@ -33,11 +33,15 @@ describe('Sidebar Component Mobile iPhone-6', () => {
             />
           ),
         }))}
-        user={{
-          name: 'User Profile',
-          imageUrl: 'https://via.placeholder.com/150',
-          linkUrl: 'https://via.placeholder.com/100',
-        }}
+        userHeader={
+          <Button
+            title="User Profile"
+            style="link"
+            onClick={() => {}}
+            className="px-2 my-5"
+            dataAttribute="user-profile"
+          />
+        }
         logoSrc={{
           imageUrl: 'https://via.placeholder.com/150',
         }}
@@ -82,7 +86,10 @@ describe('Sidebar Component Mobile iPhone-6', () => {
   });
 
   it('should display the user profile', () => {
-    cy.get('a[data-cy="User Profile"]').should('contain.text', 'User Profile');
+    cy.get('button[data-cy="user-profile"]').should(
+      'contain.text',
+      'User Profile'
+    );
   });
 
   it('should display the logo', () => {
@@ -122,11 +129,15 @@ describe('Desktop Mac-13 inch laptop', () => {
             />
           ),
         }))}
-        user={{
-          name: 'User Profile',
-          imageUrl: 'https://via.placeholder.com/150',
-          linkUrl: 'https://via.placeholder.com/100',
-        }}
+        userSideBar={
+          <Button
+            title="User Profile"
+            style="link"
+            onClick={() => {}}
+            className="px-2 my-5"
+            dataAttribute="user-profile"
+          />
+        }
         logoSrc={{
           imageUrl: 'https://via.placeholder.com/150',
         }}
@@ -160,7 +171,10 @@ describe('Desktop Mac-13 inch laptop', () => {
   });
 
   it('should display the user profile', () => {
-    cy.get('a[data-cy="User Profile"]').should('contain.text', 'User Profile');
+    cy.get('button[data-cy="user-profile"]').should(
+      'contain.text',
+      'User Profile'
+    );
   });
 
   it('should display the logo', () => {
