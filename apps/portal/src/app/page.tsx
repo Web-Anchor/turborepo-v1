@@ -1,8 +1,10 @@
 import {
   Accordion,
+  BottomBackground,
   ConnectSectionWithStickyImg,
   Footer,
   HeaderSection,
+  TopBackground,
   Wrapper,
 } from '@repo/components';
 import Header from '@app/header';
@@ -90,6 +92,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
 
   return (
     <Wrapper className="h-full pt-16 lg:pt-24">
+      <TopBackground />
       <Header company={company} />
 
       <HeaderSection
@@ -317,7 +320,8 @@ export default async function Home(params: { searchParams: { id: string } }) {
         subtitle="FAQ"
         id="facts"
       />
-      <Wrapper className="mx-8">
+      <Wrapper className="relative mx-8">
+        <BottomBackground />
         <Accordion
           items={[
             {

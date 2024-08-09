@@ -19,6 +19,7 @@ export * from './Select/index';
 export * from './TestimonialCard/index';
 export * from './MediaScreenTitle/index';
 export * from './Table/index';
+export * from './Background/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config
