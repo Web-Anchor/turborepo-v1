@@ -21,6 +21,7 @@ type Props = {
   className?: string;
   perks?: Perk[];
   theme?: 'light' | 'dark';
+  reverse?: boolean;
 };
 
 export function ConnectSectionWithStickyImg(props: Props) {
@@ -35,7 +36,12 @@ export function ConnectSectionWithStickyImg(props: Props) {
       <CheckBg theme={props.theme} />
       <div className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
         {props.header && (
-          <div className="px-6 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div
+            className={classNames(
+              'px-6 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8',
+              props.reverse && 'lg:col-start-2 lg:order-2 lg:grid-cols-1'
+            )}
+          >
             <div className="lg:pr-4">
               <div className="lg:max-w-lg">
                 <HeaderSection
@@ -50,19 +56,35 @@ export function ConnectSectionWithStickyImg(props: Props) {
         )}
 
         {props.actions && (
-          <div className="px-6 mb-10 lg:mb-0 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div
+            className={classNames(
+              'px-6 mb-10 lg:mb-0 lg:px-0 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8',
+              props.reverse && 'lg:col-start-2 lg:order-2'
+            )}
+          >
             <div className="lg:pr-4">{props.actions}</div>
           </div>
         )}
 
         {props.image && (
-          <div className="pl-6 lg:pl-0 lg:-ml-12 -mt-12 lg:p-12 lg:pb-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:overflow-hidden">
+          <div
+            className={classNames(
+              'pl-6 lg:pl-0 lg:-ml-12 -mt-12 lg:p-12 lg:pb-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:overflow-hidden',
+              props.reverse &&
+                'lg:col-start-1 lg:row-start-1 lg:order-1 lg:pr-0'
+            )}
+          >
             <section>{props.image}</section>
           </div>
         )}
 
         {props.perks && (
-          <div className="lg:col-span-2 lg:col-start-1 lg:row-start-3 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div
+            className={classNames(
+              'lg:col-span-2 lg:col-start-1 lg:row-start-3 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8',
+              props.reverse && 'lg:col-start-2 lg:order-2'
+            )}
+          >
             <div className="px-6 lg:px-0 lg:pr-4">
               <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
                 <ul role="list" className="space-y-8 text-gray-600">
