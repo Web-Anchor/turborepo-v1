@@ -35,6 +35,14 @@ export default function Page(props: Props) {
     value: { title: 'Pricing', link: '/#pricing' },
     arr: menu,
   });
+  menu = addToArray({
+    isTrue: path === '/',
+    value: {
+      title: 'Contact',
+      link: isSignedIn ? '/dashboard/support' : '/contact',
+    },
+    arr: menu,
+  });
 
   return (
     <Header
@@ -82,19 +90,20 @@ export default function Page(props: Props) {
   );
 }
 
-type Link = {
+type NavLink = {
   title: string;
   link: string;
+  icon?: JSX.Element;
 };
 
-function addToArray({
+export function addToArray({
   isTrue,
   value,
   arr,
 }: {
   isTrue: boolean;
-  value: Link;
-  arr: Link[];
+  value: NavLink;
+  arr: NavLink[];
 }) {
   if (isTrue && value) {
     arr.push(value);

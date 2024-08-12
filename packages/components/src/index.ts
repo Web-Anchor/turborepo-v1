@@ -20,7 +20,7 @@ export * from './TestimonialCard/index';
 export * from './MediaScreenTitle/index';
 export * from './Table/index';
 export * from './Background/index';
-export * from './FeatureList/index';
+export * from './ListSection/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config
