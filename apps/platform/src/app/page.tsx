@@ -12,6 +12,7 @@ import Header from '@app/header';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStarted, Testimonials } from '@app/client-side-components';
+import Pricing from '@components/Pricing';
 
 const socials = [
   {
@@ -333,11 +334,10 @@ export default async function Home(params: { searchParams: { id: string } }) {
         })}
         className="mt-0 lg:mt-0"
       />
+      <Pricing />
       <HeaderSection
-        title="Customer Portal. Your Invoicing made smarter."
-        subtitle="Empowering You, One Click at a Time!"
         description={[
-          'Experience the next level of efficiency and convenience with our Customer Portal. Building on the ease of managing your financial activities, our platform allows you to effortlessly handle invoicing, download essential documents, and track transactions with precision. Our intuitive interface ensures that you can streamline your financial tasks and maintain control without any hassle. Join us today and see how simple and effective financial management can be with our tailored invoicing solutions.',
+          'Experience the convenience and efficiency of modern invoicing with our Stripe-powered platform. Join us today and discover how our platform simplifies your billing process. From viewing transactions, invoicing and more to making necessary adjustments, our invoicing solution ensures that your financial management is both efficient and effective. Empower yourself with modern invoicing - start simplifying your billing process now!',
         ]}
         theme="dark"
       />
