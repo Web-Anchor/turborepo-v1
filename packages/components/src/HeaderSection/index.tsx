@@ -1,9 +1,9 @@
 import { classNames } from '../../lib/helpers';
 
 type HeaderSectionProps = {
-  title?: string;
+  title?: string | React.ReactElement;
   subtitle?: string;
-  description?: string[];
+  description?: string | React.ReactNode[];
   className?: string;
   theme?: 'light' | 'dark';
   size?: 'small';
@@ -54,19 +54,20 @@ export function HeaderSection(props: HeaderSectionProps) {
         )}
         {props.description?.length && (
           <div className={classNames('flex flex-col gap-2')}>
-            {props.description?.map((desc, index) => (
-              <p
-                key={index}
-                className={classNames(
-                  'text-lg leading-8 text-gray-600',
-                  props.theme === 'dark' && 'text-gray-200',
-                  props.type !== 'page-header' && props.title && 'mt-3',
-                  props.type === 'page-header' && 'text-sm leading-6 order-2'
-                )}
-              >
-                {desc}
-              </p>
-            ))}
+            {Array.isArray(props.description) &&
+              props.description.map((desc, index) => (
+                <p
+                  key={index}
+                  className={classNames(
+                    'text-lg leading-8 text-gray-600',
+                    props.theme === 'dark' && 'text-gray-200',
+                    props.type !== 'page-header' && props.title && 'mt-3',
+                    props.type === 'page-header' && 'text-sm leading-6 order-2'
+                  )}
+                >
+                  {desc}
+                </p>
+              ))}
           </div>
         )}
       </div>

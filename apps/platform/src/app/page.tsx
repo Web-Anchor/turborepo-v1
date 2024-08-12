@@ -11,7 +11,6 @@ import Header from '@app/header';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStarted, Testimonials } from '@app/client-side-components';
-import { components } from '@server/components';
 
 const socials = [
   {
@@ -78,6 +77,10 @@ const socials = [
   },
 ];
 
+function stripeBrand() {
+  return <span className="font-bold text-indigo-600">Stripe</span>;
+}
+
 export default async function Home(params: { searchParams: { id: string } }) {
   return (
     <Wrapper className="pt-16 lg:pt-24">
@@ -85,11 +88,29 @@ export default async function Home(params: { searchParams: { id: string } }) {
       <Header />
 
       <HeaderSection
-        title="Welcome to Your Invoicing Portal"
+        title={
+          <p key={0}>
+            Streamline Your Invoicing Process with {stripeBrand()} Integration
+          </p>
+        }
         description={[
-          'Discover the ease of managing your financial activities from one central location. Our platform offers you a dedicated space where you can effortlessly view transactions from your vendor, download invoices, and make necessary adjustments such as adding notes or updating details. With these powerful features, you can keep track of all your financial dealings and ensure that your records are always up-to-date and accurate. Contact your vendor today to access your personalized invoicing portal and start experiencing the convenience of streamlined financial management.',
+          <p className="mt-6 text-lg leading-8 text-gray-600" key={1}>
+            Streamline your invoicing process with our dedicated, user-friendly
+            platform, powered by {stripeBrand()}. Effortlessly connect your{' '}
+            {stripeBrand()} account via API to integrate with all your customers
+            and payments. Empower your customers to access invoices at their
+            convenience, making the billing process hassle-free and efficient.
+          </p>,
+          <p className="mt-6 text-lg leading-8 text-gray-600" key={2}>
+            Our platform, built on the robust and secure {stripeBrand()}{' '}
+            infrastructure, empowers you to take full control of your invoicing
+            services. Featuring a dedicated customer portal, secure integration
+            with the {stripeBrand()} API, customizable templates, and detailed
+            reporting & analytics, you can ensure a seamless invoicing
+            experience.
+          </p>,
         ]}
-        subtitle="Your Gateway to Effortless Invoicing!"
+        subtitle="Invoicing Made Easy"
       />
       <HeaderSection
         title="Customer Portal. Your Invoicing made smarter."
@@ -171,7 +192,6 @@ export default async function Home(params: { searchParams: { id: string } }) {
                   strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  {' '}
                   <path
                     fill-rule="evenodd"
                     clipRule="evenodd"
