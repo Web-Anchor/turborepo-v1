@@ -1,15 +1,6 @@
-import { Template } from '@tsTypes/index';
 import { auth } from '@clerk/nextjs/server';
-import { db } from '@db/index';
-import { templates, users } from '@db/schema';
-import {
-  subscription,
-  validateActiveSubMiddleware,
-} from '@server/subscription';
-import { generateTemplate } from '@lib/templates';
-import axios from 'axios';
+import { genPreviewTemplate } from '@server/generate-template';
 import { NextRequest, NextResponse } from 'next/server';
-import { eq } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic'; // force dynamic request
 // --------------------------------------------------------------------------------
@@ -52,57 +43,13 @@ export async function POST(request: NextRequest) {
     auth().protect();
 
     const body = await request.json();
-    const clientId = body?.id; // User db id
-    const invoiceData = (body?.invoiceData as Template) ?? {};
-
-    if (!clientId) {
-      throw new Error('Client API key is required');
+    if (!body.id) {
+      throw new Error('Request body must contain an id.');
     }
 
-    // --------------------------------------------------------------------------------
-    // 📌  Validate client subscription & subscription
-    // --------------------------------------------------------------------------------
-    const dbUser = await db.select().from(users).where(eq(users.id, clientId!));
-    console.log('👤 User: ', dbUser?.[0]?.id);
-
-    const subRes = await subscription({ userId: dbUser[0]?.clerkId });
-    validateActiveSubMiddleware({ status: subRes?.subscription?.status! });
-
-    // --------------------------------------------------------------------------------
-    // 📌  Retrieve customers templates
-    // --------------------------------------------------------------------------------
-    const dbTemplates = await db
-      .select()
-      .from(templates)
-      .where(eq(templates.userId, dbUser[0].id))
-      .limit(1);
-    const template = dbTemplates?.[0] ?? {};
-
-    // --------------------------------------------------------------------------------
-    // 📌  Get template form platform
-    // --------------------------------------------------------------------------------
-    const { data: hbsTemplate } = await axios.post(
-      process.env.NEXT_PUBLIC_PLATFORM_APP_URL + '/api/v1/templates/template',
-      {
-        template: 'template-one.hbs',
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}`,
-        },
-      }
-    );
-
-    const html = generateTemplate({
-      data: {
-        ...template, // Custom Template data
-        ...invoiceData, // User charge data | 🚧 place second to overwrite template defaults
-      },
-      template: hbsTemplate?.template,
-    });
-
     const { pdfBuffer } = await callApiWithRetry({
-      html,
+      html: body.html,
+      id: body.id,
     });
 
     return new NextResponse(pdfBuffer, {
@@ -116,8 +63,8 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function callApiWithRetry(props: { html: string }) {
-  const MAX_RETRIES = 2;
+async function callApiWithRetry(props: { html: string; id: string }) {
+  const MAX_RETRIES = 4;
   const RETRY_INTERVAL = 2000; // delay between retries in ms
   let retries = 0;
 
@@ -130,12 +77,18 @@ async function callApiWithRetry(props: { html: string }) {
       }
 
       const page = await browser.newPage();
-      if (!props.html) {
+      const { html, error } = await genPreviewTemplate({ id: props.id });
+      if (error) {
+        throw new Error(`Template generation error: ${error}`);
+      }
+
+      const pageContent = props.html || html;
+      if (!pageContent) {
         throw new Error('No HTML content available to generate PDF.');
       }
 
       // Ensure HTML is properly encoded to prevent XSS attacks
-      const encodedHTML = encodeURIComponent(props.html);
+      const encodedHTML = encodeURIComponent(pageContent);
 
       await page.goto(`data:text/html,${encodedHTML}`, {
         waitUntil: 'networkidle0',

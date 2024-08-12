@@ -11,7 +11,7 @@ type Props = {
 
 export function useCharges(props: Props) {
   const { data, error, isLoading } = useSWR(
-    props.id ? `/api/v1/stripe/charges?id=${props.id}` : undefined,
+    `/api/v1/stripe/charges?account=${props.id}`,
     (url: string) =>
       postFetcher(url, {
         id: props.id,
@@ -24,7 +24,6 @@ export function useCharges(props: Props) {
     }
   );
   const obj = data?.data?.charges;
-  console.log('🧾 Charges', obj);
 
   return {
     data: obj,

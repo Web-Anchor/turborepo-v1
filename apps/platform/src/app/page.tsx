@@ -79,27 +79,11 @@ const socials = [
 ];
 
 export default async function Home(params: { searchParams: { id: string } }) {
-  const data = await components({ id: params.searchParams.id });
-  const company = data?.components?.find(
-    (component) => component?.type === 'Company'
-  );
-  const landingPageHeader = data?.components?.find(
-    (component) => component.type === 'Landing Page Header Section'
-  );
-  const landingPageFooter = data?.components?.find(
-    (component) => component.type === 'Landing Page Footer Section'
-  );
-
   return (
     <Wrapper className="pt-16 lg:pt-24">
       <TopBackground />
-      <Header company={company} />
+      <Header />
 
-      <HeaderSection
-        subtitle={landingPageHeader?.slogan!}
-        title={landingPageHeader?.title!}
-        description={[landingPageHeader?.description!]}
-      />
       <HeaderSection
         title="Welcome to Your Invoicing Portal"
         description={[
@@ -113,7 +97,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
         description={[
           'Experience the next level of efficiency and convenience with our Customer Portal. Building on the ease of managing your financial activities, our platform allows you to effortlessly handle invoicing, download essential documents, and track transactions with precision. Our intuitive interface ensures that you can streamline your financial tasks and maintain control without any hassle. Join us today and see how simple and effective financial management can be with our tailored invoicing solutions.',
         ]}
-        // theme="dark"
+        theme="dark"
       />
       <ConnectSectionWithStickyImg
         header={{
@@ -307,12 +291,6 @@ export default async function Home(params: { searchParams: { id: string } }) {
         }
         actions={<GetStarted />}
         className="lg:pt-36"
-      />
-
-      <HeaderSection
-        subtitle={landingPageFooter?.slogan!}
-        title={landingPageFooter?.title!}
-        description={[landingPageFooter?.description!]}
       />
       <Testimonials />
       <HeaderSection

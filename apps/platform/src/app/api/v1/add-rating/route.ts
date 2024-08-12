@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         firstName: user?.firstName,
         lastName: user?.lastName,
         imageUrl: user?.imageUrl,
-        platform: 'portal',
+        platform: 'platform',
         rating,
         comments,
       })

@@ -8,6 +8,7 @@ import {
   Customer,
   StripeProduct,
   Plan,
+  User,
 } from '@tsTypes/index';
 import { plans } from '@config/index';
 
@@ -21,6 +22,7 @@ type Response = {
   activeSubs?: StripeSubscription[];
   customer?: Customer;
   product?: StripeProduct;
+  dbUser?: User;
 };
 
 export async function subscription({
@@ -35,7 +37,7 @@ export async function subscription({
       .select()
       .from(users)
       .where(eq(users.clerkId, userId!));
-    console.log('👤 User ', userId, dbUser);
+    console.log('👤 User ', userId);
     const stripeCustomerId = dbUser[0].stripeCustomerId;
 
     if (!stripeCustomerId) {
@@ -48,7 +50,7 @@ export async function subscription({
 
     const stripe = require('stripe')(STRIPE_RESTRICTED_KEY);
     const customer = await stripe.customers.retrieve(stripeCustomerId);
-    console.log('👤 Stripe Customer ', customer);
+    console.log('👤 Stripe Customer ', customer?.id);
 
     const activeSubs = await stripe.subscriptions.list({
       customer: stripeCustomerId,
@@ -58,7 +60,7 @@ export async function subscription({
       customer: stripeCustomerId,
       status: 'canceled',
     });
-    console.log('👤 Stripe Active Subscriptions ', activeSubs);
+    // console.log('👤 Stripe Active Subscriptions ', activeSubs);
 
     const subscription = activeSubs?.data?.[0]; // ⚠️ default to last subscription
     const product = await stripe.products.retrieve(subscription?.plan?.product);
@@ -70,6 +72,7 @@ export async function subscription({
       canceledSubs,
       activeSubs,
       status: 200,
+      dbUser: dbUser[0],
     };
   } catch (err: any) {
     console.error('🔑 error', err);

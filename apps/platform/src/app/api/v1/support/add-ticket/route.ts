@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       userId: dbUser[0].id.toString(),
       subject: body.subject,
       message: body.message,
-      type: 'portal',
+      type: 'platform',
       status: TicketStatus?.Open,
     });
 

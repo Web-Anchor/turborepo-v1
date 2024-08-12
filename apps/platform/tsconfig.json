@@ -10,6 +10,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@config/*": ["./src/config/*"],
       "@lib/*": ["./src/lib/*"],
+      "@templates/*": ["./src/templates/*"],
       "@components/*": ["./src/components/*"]
     }
   },

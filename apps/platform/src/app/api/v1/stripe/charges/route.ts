@@ -1,95 +1,79 @@
-import { auth, currentUser } from '@clerk/nextjs/server';
+import { auth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@db/index';
 import { keys as strKeys, users } from '@db/schema';
 import { eq } from 'drizzle-orm';
 import { FETCH_LIMIT } from '@config/index';
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
+
 export async function POST(request: NextRequest) {
   auth().protect();
 
   try {
     // --------------------------------------------------------------------------------
-    // 📌  Client db record
+    // 📌  User auth
     // --------------------------------------------------------------------------------
-    const body = await request.json();
-    const id = body?.id;
-    const starting_after =
-      body?.starting_after !== null ? body?.starting_after : undefined;
-    const ending_before =
-      body?.ending_before !== null ? body?.ending_before : undefined;
-
-    if (!id) {
-      throw new Error('User ID is required');
-    }
-
-    const dbUser = await db.select().from(users).where(eq(users.id, id!));
-    console.log('👤 User ', id, dbUser);
+    const { userId } = auth();
 
     // --------------------------------------------------------------------------------
-    // 📌  Client db api key
+    // 📌  Validate & validate sub type
     // --------------------------------------------------------------------------------
-    const apiKeys = await db
+    const dbUser = await db
+      .select()
+      .from(users)
+      .where(eq(users.clerkId, userId!));
+    console.log('👤 User ', userId);
+    // TODO restrict access if no sub expires | Use own Stripe API key
+
+    // --------------------------------------------------------------------------------
+    // 📌  Get Account API keys
+    // --------------------------------------------------------------------------------
+    const keys = await db
       .select()
       .from(strKeys)
-      .where(eq(strKeys.userId, id!));
-    const apiKey = apiKeys[0]?.restrictedAPIKey;
-    console.log('🔑 API Key', apiKey);
-
-    if (!apiKey) {
-      return NextResponse.json({
-        error: 'API Key not found',
-        isValidKey: false,
-      });
-    }
+      .where(eq(strKeys.userId, dbUser[0].id.toString()));
+    console.log('🔑 keys', keys);
 
     // --------------------------------------------------------------------------------
     // 📌  Get User Customer
     // --------------------------------------------------------------------------------
-    const user = await currentUser();
-    const stripe = require('stripe')(apiKey);
+    const body = await request.json();
+    const keyId = body?.keyId;
+    const key = keys.find((k) => k.id === keyId); // 🔑 find key by id
 
-    const customer = await stripe.customers.list({
-      email: user?.emailAddresses?.[0]?.emailAddress!,
-      limit: 1,
-    });
-    const customerId = customer?.data?.[0]?.id;
-    console.log('👤 Customer', customer);
-    // TODO: check how to handle multiple customers with same email
-
-    if (!customerId) {
-      return NextResponse.json({
-        error: 'Customer not found',
-        isValidKey: true,
-      });
+    const apiKey = key ?? keys?.[0]?.restrictedAPIKey; // 🔑 use first key if no keyId
+    if (!apiKey) {
+      return NextResponse.json({ error: 'No API key found' });
     }
+    const stripe = require('stripe')(apiKey);
 
     const charges = await stripe.charges.list({
       limit: FETCH_LIMIT,
-      starting_after, // charge identifier aka ch_1JZ9Zv2eZvKYlo2C5Z2ZQ2ZQ
-      ending_before,
+      starting_after: body?.starting_after ?? undefined,
+      ending_before: body?.ending_before ?? undefined,
       expand: ['data.customer'],
-      customer: customerId,
     });
+    console.log('🔑 charges', charges);
 
     let has_previous = false;
     let has_more = charges?.has_more;
-    if (!!ending_before) {
+    if (!!body.ending_before) {
       has_previous = charges?.has_more;
       has_more = charges?.data?.length === FETCH_LIMIT;
     }
-    if (starting_after) {
+    if (body.starting_after) {
       has_previous = true;
     }
 
     charges.has_previous = has_previous; // add pagination flag
     charges.has_more = has_more; // add pagination flag
 
-    return NextResponse.json({ charges, isValidKey: true });
+    return NextResponse.json({ charges });
   } catch (error: any) {
     console.error('🔑 error', error);
     return NextResponse.json(
-      { error: error?.message, isValidKey: false },
+      { error: error?.message },
       { status: error?.status || 500 }
     );
   }
