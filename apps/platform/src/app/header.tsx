@@ -3,10 +3,10 @@
 import { useUser } from '@clerk/nextjs';
 import Logo from '@components/Logo';
 import { Header } from '@repo/components';
-import Link from '@components/Link';
 import { Component } from '@tsTypes/index';
 import { usePathname } from 'next/navigation';
 import ProfileButton from '@components/ProfileButton';
+import Link from 'next/link';
 
 type Props = {
   company?: Component;
@@ -16,53 +16,37 @@ export default function Page(props: Props) {
   let { isSignedIn, user, isLoaded } = useUser();
   const path = usePathname()!;
 
-  let menu = isSignedIn ? ['Dashboard'] : [];
+  let menu = isSignedIn
+    ? [
+        {
+          title: 'Dashboard',
+          link: '/dashboard',
+        },
+      ]
+    : [];
+
   menu = addToArray({
-    isTrue: !!props.company?.title,
-    value: props.company?.title || '',
+    isTrue: path === '/',
+    value: { title: 'Facts', link: '/#facts' },
     arr: menu,
   });
-  menu = addToArray({ isTrue: path === '/', value: 'Facts', arr: menu });
+  menu = addToArray({
+    isTrue: path === '/',
+    value: { title: 'Pricing', link: '/#pricing' },
+    arr: menu,
+  });
 
   return (
     <Header
       logo={<Logo />}
       menuList={menu.map((item, key) => {
-        let link: string | undefined = item?.toLowerCase() || '#';
-        let hash: string | undefined;
-        let target: string | undefined;
-
-        if (item === 'Dashboard') {
-          link = '/dashboard';
-        }
-        if (item === 'Facts') {
-          link = '/';
-          hash = '#facts';
-        }
-        if (item === props.company?.title) {
-          if (!props.company?.link)
-            return (
-              <p
-                key={key}
-                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >
-                {props.company?.title}
-              </p>
-            );
-
-          link = props.company?.link;
-          target = '_blank';
-        }
-
         return (
           <Link
             key={key}
-            href={link}
-            hash={hash}
-            target={target}
+            href={item.link}
             className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
           >
-            {item}
+            {item?.title}
           </Link>
         );
       })}
@@ -98,33 +82,22 @@ export default function Page(props: Props) {
   );
 }
 
+type Link = {
+  title: string;
+  link: string;
+};
+
 function addToArray({
   isTrue,
   value,
   arr,
 }: {
   isTrue: boolean;
-  value: string;
-  arr: string[];
+  value: Link;
+  arr: Link[];
 }) {
   if (isTrue && value) {
     arr.push(value);
-  }
-
-  return arr;
-}
-
-function addNodeToArray({
-  isTrue,
-  obj,
-  arr,
-}: {
-  isTrue: boolean;
-  obj: React.ReactElement;
-  arr: React.ReactElement[];
-}) {
-  if (isTrue && obj) {
-    arr.push(obj);
   }
 
   return arr;
