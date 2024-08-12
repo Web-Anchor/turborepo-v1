@@ -1,4 +1,4 @@
-import Link from '@components/Link';
+import Link from 'next/link';
 import { classNames } from '@repo/lib';
 import Image from 'next/image';
 import { memo } from 'react';

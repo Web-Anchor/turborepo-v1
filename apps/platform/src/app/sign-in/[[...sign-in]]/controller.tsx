@@ -3,7 +3,7 @@
 import { Wrapper, LoadingDots } from '@repo/components';
 import { HeaderSection } from '@repo/components';
 import { SignIn, useUser } from '@clerk/nextjs';
-import Link from '@components/Link';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { setToLocalStorage } from '@repo/lib';
 

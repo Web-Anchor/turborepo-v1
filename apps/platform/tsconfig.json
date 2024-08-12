@@ -11,6 +11,7 @@
       "@config/*": ["./src/config/*"],
       "@lib/*": ["./src/lib/*"],
       "@templates/*": ["./src/templates/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@components/*": ["./src/components/*"]
     }
   },

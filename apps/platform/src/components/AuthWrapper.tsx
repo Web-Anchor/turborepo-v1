@@ -1,6 +1,6 @@
 'use client';
 
-import Link from '@components/Link';
+import Link from 'next/link';
 import { Breadcrumb, Sidebar } from '@repo/components';
 import Logo from '@components/Logo';
 import { ProfileButtonWrapper } from '@app/dashboard/client-side-components';

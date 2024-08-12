@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.8",
+    "@faker-js/faker": "^8.4.1",
     "@libsql/client": "^0.8.1",
     "@repo/components": "*",
     "@repo/lib": "*",

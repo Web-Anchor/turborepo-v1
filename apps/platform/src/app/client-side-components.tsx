@@ -14,7 +14,7 @@ import {
   TestimonialCard,
   Wrapper,
 } from '@repo/components';
-import Link from '@components/Link';
+import Link from 'next/link';
 import placeholder from '../../public/images/avatar.png';
 
 export function GetStarted() {
