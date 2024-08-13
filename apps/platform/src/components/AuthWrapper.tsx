@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Breadcrumb, Sidebar } from '@repo/components';
+import { Breadcrumb, Sidebar, SkeletonLine } from '@repo/components';
 import Logo from '@components/Logo';
 import { ProfileButtonWrapper } from '@app/dashboard/client-side-components';
 import { usePathname } from 'next/navigation';
@@ -186,6 +186,36 @@ export function AuthWrapper({ children }: Props) {
           ),
         };
       })}
+      navigationFooter={
+        isLoading ? (
+          <section className="flex flex-col gap-2">
+            <SkeletonLine height="h-4" width="w-1/2" />
+            <SkeletonLine height="h-4" width="w-4/5" />
+            <SkeletonLine height="h-4" width="w-1/3" />
+            <SkeletonLine height="h-4" width="w-5/6" />
+          </section>
+        ) : undefined
+      }
+      secondaryNavFooter={
+        isLoading ? (
+          <section className="flex flex-col gap-2">
+            <SkeletonLine height="h-4" width="w-1/3" />
+            <SkeletonLine height="h-4" width="w-5/6" />
+          </section>
+        ) : undefined
+      }
+      footer={
+        <section className="flex flex-col md:order-1 my-5">
+          <p className="text-xs leading-5 text-gray-500">
+            &copy; {new Date()?.getFullYear()}{' '}
+            <span className="text-indigo-600">invoicio</span>. All rights
+            reserved.
+          </p>
+          <p className="text-xs leading-5 text-gray-500 md:order-1">
+            Modern invoicing with Stripe-powered APIs.
+          </p>
+        </section>
+      }
       secondaryNavTitle="Manage & Support"
       secondaryNav={secondaryMenu?.map((item, key) => {
         const current = item.link === path;
@@ -239,7 +269,7 @@ export function AuthWrapper({ children }: Props) {
         };
       })}
       userSideBar={
-        <section className="pb-8">
+        <section>
           <ProfileButtonWrapper />
         </section>
       }

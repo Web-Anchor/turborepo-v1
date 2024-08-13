@@ -25,13 +25,6 @@ type SecondaryNavItem = {
   current?: boolean;
 };
 
-type User = {
-  component?: React.ReactElement;
-  name?: string;
-  imageUrl?: string;
-  linkUrl?: string;
-};
-
 type LogoSrc = {
   component?: React.ReactElement;
   imageUrl?: string;
@@ -44,13 +37,16 @@ type MobileNavMainMenu = {
 
 type Props = {
   navigation?: NavItem[];
+  navigationFooter?: React.ReactElement;
   secondaryNav?: SecondaryNavItem[];
+  secondaryNavFooter?: React.ReactElement;
   mobileNavMenu?: MobileNavMainMenu[];
   secondaryNavTitle?: string;
   userSideBar?: React.ReactElement;
   userHeader?: React.ReactElement;
   logoSrc?: LogoSrc;
   children?: React.ReactNode;
+  footer?: React.ReactElement;
 };
 
 export function Sidebar({
@@ -62,6 +58,9 @@ export function Sidebar({
   userSideBar,
   logoSrc,
   children,
+  footer,
+  navigationFooter,
+  secondaryNavFooter,
 }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -153,6 +152,7 @@ export function Sidebar({
                   <ul role="list" className="-mx-2 space-y-1">
                     <Menu navigation={navigation} />
                   </ul>
+                  {navigationFooter && <ul>{navigationFooter}</ul>}
                 </li>
                 <li>
                   <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -161,8 +161,10 @@ export function Sidebar({
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
                     <SecondaryMenu navigation={secondaryNav} />
                   </ul>
+                  {secondaryNavFooter && <ul>{secondaryNavFooter}</ul>}
                 </li>
                 <li className="mt-auto">{userSideBar}</li>
+                {footer && <li>{footer}</li>}
               </ul>
             </nav>
           </div>
