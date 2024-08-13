@@ -36,7 +36,7 @@ export function Button(props: Props): React.ReactElement | null {
   };
 
   const spinnerStyles = {
-    primary: 'border-indigo-600 border-l-[#ffffff50]',
+    primary: 'border-slate-200 border-l-[#ffffff50]',
     secondary: 'border-indigo-600 border-l-[#ffffff50]',
     link: 'border-gray-400 border-l-indigo-600',
     ghost: 'border-gray-400 border-l-indigo-600',

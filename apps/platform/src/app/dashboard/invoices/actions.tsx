@@ -99,7 +99,7 @@ export default function Actions(props: {
   const { pending } = useFormStatus();
 
   return (
-    <div className="card-actions justify-end">
+    <div className="flex flex-row gap-2 flex-wrap justify-end">
       <Button
         title="Save"
         type="submit"
