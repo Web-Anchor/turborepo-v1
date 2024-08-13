@@ -3,7 +3,8 @@
 import { useCharges } from '@hooks/useCharges';
 import { useSearchParams } from 'next/navigation';
 import { KeyCard } from '@components/KeyCard';
-import { HeaderSection, Wrapper } from '@repo/components';
+import { Button, HeaderSection, Wrapper } from '@repo/components';
+import { useClerk } from '@clerk/nextjs';
 
 export default function Page() {
   const searchParams = useSearchParams()!;
@@ -13,7 +14,16 @@ export default function Page() {
   const { charges, data, isLoading, isValidKey } = useCharges({
     id,
   });
+  const { signOut } = useClerk();
   console.log('🚧 Charge Data', charges, data, isLoading, isValidKey);
+
+  function signOutUser(e: { preventDefault: () => void }) {
+    // --------------------------------------------------------------------------------
+    // 📌 Sign Out User from current session
+    // --------------------------------------------------------------------------------
+
+    signOut();
+  }
 
   return (
     <Wrapper>
@@ -31,6 +41,13 @@ export default function Page() {
         isValid={isValidKey}
         isLoading={isLoading}
         link={`/dashboard/settings`}
+      />
+
+      <Button
+        title="Sign out 😢"
+        style="primary"
+        onClick={signOutUser}
+        className="w-fit"
       />
     </Wrapper>
   );
