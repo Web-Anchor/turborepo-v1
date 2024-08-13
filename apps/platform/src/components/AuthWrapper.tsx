@@ -6,6 +6,8 @@ import Logo from '@components/Logo';
 import { ProfileButtonWrapper } from '@app/dashboard/client-side-components';
 import { usePathname } from 'next/navigation';
 import { classNames } from '@repo/lib';
+import { useSubscription } from '@hooks/useSubscriptions';
+import { addToArray, Menu } from '@app/header';
 
 type Props = {
   children: React.ReactNode;
@@ -23,10 +25,12 @@ export function AuthWrapper({ children }: Props) {
     };
   });
 
-  const mainMenu = [
+  const { active, basic, advanced, pro, isLoading } = useSubscription({});
+
+  let mainMenu: Menu[] = [
     {
       title: 'Dashboard',
-      href: '/dashboard',
+      link: '/dashboard',
       icon: (
         <svg
           viewBox="0 0 24 24"
@@ -57,9 +61,45 @@ export function AuthWrapper({ children }: Props) {
         </svg>
       ),
     },
-    {
+  ];
+
+  mainMenu = addToArray({
+    isTrue: active,
+    value: {
+      title: 'Charges',
+      link: '/dashboard/charges',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          className="h-5 w-5"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m14.5 10-.035-.139A2.457 2.457 0 0 0 12.082 8h-.522a1.841 1.841 0 0 0-.684 3.55l2.248.9A1.841 1.841 0 0 1 12.44 16h-.521a2.457 2.457 0 0 1-2.384-1.861L9.5 14M12 6v2m0 8v2m9-6a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            ></path>{' '}
+          </g>
+        </svg>
+      ),
+    },
+    arr: mainMenu,
+  });
+  mainMenu = addToArray({
+    isTrue: true,
+    value: {
       title: 'Profile',
-      href: '/dashboard/profile',
+      link: '/dashboard/profile',
       icon: (
         <svg
           viewBox="0 0 24 24"
@@ -100,25 +140,36 @@ export function AuthWrapper({ children }: Props) {
         </svg>
       ),
     },
-  ];
+    arr: mainMenu,
+  });
 
-  const secondaryMenu = [
+  let secondaryMenu: Menu[] = [
     {
-      title: 'Feedback',
-      href: '/dashboard/feedback',
-      initial: 'F',
+      title: 'Help & Support',
+      link: '/dashboard/support',
+      initial: 'H',
     },
     {
-      title: 'About',
-      href: '/dashboard/about',
-      initial: 'A',
+      title: 'Subscriptions',
+      link: '/dashboard/subscriptions',
+      initial: 'S',
     },
     {
       title: 'Settings',
-      href: '/dashboard/settings',
+      link: '/dashboard/settings',
       initial: 'S',
     },
   ];
+
+  secondaryMenu = addToArray({
+    isTrue: active,
+    value: {
+      title: 'Feature Request',
+      link: '/dashboard/new-features',
+      initial: 'F',
+    } as any,
+    arr: secondaryMenu,
+  });
 
   return (
     <Sidebar
@@ -126,7 +177,7 @@ export function AuthWrapper({ children }: Props) {
         return {
           component: (
             <Link
-              href={item.href}
+              href={item.link}
               className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
             >
               {item.icon}
@@ -137,13 +188,13 @@ export function AuthWrapper({ children }: Props) {
       })}
       secondaryNavTitle="Manage & Support"
       secondaryNav={secondaryMenu?.map((item, key) => {
-        const current = item.href === path;
+        const current = item.link === path;
         const isSupport = item.title === 'Help & Support';
 
         return {
           component: (
             <Link
-              href={item.href}
+              href={item.link}
               className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
             >
               <span
@@ -179,7 +230,7 @@ export function AuthWrapper({ children }: Props) {
         return {
           component: (
             <Link
-              href={item.href}
+              href={item.link}
               className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold text-indigo-600 leading-6"
             >
               {item.title}

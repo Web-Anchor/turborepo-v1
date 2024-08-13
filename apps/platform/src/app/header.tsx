@@ -90,10 +90,11 @@ export default function Page(props: Props) {
   );
 }
 
-type NavLink = {
+export type Menu = {
   title: string;
   link: string;
   icon?: JSX.Element;
+  initial?: string;
 };
 
 export function addToArray({
@@ -102,8 +103,8 @@ export function addToArray({
   arr,
 }: {
   isTrue: boolean;
-  value: NavLink;
-  arr: NavLink[];
+  value: Menu;
+  arr: Menu[];
 }) {
   if (isTrue && value) {
     arr.push(value);

@@ -21,6 +21,7 @@ export * from './MediaScreenTitle/index';
 export * from './Table/index';
 export * from './Background/index';
 export * from './ListSection/index';
+export * from './Switch/index';
 
 // --------------------------------------------------------------------------------
 // 🚧 App tailwind config

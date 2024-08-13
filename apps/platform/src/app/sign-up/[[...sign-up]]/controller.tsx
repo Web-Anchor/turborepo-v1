@@ -3,7 +3,7 @@
 import { Wrapper, LoadingDots } from '@repo/components';
 import { HeaderSection } from '@repo/components';
 import { SignUp, useUser } from '@clerk/nextjs';
-import Link from '@components/Link';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CardWrapper } from '@app/sign-in/[[...sign-in]]/controller';
 

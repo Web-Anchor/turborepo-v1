@@ -35,6 +35,7 @@ export type Customer = {
   name?: string;
   email?: string;
   currency?: string;
+  description?: string;
   // TODO: Add more fields
 };
 
@@ -62,35 +63,35 @@ export type User = {
 };
 
 export type Template = {
-  id?: string | null;
-  header?: string | null;
-  invoiceNumber?: string | null;
-  date?: string | null;
-  companyName?: string | null;
-  imgUrl?: string | null;
-  billToName?: string | null;
-  billToEmail?: string | null;
-  billToPhone?: string | null;
-  billToAddress?: string | null;
-  billToAddressLine1?: string | null;
-  billToAddressLine2?: string | null;
-  billToCity?: string | null;
-  billToState?: string | null;
-  billToPostalCode?: string | null;
-  billToCountry?: string | null;
-  customFields?: { [key: number]: CustomField } | null;
-  memo?: string | null;
+  id?: string;
+  header?: string;
+  invoiceNumber?: string;
+  date?: string;
+  companyName?: string;
+  imgUrl?: string;
+  billToName?: string;
+  billToEmail?: string;
+  billToPhone?: string;
+  billToAddress?: string;
+  billToAddressLine1?: string;
+  billToAddressLine2?: string;
+  billToCity?: string;
+  billToState?: string;
+  billToPostalCode?: string;
+  billToCountry?: string;
+  customFields?: { [key: number]: CustomField };
+  memo?: string;
   items?: {
-    description?: string | null;
-    amount?: string | number | null;
-    quantity?: number | string | null;
+    description?: string;
+    amount?: string | number;
+    quantity?: number;
     units?: string | number;
   }[];
-  dueDate?: string | null;
-  subtotal?: string | null;
-  tax?: string | null;
-  total?: string | null;
-  footer?: string | null;
+  dueDate?: string;
+  subtotal?: string;
+  tax?: string;
+  total?: string;
+  footer?: string;
 };
 
 export type CustomField = {
@@ -178,11 +179,11 @@ export type Testimonials = {
 
 export type Component = {
   id?: string;
-  type?: string | null;
-  title?: string | null;
-  slogan?: string | null;
-  description?: string | null;
-  userId?: string | null;
-  link?: string | null;
-  createdAt?: string | null;
+  type?: string;
+  title?: string;
+  slogan?: string;
+  description?: string;
+  userId?: string;
+  link?: string;
+  createdAt?: string;
 };
