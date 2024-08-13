@@ -15,7 +15,7 @@ export function Skeleton({
   type = 'card',
   width = 'max-w-sm',
   height = 'w-full',
-  borderRadius = 'rounded',
+  borderRadius = 'rounded-md',
   className,
   hide,
   dataAttribute,
@@ -130,6 +130,7 @@ export function Skeleton({
               <SkeletonLine width="col-span-1" />
             </div>
             <SkeletonLine />
+            <SkeletonLine width="w-1/3" />
           </div>
         </div>
       </div>
@@ -141,7 +142,7 @@ export function SkeletonLine({
   width = 'w-full',
   height = 'h-2',
   borderRadius = 'rounded',
-  additionalClasses = '',
+  className = '',
   bgColor = 'bg-slate-400',
 }) {
   return (
@@ -152,7 +153,7 @@ export function SkeletonLine({
         width,
         bgColor,
         borderRadius,
-        additionalClasses
+        className
       )}
     ></div>
   );
@@ -160,7 +161,7 @@ export function SkeletonLine({
 
 export function SkeletonCircle({
   borderRadius = 'rounded-full',
-  additionalClasses = '',
+  className = '',
   bgColor = 'bg-slate-400',
   height = 'h-10',
   width = 'w-10',
@@ -174,7 +175,7 @@ export function SkeletonCircle({
           width,
           bgColor,
           borderRadius,
-          additionalClasses
+          className
         )}
       ></div>
     </section>

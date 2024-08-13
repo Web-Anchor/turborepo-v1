@@ -82,7 +82,7 @@ export default function StatsCard(props: Props): React.ReactElement {
   // console.log('📊 StatsCard', props);
 
   if (props.isLoading) {
-    return <Skeleton type="card" />;
+    return <Skeleton type="card" className="max-w-xs" />;
   }
 
   return (
