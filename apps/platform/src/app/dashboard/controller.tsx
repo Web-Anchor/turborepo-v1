@@ -12,6 +12,7 @@ import { fakerStatsCharges } from '@lib/faker';
 import FrameCard from '@components/FrameCard';
 import RateForm from '@components/RateForm';
 import { Badge, Button, HeaderSection, Wrapper } from '@repo/components';
+import Link from 'next/link';
 
 export default function Page() {
   const router = useRouter();
@@ -62,7 +63,7 @@ export default function Page() {
             description={
               <section className="flex flex-row gap-5 content-center justify-center">
                 <Button
-                  title="Copy API Key"
+                  title={`Copy API Key: ${user?.id}`}
                   style="ghost"
                   onClick={() => {
                     copyToClipboard(user?.id!);
@@ -73,8 +74,24 @@ export default function Page() {
             }
           />
 
-          <FrameCard />
-          <HeaderSection description="Your API key to access invoicio.io customer portal. This API key will be automatically send to your customers and will be needed to access invoices on a customer portal." />
+          <Link
+            href={process.env.NEXT_PUBLIC_PORTAL_URL!}
+            target="_blank"
+            className="mx-auto rounded-md bg-gray-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            <p className="text-center">Visit Customer Portal</p>
+          </Link>
+          <HeaderSection
+            title="Provide your customers with easy access to their invoices through
+              a dedicated portal."
+            description={[
+              'Enhance your customer experience with our dedicated Customer Portal. Your customers can effortlessly access and download their invoices at their convenience, 24/7. Simplify their billing process and build stronger relationships with a seamless, user-friendly interface designed for their needs.',
+              'Your API key to access invoicio.io customer portal. This API key will be automatically send to your customers and will be needed to access invoices on a customer portal.',
+            ]}
+            subtitle="Customer Portal."
+            type="page-header"
+          />
+          <HeaderSection description={[]} />
         </Wrapper>
       )}
 
