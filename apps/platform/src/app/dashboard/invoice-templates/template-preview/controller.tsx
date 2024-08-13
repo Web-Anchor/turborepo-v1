@@ -12,10 +12,16 @@ export default function Page() {
 
   return (
     <Wrapper>
-      {isLoading && <LoadingDots />}
+      {isLoading && (
+        <Wrapper className="relative h-[calc(100vh-200px)]">
+          <Wrapper className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <LoadingDots />
+          </Wrapper>
+        </Wrapper>
+      )}
       {!isLoading && html && (
         <div
-          className={`w-full h-full max-w-4xl mx-auto p-4 min-h-[1200px] min-w-[848px]`}
+          className={`w-full h-full max-w-4xl mx-auto p-4 min-w-[848px]`}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       )}

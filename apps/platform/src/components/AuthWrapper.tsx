@@ -41,7 +41,7 @@ export function AuthWrapper({ children }: Props) {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-6 w-6"
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
@@ -176,7 +176,7 @@ export function AuthWrapper({ children }: Props) {
     isTrue: active,
     value: {
       title: 'Templates',
-      link: '/dashboard/invoices',
+      link: '/dashboard/invoice-templates',
       icon: (
         <svg
           viewBox="0 0 24 24"
@@ -331,7 +331,7 @@ export function AuthWrapper({ children }: Props) {
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           fill="#000000"
-          className="h-5 w-5"
+          className="h-6 w-6"
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
@@ -378,7 +378,7 @@ export function AuthWrapper({ children }: Props) {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-6 w-6"
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g

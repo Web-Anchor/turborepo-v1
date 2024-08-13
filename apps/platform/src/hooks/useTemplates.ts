@@ -39,6 +39,7 @@ export function useBuildTemplate(props: Props) {
     }
   );
   const obj = data?.data;
+  console.log('🔑 useBuildTemplate', obj);
 
   return {
     template: obj?.template,

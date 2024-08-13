@@ -1,7 +1,8 @@
 'use server';
 
 import Handlebars from 'handlebars';
-import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
 
 export async function buildTemplate(props: {
   data: object;
@@ -23,17 +24,16 @@ type GetTemplate = {
     | 'template-two.hbs'
     | 'email-template-one.hbs';
 };
-
 export async function getTemplate(props: GetTemplate): Promise<string> {
   try {
-    const { data } = await axios.post(
-      process.env.NEXT_PUBLIC_PLATFORM_APP_URL + '/api/v1/templates/template',
-      {
-        template: props.templateName,
-      }
+    const templatePath = path.join(
+      process.cwd(),
+      '/src/templates',
+      props.templateName
     );
+    console.log('🔑 🚨 _templatePath', templatePath);
 
-    return data?.template;
+    return fs.readFileSync(templatePath, 'utf-8');
   } catch (error: any) {
     console.error('🚨 error', error?.message);
     return '';
