@@ -539,7 +539,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
         image={
           <section className="-ml-8 lg:ml-10 lg:-mt-36 lg:ml-none overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
+              src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/3ZzghmIBbJhKogoK5AKRHC8XGBGrW+nxnPFdoCDJ9e0.jpg`}
               alt="Product screenshot"
               width={800}
               height={600}
