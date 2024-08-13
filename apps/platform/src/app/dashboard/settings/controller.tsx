@@ -1,7 +1,8 @@
 'use client';
 
+import { useClerk } from '@clerk/nextjs';
 import { useCharges } from '@hooks/useCharges';
-import { HeaderSection, Wrapper } from '@repo/components';
+import { Button, HeaderSection, Wrapper } from '@repo/components';
 import { useSearchParams } from 'next/navigation';
 
 export default function Page() {
@@ -12,17 +13,30 @@ export default function Page() {
   const { charges, data, isLoading, isValidKey } = useCharges({
     id,
   });
+  const { signOut } = useClerk();
   console.log('🚧 Charge Data', charges, data, isLoading, isValidKey);
+
+  function signOutUser(e: { preventDefault: () => void }) {
+    // --------------------------------------------------------------------------------
+    // 📌 Sign Out User from current session
+    // --------------------------------------------------------------------------------
+
+    signOut();
+  }
 
   return (
     <Wrapper>
       <HeaderSection
-        title="Settings. Add or update Your API Key"
-        description={[
-          'To enable access for your invoices, please provide your unique API key provided by the vendor. If you have not received one from your vendor, kindly reach out to the company where you made your purchase for assistance.',
-        ]}
+        title="Settings & Configurations"
+        description={[]}
         subtitle="Manage your services with ease!"
         type="page-header"
+      />
+      <Button
+        title="Sign out 😢"
+        style="primary"
+        onClick={signOutUser}
+        className="w-fit"
       />
     </Wrapper>
   );

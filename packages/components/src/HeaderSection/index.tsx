@@ -52,7 +52,7 @@ export function HeaderSection(props: HeaderSectionProps) {
             {props.title}
           </h1>
         )}
-        {props.description?.length && (
+        {!!props.description?.length && (
           <div className={classNames('flex flex-col gap-2')}>
             {Array.isArray(props.description) &&
               props.description.map((desc, index) => (

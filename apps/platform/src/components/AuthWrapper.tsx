@@ -205,7 +205,7 @@ export function AuthWrapper({ children }: Props) {
         ) : undefined
       }
       footer={
-        <section className="flex flex-col md:order-1 my-5">
+        <section className="flex flex-col md:order-1 mb-5">
           <p className="text-xs leading-5 text-gray-500">
             &copy; {new Date()?.getFullYear()}{' '}
             <span className="text-indigo-600">invoicio</span>. All rights
