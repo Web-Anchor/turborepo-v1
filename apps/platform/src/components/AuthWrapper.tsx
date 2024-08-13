@@ -179,8 +179,8 @@ export function AuthWrapper({ children }: Props) {
       link: '/dashboard/invoices',
       icon: (
         <svg
-          fill="#222"
           viewBox="0 0 24 24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
         >
@@ -191,7 +191,96 @@ export function AuthWrapper({ children }: Props) {
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
-            <path d="M15,8a1,1,0,0,1-1,1H6A1,1,0,0,1,6,7h8A1,1,0,0,1,15,8Zm-1,3H6a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm-4,4H6a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Zm13-3v8a3,3,0,0,1-3,3H4a3,3,0,0,1-3-3V4A3,3,0,0,1,4,1H16a3,3,0,0,1,3,3v7h3A1,1,0,0,1,23,12ZM17,4a1,1,0,0,0-1-1H4A1,1,0,0,0,3,4V20a1,1,0,0,0,1,1H17Zm4,9H19v8h1a1,1,0,0,0,1-1Z"></path>
+            {' '}
+            <path
+              d="M10 14H12M12 14H14M12 14V16M12 14V12"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>{' '}
+            <path
+              d="M22 11.7979C22 9.16554 22 7.84935 21.2305 6.99383C21.1598 6.91514 21.0849 6.84024 21.0062 6.76946C20.1506 6 18.8345 6 16.2021 6H15.8284C14.6747 6 14.0979 6 13.5604 5.84678C13.2651 5.7626 12.9804 5.64471 12.7121 5.49543C12.2237 5.22367 11.8158 4.81578 11 4L10.4497 3.44975C10.1763 3.17633 10.0396 3.03961 9.89594 2.92051C9.27652 2.40704 8.51665 2.09229 7.71557 2.01738C7.52976 2 7.33642 2 6.94975 2C6.06722 2 5.62595 2 5.25839 2.06935C3.64031 2.37464 2.37464 3.64031 2.06935 5.25839C2 5.62595 2 6.06722 2 6.94975M21.9913 16C21.9554 18.4796 21.7715 19.8853 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V11"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>{' '}
+          </g>
+        </svg>
+      ),
+    },
+    arr: mainMenu,
+  });
+  mainMenu = addToArray({
+    isTrue: active,
+    value: {
+      title: 'Portal Components',
+      link: '/dashboard/components',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            {' '}
+            <path
+              d="M17 7.82959L18.6965 9.35641C20.239 10.7447 21.0103 11.4389 21.0103 12.3296C21.0103 13.2203 20.239 13.9145 18.6965 15.3028L17 16.8296"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>{' '}
+            <path
+              d="M13.9868 5L12.9934 8.70743M11.8432 13L10.0132 19.8297"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>{' '}
+            <path
+              d="M7.00005 7.82959L5.30358 9.35641C3.76102 10.7447 2.98975 11.4389 2.98975 12.3296C2.98975 13.2203 3.76102 13.9145 5.30358 15.3028L7.00005 16.8296"
+              stroke="#1C274C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>{' '}
+          </g>
+        </svg>
+      ),
+    },
+    arr: mainMenu,
+  });
+  mainMenu = addToArray({
+    isTrue: active,
+    value: {
+      title: 'Stripe API keys',
+      link: '/dashboard/api-keys',
+      icon: (
+        <svg
+          fill="#000000"
+          height="200px"
+          width="200px"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="h-5 w-5"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            {' '}
+            <g id="integration">
+              {' '}
+              <path d="M24,22H5v-2h17V10H5V8h19V22z M19,16H0V2h19v2H2v10h17V16z"></path>{' '}
+            </g>{' '}
           </g>
         </svg>
       ),
