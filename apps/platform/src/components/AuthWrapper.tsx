@@ -452,11 +452,19 @@ export function AuthWrapper({ children }: Props) {
   return (
     <Sidebar
       navigation={mainMenu?.map((item, key) => {
+        const current = item.link === path;
+
         return {
           component: (
             <Link
+              key={key}
               href={item.link}
-              className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+              className={classNames(
+                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                current
+                  ? 'text-indigo-600 bg-indigo-50'
+                  : 'text-gray-600 hover:text-gray-500'
+              )}
             >
               {item.icon}
               {item.title}
@@ -503,14 +511,19 @@ export function AuthWrapper({ children }: Props) {
           component: (
             <Link
               href={item.link}
-              className="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+              className={classNames(
+                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
+                current
+                  ? 'text-indigo-600 bg-indigo-50'
+                  : 'text-gray-600 hover:text-gray-500'
+              )}
             >
               <span
                 className={classNames(
                   'relative flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
                   current
                     ? 'text-indigo-600 border-indigo-600'
-                    : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                    : 'text-gray-600 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
                   item.title === 'Help & Support' &&
                     'border-green-500 text-green-500 bg-green-50',
                   isSupport && 'rounded-tr-[4px]'
