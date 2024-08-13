@@ -89,7 +89,7 @@ export function Skeleton({
     return (
       <div
         className={classNames(
-          `animate-pulse border border-gray-200 shadow ${borderRadius} p-4 w-hull bg-gray-200`,
+          `animate-pulse border border-gray-200 shadow ${borderRadius} p-4 w-hull bg-slate-100`,
           className
         )}
         data-cy={dataAttribute}
@@ -143,7 +143,7 @@ export function SkeletonLine({
   height = 'h-2',
   borderRadius = 'rounded',
   className = '',
-  bgColor = 'bg-slate-400',
+  bgColor = 'bg-slate-300',
 }) {
   return (
     <div

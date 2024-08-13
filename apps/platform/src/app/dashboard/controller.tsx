@@ -9,7 +9,6 @@ import NumbersCard from '@components/NumbersCard';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { fakerStatsCharges } from '@lib/faker';
-import FrameCard from '@components/FrameCard';
 import RateForm from '@components/RateForm';
 import { Badge, Button, HeaderSection, Wrapper } from '@repo/components';
 import Link from 'next/link';

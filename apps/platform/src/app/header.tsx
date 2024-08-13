@@ -106,7 +106,7 @@ export function addToArray({
   value: Menu;
   arr: Menu[];
 }) {
-  if (isTrue && value) {
+  if (isTrue && typeof value === 'object') {
     arr.push(value);
   }
 
