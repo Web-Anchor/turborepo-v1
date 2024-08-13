@@ -149,7 +149,29 @@ export default function PieChart(props: Props): React.ReactElement | null {
         {props.type === 'radial' && hasData && !props.loading && (
           <RadialBar {...radialConfig} />
         )}
-        {!hasData && !props.loading && <p className="text-center">No data</p>}
+        {!hasData && !props.loading && (
+          <section className="flex flex-col gap-2 mt-10 bg-indigo-400 mx-auto py-5 px-6 rounded-2xl w-fit">
+            <p className="font-semibold text-xl text-center text-white">
+              No Available Data
+            </p>
+            <svg
+              fill="#fff"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10 mx-auto"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M1,12A11.013,11.013,0,0,1,12,1a1,1,0,0,1,0,2,9,9,0,1,0,3.6,17.252,1,1,0,1,1,.8,1.832A11,11,0,0,1,1,12ZM16.4,1.916a1,1,0,1,0-.8,1.832A9,9,0,0,1,18.427,18.3a1,1,0,1,0,1.428,1.4A11,11,0,0,0,16.4,1.916Z"></path>
+              </g>
+            </svg>
+          </section>
+        )}
       </section>
 
       {props?.description && (
