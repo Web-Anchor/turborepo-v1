@@ -26,7 +26,7 @@ const ICON = {
       <g
         id="SVGRepo_tracerCarrier"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
         <path
@@ -38,7 +38,7 @@ const ICON = {
         <path
           d="M4.98987 2C4.98987 2 5.2778 3.45771 5.90909 4.08475C6.54037 4.71179 8 4.98987 8 4.98987C8 4.98987 6.54229 5.2778 5.91525 5.90909C5.28821 6.54037 5.01013 8 5.01013 8C5.01013 8 4.7fff 6.54229 4.09091 5.91525C3.45963 5.28821 2 5.01013 2 5.01013C2 5.01013 3.45771 4.7fff 4.08475 4.09091C4.71179 3.45963 4.98987 2 4.98987 2Z"
           stroke="#fff"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         ></path>{' '}
         <path
           d="M18 5H20M19 6L19 4"
@@ -66,7 +66,7 @@ const ICON = {
       <g
         id="SVGRepo_tracerCarrier"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
         <title id="dolarIconTitle">Dolar</title>{' '}
@@ -119,7 +119,7 @@ export default function StatsCard(props: Props): React.ReactElement {
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     <path
@@ -127,7 +127,7 @@ export default function StatsCard(props: Props): React.ReactElement {
                       stroke="#000000"
                       strokeWidth="2"
                       strokeLinecap="round"
-                      stroke-linejoin="round"
+                      strokeLinejoin="round"
                     ></path>{' '}
                   </g>
                 </svg>
@@ -142,7 +142,7 @@ export default function StatsCard(props: Props): React.ReactElement {
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     <path
@@ -150,7 +150,7 @@ export default function StatsCard(props: Props): React.ReactElement {
                       stroke="#000000"
                       strokeWidth="2"
                       strokeLinecap="round"
-                      stroke-linejoin="round"
+                      strokeLinejoin="round"
                     ></path>{' '}
                   </g>
                 </svg>

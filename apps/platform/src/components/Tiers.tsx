@@ -58,11 +58,11 @@ export default function Tiers(props: Props): React.ReactElement {
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       clipRule="evenodd"
                       d="M17.0303 8.78039L8.99993 16.8107L5.4696 13.2804L6.53026 12.2197L8.99993 14.6894L15.9696 7.71973L17.0303 8.78039Z"
                       fill="#080341"

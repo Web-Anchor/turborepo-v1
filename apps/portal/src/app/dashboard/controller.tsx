@@ -326,7 +326,7 @@ export default function Page() {
                       <g
                         id="SVGRepo_tracerCarrier"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         <path
@@ -334,7 +334,7 @@ export default function Page() {
                           stroke="#4F46E5"
                           strokeWidth="1.5"
                           strokeLinecap="round"
-                          stroke-linejoin="round"
+                          strokeLinejoin="round"
                         ></path>{' '}
                         <path
                           d="M16 17H12H8"

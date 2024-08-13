@@ -89,7 +89,7 @@ export default function Page() {
                     <g
                       id="SVGRepo_tracerCarrier"
                       strokeLinecap="round"
-                      stroke-linejoin="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       <path
@@ -97,7 +97,7 @@ export default function Page() {
                         stroke="#059669"
                         strokeWidth="1.5"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       ></path>{' '}
                       <path
                         d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
@@ -119,7 +119,7 @@ export default function Page() {
                     <g
                       id="SVGRepo_tracerCarrier"
                       strokeLinecap="round"
-                      stroke-linejoin="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       {' '}
@@ -129,14 +129,14 @@ export default function Page() {
                         stroke="none"
                         strokeWidth="1"
                         fill="none"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                       >
                         {' '}
                         <g id="Blocked">
                           {' '}
                           <rect
                             id="Rectangle"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             x="0"
                             y="0"
                             width="24"

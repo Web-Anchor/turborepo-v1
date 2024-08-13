@@ -162,7 +162,7 @@ export function SkeletonLine({
 export function SkeletonCircle({
   borderRadius = 'rounded-full',
   className = '',
-  bgColor = 'bg-slate-400',
+  bgColor = 'bg-slate-300',
   height = 'h-10',
   width = 'w-10',
 }) {
