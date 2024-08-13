@@ -89,7 +89,7 @@ export default function Page() {
       </Wrapper>
 
       <HeaderSection
-        title="Customer Pulse."
+        title="Customer Pulse"
         description="Visualize key metrics from Stripe charges and customers API data in an easy-to-understand format with our Basic Charts Component. Gain insights into revenue trends, customer behavior, and payment performance at a glance."
         subtitle="Simplify Insights, Drive Growth - Charting Your Success!"
         type="page-header"

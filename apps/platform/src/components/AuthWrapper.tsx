@@ -80,10 +80,10 @@ export function AuthWrapper({ children }: Props) {
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
@@ -91,26 +91,26 @@ export function AuthWrapper({ children }: Props) {
             <path
               d="M12 17V17.5V18"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M12 6V6.5V7"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M15 9.5C15 8.11929 13.6569 7 12 7C10.3431 7 9 8.11929 9 9.5C9 10.8807 10.3431 12 12 12C13.6569 12 15 13.1193 15 14.5C15 15.8807 13.6569 17 12 17C10.3431 17 9 15.8807 9 14.5"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
           </g>
         </svg>
@@ -130,10 +130,10 @@ export function AuthWrapper({ children }: Props) {
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
@@ -184,10 +184,10 @@ export function AuthWrapper({ children }: Props) {
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
@@ -195,14 +195,14 @@ export function AuthWrapper({ children }: Props) {
             <path
               d="M10 14H12M12 14H14M12 14V16M12 14V12"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M22 11.7979C22 9.16554 22 7.84935 21.2305 6.99383C21.1598 6.91514 21.0849 6.84024 21.0062 6.76946C20.1506 6 18.8345 6 16.2021 6H15.8284C14.6747 6 14.0979 6 13.5604 5.84678C13.2651 5.7626 12.9804 5.64471 12.7121 5.49543C12.2237 5.22367 11.8158 4.81578 11 4L10.4497 3.44975C10.1763 3.17633 10.0396 3.03961 9.89594 2.92051C9.27652 2.40704 8.51665 2.09229 7.71557 2.01738C7.52976 2 7.33642 2 6.94975 2C6.06722 2 5.62595 2 5.25839 2.06935C3.64031 2.37464 2.37464 3.64031 2.06935 5.25839C2 5.62595 2 6.06722 2 6.94975M21.9913 16C21.9554 18.4796 21.7715 19.8853 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V11"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
           </g>
         </svg>
@@ -222,10 +222,10 @@ export function AuthWrapper({ children }: Props) {
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
@@ -233,20 +233,20 @@ export function AuthWrapper({ children }: Props) {
             <path
               d="M17 7.82959L18.6965 9.35641C20.239 10.7447 21.0103 11.4389 21.0103 12.3296C21.0103 13.2203 20.239 13.9145 18.6965 15.3028L17 16.8296"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M13.9868 5L12.9934 8.70743M11.8432 13L10.0132 19.8297"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
             <path
               d="M7.00005 7.82959L5.30358 9.35641C3.76102 10.7447 2.98975 11.4389 2.98975 12.3296C2.98975 13.2203 3.76102 13.9145 5.30358 15.3028L7.00005 16.8296"
               stroke="#1C274C"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             ></path>{' '}
           </g>
         </svg>
@@ -269,10 +269,10 @@ export function AuthWrapper({ children }: Props) {
           viewBox="0 0 24 24"
           className="h-5 w-5"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
@@ -280,6 +280,39 @@ export function AuthWrapper({ children }: Props) {
             <g id="integration">
               {' '}
               <path d="M24,22H5v-2h17V10H5V8h19V22z M19,16H0V2h19v2H2v10h17V16z"></path>{' '}
+            </g>{' '}
+          </g>
+        </svg>
+      ),
+    },
+    arr: mainMenu,
+  });
+  mainMenu = addToArray({
+    isTrue: active,
+    value: {
+      title: 'Reports',
+      link: '/dashboard/reports',
+      icon: (
+        <svg
+          viewBox="0 0 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#494c4e"
+          className="h-5 w-5"
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            {' '}
+            <g fill="#494c4e" fill-rule="evenodd">
+              {' '}
+              <rect x="15" rx="1" width="3" height="18"></rect>{' '}
+              <rect x="10" y="5" width="3" height="13" rx="1"></rect>{' '}
+              <rect x="5" y="9" width="3" height="9" rx="1"></rect>{' '}
+              <rect y="13" width="3" height="5" rx="1.001"></rect>{' '}
             </g>{' '}
           </g>
         </svg>

@@ -54,10 +54,10 @@ export default function Tiers(props: Props): React.ReactElement {
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-green-500 opacity-75"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">

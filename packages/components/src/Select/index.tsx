@@ -35,7 +35,7 @@ export function Select({
 
   useEffect(() => {
     onChange?.(selected);
-  }, [selected, onChange]);
+  }, [selected]);
 
   return (
     <section className={classNames('w-full', className)}>

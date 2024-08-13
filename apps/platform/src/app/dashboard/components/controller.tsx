@@ -65,7 +65,6 @@ export default function Page() {
   const selected = components?.find(
     (item: Component) => item.type === state?.type
   );
-  console.log(components);
 
   async function submit(form: any) {
     try {
