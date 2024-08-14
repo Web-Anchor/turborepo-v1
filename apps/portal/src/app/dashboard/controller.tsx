@@ -239,7 +239,7 @@ export default function Page() {
           apiKey={id}
           isValid={isValidKey}
           isLoading={isLoading}
-          link="/dashboard/settings"
+          link="/dashboard"
         />
       )}
 

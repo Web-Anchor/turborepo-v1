@@ -1,6 +1,7 @@
-import Link from '@components/Link';
+import Link from 'next/link';
 import { useState } from 'react';
-import { Badge, Skeleton } from '@repo/components';
+import { Badge } from '@repo/components';
+import { isString } from '@repo/lib';
 
 type Props = {
   apiKey?: string;
@@ -11,7 +12,7 @@ type Props = {
 
 export function KeyCard(props: Props): React.ReactElement | null {
   const [state, setState] = useState<{ key?: string }>({
-    key: props.apiKey,
+    key: isString(props.apiKey) ? props.apiKey : '',
   });
 
   if (props.isLoading) {
@@ -67,7 +68,7 @@ export function KeyCard(props: Props): React.ReactElement | null {
         </div>
 
         <Link
-          href={props.link}
+          href={props.link + `?id=${state.key}`}
           className="font-medium text-indigo-600 hover:text-indigo-500 mt-auto"
         >
           {props.isValid ? 'Update API key' : 'Add Key'}

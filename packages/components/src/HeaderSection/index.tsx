@@ -26,7 +26,12 @@ export function HeaderSection(props: HeaderSectionProps) {
       )}
       id={props.id}
     >
-      <div className={classNames('flex flex-col mx-auto max-w-4xl gap-3')}>
+      <div
+        className={classNames(
+          'flex flex-col mx-auto max-w-4xl gap-3',
+          props.type === 'page-header' && 'mx-0'
+        )}
+      >
         {props.subtitle && (
           <h2
             className={classNames(
