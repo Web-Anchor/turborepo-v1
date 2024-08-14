@@ -21,7 +21,7 @@ export default function Page(props: Props) {
         {
           title: 'Dashboard',
           link: '/dashboard',
-        },
+        } as Menu,
       ]
     : [];
 
@@ -91,7 +91,7 @@ export default function Page(props: Props) {
 }
 
 export type Menu = {
-  title: string | React.ReactElement;
+  title: string | React.ReactNode;
   link: string;
   icon?: JSX.Element;
   initial?: string;
