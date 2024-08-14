@@ -91,7 +91,7 @@ export default function Page(props: Props) {
 }
 
 export type Menu = {
-  title: string;
+  title: string | React.ReactElement;
   link: string;
   icon?: JSX.Element;
   initial?: string;

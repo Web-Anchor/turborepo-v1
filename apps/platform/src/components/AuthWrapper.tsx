@@ -1,7 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { Breadcrumb, Sidebar, SkeletonLine } from '@repo/components';
+import {
+  Breadcrumb,
+  MediaScreenTitle,
+  Sidebar,
+  SkeletonLine,
+} from '@repo/components';
 import Logo from '@components/Logo';
 import { ProfileButtonWrapper } from '@app/dashboard/client-side-components';
 import { usePathname } from 'next/navigation';
@@ -323,7 +328,22 @@ export function AuthWrapper({ children }: Props) {
   mainMenu = addToArray({
     isTrue: active,
     value: {
-      title: 'Analytics',
+      title: (
+        <MediaScreenTitle
+          large={
+            advanced ? (
+              'Analytics'
+            ) : (
+              <p>
+                Analytics{' '}
+                <span className="bg-gradient-to-r from-indigo-500 to-pink-500 py-1 px-1 text-xs text-white font-semibold rounded-md">
+                  Limited Time Only!
+                </span>
+              </p>
+            )
+          }
+        />
+      ),
       link: '/dashboard/analytics',
       icon: (
         <svg
@@ -340,7 +360,6 @@ export function AuthWrapper({ children }: Props) {
             strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
-            {' '}
             <title>Analytics</title>{' '}
             <g
               id="Analytics"
@@ -439,10 +458,29 @@ export function AuthWrapper({ children }: Props) {
     },
   ];
 
+  function LimitedTO() {
+    return <p>Limited Time Only</p>;
+  }
+
   secondaryMenu = addToArray({
     isTrue: active,
     value: {
-      title: 'Feature Request',
+      title: (
+        <MediaScreenTitle
+          large={
+            advanced ? (
+              'Feature Request'
+            ) : (
+              <p>
+                Feature Request{' '}
+                <span className="bg-gradient-to-r from-indigo-500 to-pink-500 py-1 px-1 text-xs text-white font-semibold rounded-md">
+                  Limited Time Only!
+                </span>
+              </p>
+            )
+          }
+        />
+      ),
       link: '/dashboard/new-features',
       initial: 'F',
     } as any,

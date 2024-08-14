@@ -5,13 +5,15 @@ type Props = {
 };
 
 export function MediaScreenTitle({ large, small, className }: Props) {
+  console.log(large);
+
   return (
     <section className={className}>
       <section
         className="truncate flex sm:hidden"
         data-cy="media-screen-title-small"
       >
-        {small ?? large}
+        {small || large}
       </section>
       <section
         className="truncate hidden sm:flex"
