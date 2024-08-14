@@ -18,8 +18,6 @@ export default function Page() {
   });
   // customers = fakerStatsCustomers(); // faker data
   // charges = fakerStatsCharges(); // faker data
-  console.log('🚧 STATS ', charges);
-  console.log('🚧 STATS customers ', customers);
 
   return (
     <Wrapper className="max-w-5xl">

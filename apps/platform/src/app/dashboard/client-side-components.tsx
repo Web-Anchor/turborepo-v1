@@ -8,12 +8,14 @@ import { useUser } from '@clerk/nextjs';
  */
 
 import ProfileButton from '@components/ProfileButton';
+import { fakerUser } from '@lib/faker';
 
 export function ProfileButtonWrapper(props: {
   order?: 'revere';
   className?: string;
 }) {
   let { isSignedIn, user, isLoaded } = useUser();
+  // user = fakerUser(true); // faker data
 
   return (
     <ProfileButton
