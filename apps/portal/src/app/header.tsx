@@ -73,7 +73,7 @@ export default function Page(props: Props) {
                 key={1}
                 order="revere"
                 href="/dashboard"
-                name={`${user?.firstName} ${user?.lastName}`}
+                name={`${user?.firstName || ''} ${user?.lastName || ''}`}
                 imgSrc={user?.imageUrl}
               />,
             ]
