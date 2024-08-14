@@ -102,17 +102,17 @@ export default async function Home(params: { searchParams: { id: string } }) {
         description={[landingPageHeader?.description!]}
       />
       <HeaderSection
-        title="Welcome to Your Invoicing Portal"
-        description={[
-          'Discover the ease of managing your financial activities from one central location. Our platform offers you a dedicated space where you can effortlessly view transactions from your vendor, download invoices, and make necessary adjustments such as adding notes or updating details. With these powerful features, you can keep track of all your financial dealings and ensure that your records are always up-to-date and accurate. Contact your vendor today to access your personalized invoicing portal and start experiencing the convenience of streamlined financial management.',
-        ]}
         subtitle="Your Gateway to Effortless Invoicing!"
+        title="Say Goodbye to Invoicing Hassles!"
+        description={[
+          "Managing your invoices shouldn’t be a burden. Our user-friendly platform provides a seamless solution for viewing, downloading, and updating your invoices in just a few clicks. Whether you need to track transactions, make quick adjustments, or download documents, your personalized invoicing portal is designed to streamline the entire process. With everything organized in one secure place, you'll save time and stay in control of your financial activities. Get started by connecting with your vendor and take the first step towards hassle-free invoicing.",
+        ]}
       />
       <HeaderSection
-        title="Customer Portal. Your Invoicing made smarter."
-        subtitle="Empowering You, One Click at a Time!"
+        subtitle="Get Connected and Take Charge of Your Invoices!"
+        title="Missing Out on Easy Invoice Management?"
         description={[
-          'Experience the next level of efficiency and convenience with our Customer Portal. Building on the ease of managing your financial activities, our platform allows you to effortlessly handle invoicing, download essential documents, and track transactions with precision. Our intuitive interface ensures that you can streamline your financial tasks and maintain control without any hassle. Join us today and see how simple and effective financial management can be with our tailored invoicing solutions.',
+          "Don’t waste any more time chasing down invoices or struggling to stay organized. If you haven’t yet joined our Customer Portal, now’s the time! With just a quick setup through your vendor, you’ll gain instant access to a secure and simple platform for managing, downloading, and tracking your invoices. Contact your vendor today to get started and unlock the ease of streamlined financial control. Don't miss out on an easier way to handle your invoicing—act now!",
         ]}
         theme="dark"
       />
@@ -314,6 +314,14 @@ export default async function Home(params: { searchParams: { id: string } }) {
         subtitle={landingPageFooter?.slogan!}
         title={landingPageFooter?.title!}
         description={[landingPageFooter?.description!]}
+      />
+      <HeaderSection
+        // subtitle="Empowering You, One Click at a Time!"
+        // title="Tired of Complicated Invoicing?"
+        description={[
+          'Take control of your finances with our easy-to-use Customer Portal. No more juggling multiple platforms or struggling to stay on top of your billing. Our intuitive solution allows you to seamlessly manage your invoices, download important documents, and track transactions—all in one place. With a streamlined interface and tailored features, financial management becomes simpler, faster, and stress-free. Join us today and discover how effortlessly you can handle your invoicing and stay on top of your finances.',
+        ]}
+        theme="dark"
       />
       <Testimonials />
       <HeaderSection

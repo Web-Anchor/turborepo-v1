@@ -42,7 +42,7 @@ export function HeaderSection(props: HeaderSectionProps) {
         {props.title && (
           <h1
             className={classNames(
-              'text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl',
+              'text-4xl font-bold tracking-tight text-gray-800 sm:text-7xl',
               props.theme === 'dark' && 'text-white',
               props.size === 'small' && 'lg:text-4xl',
               props.type === 'page-header' &&
@@ -59,7 +59,7 @@ export function HeaderSection(props: HeaderSectionProps) {
                 <p
                   key={index}
                   className={classNames(
-                    'text-lg leading-8 text-gray-600',
+                    'text-lg leading-8 text-gray-500',
                     props.theme === 'dark' && 'text-gray-200',
                     props.type !== 'page-header' && props.title && 'mt-3',
                     props.type === 'page-header' && 'text-sm leading-6 order-2'
