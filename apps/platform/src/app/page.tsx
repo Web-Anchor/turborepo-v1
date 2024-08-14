@@ -314,6 +314,15 @@ export default async function Home(params: { searchParams: { id: string } }) {
         })}
         className="mt-0 lg:mt-0"
       />
+      <HeaderSection
+        subtitle="Transform Data into Actionable Insights with Stripe!"
+        title="Lacking Insights into Your Business Performance?"
+        description={[
+          'Gain a deeper understanding of your revenue, customer growth, and more with our advanced analytics platform, powered by Stripe. By seamlessly integrating with Stripe’s Charge and Customer APIs, our platform delivers real-time insights into your financial health. Track revenue trends, analyze customer growth, and monitor key metrics—all in one intuitive dashboard.',
+          'With detailed RPC Revenue Insights, charge trends, and customer analytics at your fingertips, you can make informed decisions that drive your business forward. Our analytics tools are designed to give you a clear picture of your performance, empowering you to optimize your strategies and achieve your goals.',
+        ]}
+        theme="dark"
+      />
       <Pricing />
       <HeaderSection
         title="Keep it simple, keep it organized"
@@ -501,7 +510,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
       />
       <HeaderSection
         description={[
-          'Experience the seamless integration of our invoicing platform with your daily operations, making your financial management tasks simpler and more efficient. With features like self-print and 24/7 access to invoicing to your customers, our platform ensures that your invoicing process is always at your fingertips, ready to enhance your productivity.',
+          'Simplify your financial management with our seamlessly integrated invoicing platform. Designed to fit effortlessly into your daily operations, it offers features like self-print and 24/7 access for your customers. With our platform, invoicing is always at your fingertips, streamlining your workflow and boosting your productivity.',
         ]}
         theme="dark"
       />
@@ -530,12 +539,6 @@ export default async function Home(params: { searchParams: { id: string } }) {
         actions={<GetStarted />}
         className="lg:pt-36"
         reverse
-      />
-      <HeaderSection
-        description={[
-          'Take advantage of our self-print feature, allowing your customers to access and download their invoices anytime, anywhere. With 24/7 access to invoicing, your customers can conveniently manage their billing tasks, enhancing their overall experience with your business.',
-        ]}
-        theme="dark"
       />
       <Testimonials />
       <HeaderSection
