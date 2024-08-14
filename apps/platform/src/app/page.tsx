@@ -284,10 +284,6 @@ const features = [
   },
 ];
 
-function stripeBrand() {
-  return <span className="font-bold text-indigo-600">Stripe</span>;
-}
-
 export default async function Home(params: { searchParams: { id: string } }) {
   return (
     <Wrapper className="pt-16 lg:pt-24">
@@ -295,29 +291,12 @@ export default async function Home(params: { searchParams: { id: string } }) {
       <Header />
 
       <HeaderSection
-        title={
-          <p key={0}>
-            Streamline Your Invoicing Process with {stripeBrand()} Integration
-          </p>
-        }
+        title={<p key={0}>Struggling to Keep Your Invoicing Under Control?</p>}
         description={[
-          <p className="mt-6 text-lg leading-8 text-gray-600" key={1}>
-            Streamline your invoicing process with our dedicated, user-friendly
-            platform, powered by {stripeBrand()}. Effortlessly connect your{' '}
-            {stripeBrand()} account via API to integrate with all your customers
-            and payments. Empower your customers to access invoices at their
-            convenience, making the billing process hassle-free and efficient.
-          </p>,
-          <p className="mt-6 text-lg leading-8 text-gray-600" key={2}>
-            Our platform, built on the robust and secure {stripeBrand()}{' '}
-            infrastructure, empowers you to take full control of your invoicing
-            services. Featuring a dedicated customer portal, secure integration
-            with the {stripeBrand()} API, customizable templates, and detailed
-            reporting & analytics, you can ensure a seamless invoicing
-            experience.
-          </p>,
+          'Simplify your billing process with our powerful, user-friendly platform, seamlessly integrated with Stripe. Effortlessly connect your Stripe account via API, allowing you to manage all your customers and payments in one place. Give your customers the convenience of accessing invoices whenever they need, reducing your workload and making the entire process smoother and more efficient.',
+          'Built on Stripe’s robust and secure infrastructure, our platform empowers you to take full control of your invoicing services. With features like a dedicated customer portal, secure API integration, customizable templates, and comprehensive reporting and analytics, you can ensure a hassle-free and streamlined invoicing experience.',
         ]}
-        subtitle="Invoicing Made Easy"
+        subtitle="Invoicing Made Easy with Stripe!"
       />
       <ListSection
         list={features.map((feature, key) => {
@@ -355,12 +334,13 @@ export default async function Home(params: { searchParams: { id: string } }) {
         }}
         image={
           <section className="relative bg-indigo-400 -ml-8 lg:ml-10 py-12 lg:rounded-tl-3xl overflow-hidden">
-            <div className="relative ml-12 h-96 w-full z-20">
+            <div className="relative ml-8 sm:ml-12 h-96 w-full z-20 overflow-hidden sm:rounded-tl-2xl">
               <Image
                 src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/evlQBzcrZpVwdbhxNZINrg.png`}
                 alt="Product screenshot"
-                layout="fill"
-                className="rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10"
+                height={684}
+                width={684}
+                className="absolute top-0 left-0 h-[384px]"
               />
             </div>
             <div
@@ -392,7 +372,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
                     fillRule="evenodd"
                     clipRule="evenodd"
                     d="M12.261 1.03462C12.6971 1.15253 13 1.54819 13 1.99997V8.99997H19C19.3581 8.99997 19.6888 9.19141 19.8671 9.50191C20.0455 9.8124 20.0442 10.1945 19.8638 10.5038L12.8638 22.5038C12.6361 22.8941 12.1751 23.0832 11.739 22.9653C11.3029 22.8474 11 22.4517 11 22V15H5C4.64193 15 4.3112 14.8085 4.13286 14.498C3.95452 14.1875 3.9558 13.8054 4.13622 13.4961L11.1362 1.4961C11.3639 1.10586 11.8249 0.916719 12.261 1.03462ZM6.74104 13H12C12.5523 13 13 13.4477 13 14V18.301L17.259 11H12C11.4477 11 11 10.5523 11 9.99997V5.69889L6.74104 13Z"
-                    fill="#000000"
+                    fill="#666"
                   ></path>{' '}
                 </g>
               </svg>
@@ -420,17 +400,17 @@ export default async function Home(params: { searchParams: { id: string } }) {
                     fillRule="evenodd"
                     clipRule="evenodd"
                     d="M3.25 7C3.25 6.58579 3.58579 6.25 4 6.25H20C20.4142 6.25 20.75 6.58579 20.75 7C20.75 7.41421 20.4142 7.75 20 7.75H4C3.58579 7.75 3.25 7.41421 3.25 7Z"
-                    fill="#1C274C"
+                    fill="#222"
                   ></path>{' '}
                   <path
                     opacity="0.7"
                     d="M3.25 12C3.25 11.5858 3.58579 11.25 4 11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H4C3.58579 12.75 3.25 12.4142 3.25 12Z"
-                    fill="#1C274C"
+                    fill="#222"
                   ></path>{' '}
                   <path
                     opacity="0.4"
                     d="M3.25 17C3.25 16.5858 3.58579 16.25 4 16.25H9C9.41421 16.25 9.75 16.5858 9.75 17C9.75 17.4142 9.41421 17.75 9 17.75H4C3.58579 17.75 3.25 17.4142 3.25 17Z"
-                    fill="#1C274C"
+                    fill="#222"
                   ></path>{' '}
                 </g>
               </svg>

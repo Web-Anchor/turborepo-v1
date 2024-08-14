@@ -127,12 +127,13 @@ export default async function Home(params: { searchParams: { id: string } }) {
         }}
         image={
           <section className="relative bg-indigo-400 -ml-8 lg:ml-10 py-12 lg:rounded-tl-3xl overflow-hidden">
-            <div className="relative ml-12 h-96 w-full z-20">
+            <div className="relative ml-8 sm:ml-12 h-96 w-full z-20 overflow-hidden sm:rounded-tl-2xl">
               <Image
                 src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/FfNPG8nwlceFcbMGt6p3LQBCOwKpvx1jA5UlWR5mT8g.png`}
                 alt="Product screenshot"
-                layout="fill"
-                className="rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10"
+                height={684}
+                width={684}
+                className="absolute top-0 left-0 h-[384px]"
               />
             </div>
             <div
