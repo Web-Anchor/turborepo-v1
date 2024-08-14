@@ -173,7 +173,7 @@ export function AuthWrapper({ children }: Props) {
     arr: mainMenu,
   });
   mainMenu = addToArray({
-    isTrue: active,
+    isTrue: advanced,
     value: {
       title: 'Templates',
       link: '/dashboard/invoice-templates',
@@ -211,7 +211,7 @@ export function AuthWrapper({ children }: Props) {
     arr: mainMenu,
   });
   mainMenu = addToArray({
-    isTrue: active,
+    isTrue: advanced,
     value: {
       title: 'Portal Components',
       link: '/dashboard/components',
