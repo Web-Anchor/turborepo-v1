@@ -100,8 +100,8 @@ export default function NumbersCard(props: Props): React.ReactElement {
         {Icon}
       </div>
       {props?.title && (
-        <div className="max-w-xs truncate text-md font-bold text-gray-600 mr-6">
-          {props?.title}
+        <div className="text-md font-bold text-gray-600 mr-10">
+          <p className="truncate">{props?.title}</p>
         </div>
       )}
       <div className="text-md font-semibold text-gray-800">

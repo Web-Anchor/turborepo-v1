@@ -150,26 +150,28 @@ export default function PieChart(props: Props): React.ReactElement | null {
           <RadialBar {...radialConfig} />
         )}
         {!hasData && !props.loading && (
-          <section className="flex flex-col gap-2 mt-10 bg-indigo-400 mx-auto py-5 px-6 rounded-2xl w-fit">
-            <p className="font-semibold text-xl text-center text-white">
-              No Available Data
-            </p>
-            <svg
-              fill="#fff"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 mx-auto"
-            >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path d="M1,12A11.013,11.013,0,0,1,12,1a1,1,0,0,1,0,2,9,9,0,1,0,3.6,17.252,1,1,0,1,1,.8,1.832A11,11,0,0,1,1,12ZM16.4,1.916a1,1,0,1,0-.8,1.832A9,9,0,0,1,18.427,18.3a1,1,0,1,0,1.428,1.4A11,11,0,0,0,16.4,1.916Z"></path>
-              </g>
-            </svg>
+          <section className="relative flex bg-indigo-400 mx-auto h-[340px] w-[340px] rounded-full items-center justify-center">
+            <section>
+              <p className="truncate font-semibold text-xl text-center text-white">
+                No Available Data
+              </p>
+              <svg
+                fill="#fff"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute top-1/2 left-1/2 h-[320px] w-[320px] transform -translate-x-1/2 -translate-y-1/2"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M1,12A11.013,11.013,0,0,1,12,1a1,1,0,0,1,0,2,9,9,0,1,0,3.6,17.252,1,1,0,1,1,.8,1.832A11,11,0,0,1,1,12ZM16.4,1.916a1,1,0,1,0-.8,1.832A9,9,0,0,1,18.427,18.3a1,1,0,1,0,1.428,1.4A11,11,0,0,0,16.4,1.916Z"></path>
+                </g>
+              </svg>
+            </section>
           </section>
         )}
       </section>
