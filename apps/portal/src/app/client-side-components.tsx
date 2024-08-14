@@ -16,6 +16,7 @@ import {
 } from '@repo/components';
 import Link from '@components/Link';
 import placeholder from '../../public/images/avatar.png';
+import { useKeyStore } from '@hooks/useKeyStore';
 
 export function GetStarted() {
   const { user, isLoaded } = useUser();
@@ -83,4 +84,16 @@ export function Testimonials() {
       )}
     </Wrapper>
   );
+}
+
+export function KeySync() {
+  /**
+   * @description Key sync client component
+   * @date 2024-08-14
+   * @author Ed Ancerys
+   */
+
+  useKeyStore();
+
+  return null;
 }

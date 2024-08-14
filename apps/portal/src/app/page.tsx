@@ -10,7 +10,7 @@ import {
 import Header from '@app/header';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GetStarted, Testimonials } from '@app/client-side-components';
+import { GetStarted, KeySync, Testimonials } from '@app/client-side-components';
 import { components } from '@server/components';
 
 const socials = [
@@ -95,6 +95,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
     <Wrapper className="h-full pt-16 lg:pt-24">
       <TopBackground />
       <Header company={company} />
+      <KeySync />
 
       <HeaderSection
         subtitle={landingPageHeader?.slogan!}
