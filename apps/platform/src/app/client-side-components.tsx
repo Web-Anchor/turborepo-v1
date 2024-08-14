@@ -51,8 +51,8 @@ export function Testimonials() {
 
   return (
     <Wrapper>
-      {!isLoading && (
-        <Wrapper className="items-center">
+      {isLoading && (
+        <Wrapper className="my-16 items-center">
           <LoadingDots />
         </Wrapper>
       )}
