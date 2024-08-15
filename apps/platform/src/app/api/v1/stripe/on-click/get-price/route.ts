@@ -32,13 +32,12 @@ export async function POST(request: NextRequest) {
     // 📌  Get price
     // --------------------------------------------------------------------------------
     const body = await request.json();
-    const price = body?.price * 100 || 0;
 
     const {
       price: priceRes,
       pricesPermissionError,
       error,
-    } = await stripePrice({ price, apiKey });
+    } = await stripePrice({ ...body, apiKey });
 
     return NextResponse.json({
       price: priceRes,

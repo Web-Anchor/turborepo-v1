@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 export async function stripePrice(props: {
   price: number;
   apiKey?: string | null;
+  currency?: string;
+  name?: string;
 }): Promise<any> {
   /**
    * @description Get Stripe price
@@ -19,8 +21,11 @@ export async function stripePrice(props: {
     }
 
     const stripe = require('stripe')(props.apiKey);
+    const currency = props?.currency || 'usd';
+    const name =
+      props?.name || `invoicio.io ${amountToCurrency(props?.price, currency)}`;
     const prices = await stripe.prices.search({
-      query: `active:'true' AND metadata['name']:'invoicio.io' AND metadata['price']:'${props.price}'`,
+      query: `active:'true' AND metadata['name']:'${name}' AND metadata['price']:'${props.price * 100}'`,
     });
 
     return { price: prices?.data?.[0], pricesPermissionError: false };
@@ -55,11 +60,8 @@ export async function createProductWithPrice(props: {
 
     const stripe = require('stripe')(props.apiKey);
     const currency = props?.currency || 'usd';
-    const formattedPrice = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency || 'usd',
-    }).format(props?.price);
-    const name = props?.name || `invoicio.io ${formattedPrice}`;
+    const name =
+      props?.name || `invoicio.io ${amountToCurrency(props?.price, currency)}`;
     const metadata = {
       name,
       order_id: props?.order_id || uuidv4(),
@@ -91,4 +93,15 @@ export async function createProductWithPrice(props: {
       error,
     };
   }
+}
+
+function amountToCurrency(amount?: number, currency?: string) {
+  if (!amount) {
+    return '0';
+  }
+
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency || 'usd',
+  }).format(amount);
 }

@@ -46,9 +46,9 @@ export default function Page() {
       setState((prev) => ({ ...prev, fetching: 'prices' }));
 
       const { data, status } = await axios({
-        url: '/api/v1/stripe/on-click/get-prices',
+        url: '/api/v1/stripe/on-click/get-price',
         method: 'POST',
-        data: { price: 15.5 },
+        data: { price: 18.75 },
       });
 
       console.log('✅ API RESPONSE', data);
@@ -76,7 +76,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-product',
         method: 'POST',
-        data: { price: 22.75 },
+        data: { price: 18.75 },
       });
 
       console.log('✅ API RESPONSE', data);
