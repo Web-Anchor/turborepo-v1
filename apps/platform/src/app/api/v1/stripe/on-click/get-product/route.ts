@@ -4,9 +4,6 @@ import { db } from '@db/index';
 import { eq } from 'drizzle-orm';
 import { users, keys as strKeys } from '@db/schema';
 
-const STRIPE_RESTRICTED_KEY = process.env.STRIPE_RESTRICTED_KEY;
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
-
 export async function POST(request: NextRequest) {
   auth().protect();
 
@@ -66,10 +63,4 @@ export async function POST(request: NextRequest) {
       { status: error?.status || 500 }
     );
   }
-}
-
-function validateString(value: string | undefined | null) {
-  return typeof value === 'string' && value.length > 0 && value
-    ? value
-    : undefined;
 }

@@ -25,10 +25,10 @@ const socials = [
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
+          strokeLinecap="round"
           strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
@@ -45,7 +45,7 @@ const socials = [
             fill="#0F0F0F"
           ></path>{' '}
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             clip-rule="evenodd"
             d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
             fill="#0F0F0F"

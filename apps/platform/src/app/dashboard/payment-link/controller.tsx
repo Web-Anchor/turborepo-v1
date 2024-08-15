@@ -94,6 +94,34 @@ export default function Page() {
     }
   }
 
+  async function paymentLink() {
+    try {
+      // --------------------------------------------------------------------------------
+      // 📌  Add Stripe API key to db
+      // --------------------------------------------------------------------------------
+      setState((prev) => ({ ...prev, fetching: 'link' }));
+
+      const { data, status } = await axios({
+        url: '/api/v1/stripe/on-click/create-payment-link',
+        method: 'POST',
+        data: { price: 15.5 },
+      });
+
+      console.log('✅ API RESPONSE', data);
+
+      if (status !== 200 || data?.error) {
+        throw new Error(data?.error?.raw?.message);
+      }
+
+      // toast.success(`API key updated successfully`);
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err.message);
+    } finally {
+      setState((prev) => ({ ...prev, fetching: undefined }));
+    }
+  }
+
   return (
     <Wrapper>
       <HeaderSection
@@ -117,6 +145,12 @@ export default function Page() {
         title="Price List"
         onClick={getPrices}
         fetching={state.fetching === 'prices'}
+      />
+      <Button
+        title="create Payment Link"
+        onClick={paymentLink}
+        fetching={state.fetching === 'link'}
+        style="secondary"
       />
     </Wrapper>
   );
