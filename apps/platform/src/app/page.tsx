@@ -312,6 +312,14 @@ export default async function Home(params: { searchParams: { id: string } }) {
         ]}
         subtitle="Invoicing Made Easy with Stripe!"
       />
+      <HeaderSection
+        subtitle="One Click Payment Collection Made Easy"
+        title="Say goodbye Complicated Payment Processes"
+        description={[
+          "Forget the hassle of managing payments with our easy-to-use Payment Link Generator. Powered by Stripe APIs, our platform allows you to create secure and customizable payment links in seconds. Whether you're processing single transactions or multiple items, streamline your payment collection and provide a smooth experience for your customers.",
+        ]}
+        theme="dark"
+      />
       <ListSection
         list={features.map((feature, key) => {
           return (
@@ -326,7 +334,7 @@ export default async function Home(params: { searchParams: { id: string } }) {
             </section>
           );
         })}
-        className="mt-0 lg:mt-0"
+        className="my-8 lg:my-16"
       />
       <HeaderSection
         subtitle="Transform Data into Actionable Insights with Stripe!"
