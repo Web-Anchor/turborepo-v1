@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
 
   try {
     // --------------------------------------------------------------------------------
-    // 📌  dn user
+    // 📌  db user
     // --------------------------------------------------------------------------------
     const { userId } = auth();
     console.log('👤 Clerk User Id ', userId);

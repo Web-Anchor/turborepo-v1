@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     console.log('👤 Stripe Products ', products);
 
     // --------------------------------------------------------------------------------
-    // 📌  dn user
+    // 📌  db user
     // --------------------------------------------------------------------------------
     const dbUser = await db
       .select()

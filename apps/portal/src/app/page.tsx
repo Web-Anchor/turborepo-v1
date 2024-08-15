@@ -28,7 +28,7 @@ const socials = [
         <g
           id="SVGRepo_tracerCarrier"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <path
