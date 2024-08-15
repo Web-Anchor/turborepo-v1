@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       price: priceRes,
       pricesPermissionError,
       error,
-    } = await stripePrice(price, apiKey);
+    } = await stripePrice({ price, apiKey });
 
     return NextResponse.json({
       price: priceRes,

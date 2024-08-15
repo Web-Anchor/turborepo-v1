@@ -76,7 +76,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-product',
         method: 'POST',
-        data: { price: 15.5 },
+        data: { price: 1.5 },
       });
 
       console.log('✅ API RESPONSE', data);
@@ -142,7 +142,7 @@ export default function Page() {
         fetching={state.fetching === 'new'}
       />
       <Button
-        title="Price List"
+        title="Price Find"
         onClick={getPrices}
         fetching={state.fetching === 'prices'}
       />

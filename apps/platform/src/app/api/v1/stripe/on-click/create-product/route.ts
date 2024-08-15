@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@db/index';
 import { eq } from 'drizzle-orm';
 import { users, keys as strKeys } from '@db/schema';
-import { v4 as uuidv4 } from 'uuid';
+import { createProductWithPrice } from '@server/stripe-products';
 
 export async function POST(request: NextRequest) {
   auth().protect();
@@ -25,62 +25,26 @@ export async function POST(request: NextRequest) {
       .select()
       .from(strKeys)
       .where(eq(strKeys.userId, dbUser[0].id));
-
     const apiKey = keys?.[0]?.restrictedAPIKey;
-    console.log('🔑 apiKey', apiKey);
-    const stripe = require('stripe')(apiKey);
 
     // --------------------------------------------------------------------------------
     // 📌  Get price
     // --------------------------------------------------------------------------------
     const body = await request.json();
 
-    let price: any;
-    let pricePermissionError: boolean = false;
-    let throwError: any;
-
-    try {
-      /**
-       * @description Create a new price & new product
-       * @date 2024-08-15
-       * @author Ed Ancerys
-       */
-      price = await stripe.prices.create({
-        currency: body?.currency || 'usd',
-        unit_amount: body?.price * 100, // convert to cents
-        nickname: body?.nickname || `invoicio.io`,
-        metadata: {
-          name: body?.name || 'invoicio.io',
-          order_id: body?.order_id || uuidv4(),
-          price_info: body?.price_info || 'One Time Payment Product',
-          price: body?.price * 100,
-        },
-        // recurring: {
-        //   interval: 'month',
-        // },
-        product_data: {
-          name: body?.name || `invoicio.io`,
-          active: true,
-          statement_descriptor: body?.statement_descriptor || `invoicio.io`,
-          unit_label: body?.unit_label || `invoicio.io`,
-          metadata: {
-            name: body?.name || 'invoicio.io',
-            order_id: body?.order_id || uuidv4(),
-            price_info: body?.price_info || 'One Time Payment Product',
-            price: body?.price * 100,
-          },
-        },
-      });
-      console.log('🔑 prices', price);
-    } catch (error: any) {
-      pricePermissionError = error?.type === 'StripePermissionError';
-      throwError = error;
-    }
+    const {
+      price: proseRes,
+      pricePermissionError,
+      error,
+    } = await createProductWithPrice({
+      ...body,
+      apiKey,
+    });
 
     return NextResponse.json({
-      price,
+      price: proseRes,
       pricePermissionError,
-      error: throwError,
+      error,
     });
   } catch (error: any) {
     console.error('🔑 error', error);
