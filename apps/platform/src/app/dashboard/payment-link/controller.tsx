@@ -76,7 +76,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-product',
         method: 'POST',
-        data: { price: 1.5 },
+        data: { price: 22.75 },
       });
 
       console.log('✅ API RESPONSE', data);

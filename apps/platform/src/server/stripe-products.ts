@@ -44,11 +44,9 @@ export async function createProductWithPrice(props: {
   unit_label?: string;
 }): Promise<any> {
   /**
-   * @description Get Stripe price
+   * @description Create a new price & new product
    * @date 2024-08-15
    * @author Ed Ancerys
-   * @param {number} price - Stripe price
-   * @param {string} apiKey - Stripe API key
    */
   try {
     if (!props.apiKey) {
@@ -56,30 +54,33 @@ export async function createProductWithPrice(props: {
     }
 
     const stripe = require('stripe')(props.apiKey);
+    const currency = props?.currency || 'usd';
+    const formattedPrice = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency || 'usd',
+    }).format(props?.price);
+    const name = props?.name || `invoicio.io ${formattedPrice}`;
+    const metadata = {
+      name,
+      order_id: props?.order_id || uuidv4(),
+      price_info: props?.price_info || 'One Time Payment Price',
+      price: props?.price * 100,
+    };
+
     const price = await stripe.prices.create({
-      currency: props?.currency || 'usd',
+      currency,
       unit_amount: props?.price * 100, // convert to cents
       nickname: props?.nickname || `invoicio.io`,
-      metadata: {
-        name: props?.name || 'invoicio.io',
-        order_id: props?.order_id || uuidv4(),
-        price_info: props?.price_info || 'One Time Payment Product',
-        price: props?.price * 100,
-      },
+      metadata,
       // recurring: {
       //   interval: 'month',
       // },
       product_data: {
-        name: props?.name || `invoicio.io`,
+        name: props?.name || name,
         active: true,
-        statement_descriptor: props?.statement_descriptor || `invoicio.io`,
+        statement_descriptor: props?.statement_descriptor || name,
         unit_label: props?.unit_label || `invoicio.io`,
-        metadata: {
-          name: props?.name || 'invoicio.io',
-          order_id: props?.order_id || uuidv4(),
-          price_info: props?.price_info || 'One Time Payment Product',
-          price: props?.price * 100,
-        },
+        metadata,
       },
     });
 
