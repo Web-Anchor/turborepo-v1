@@ -3,9 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@db/index';
 import { eq } from 'drizzle-orm';
 import { users, keys as strKeys } from '@db/schema';
-import { v4 as uuidv4 } from 'uuid';
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
+import {
+  createProductWithPrice,
+  stripePaymentLink,
+  stripePrice,
+} from '@server/stripe-products';
 
 export async function POST(request: NextRequest) {
   auth().protect();
@@ -29,37 +31,43 @@ export async function POST(request: NextRequest) {
       .where(eq(strKeys.userId, dbUser[0].id));
 
     const apiKey = keys?.[0]?.restrictedAPIKey;
-    const stripe = require('stripe')(apiKey);
 
     // --------------------------------------------------------------------------------
     // 📌  Get price
     // --------------------------------------------------------------------------------
     const body = await request.json();
-    const price = body?.price * 100 || 0;
+    let priceId: string | undefined;
+    let error: string | undefined;
 
-    let stripePrice: any;
-    let pricePermissionError: boolean = false;
-    let throwError: any;
+    // --------------------------------------------------------------------------------
+    // 📌  Retrieve Stripe price from api
+    // --------------------------------------------------------------------------------
+    const { price, error: resError } = await stripePrice({
+      ...body,
+      apiKey,
+    });
+    priceId = price?.id;
+    error = resError;
 
-    try {
-      /**
-       * @description Create a new price & new product if not exists
-       * @date 2024-08-15
-       * @author Ed Ancerys
-       */
-      const res = await stripe.prices.search({
-        query: `active:'true' AND metadata['name']:'invoicio.io' AND metadata['price']:'${price}'`,
+    if (!priceId) {
+      const { price, error: createError } = await createProductWithPrice({
+        ...body,
+        apiKey,
       });
-      stripePrice = res?.data?.[0];
-    } catch (error: any) {
-      pricePermissionError = error?.type === 'StripePermissionError';
-      throwError = error;
+      priceId = price?.id;
+      error = createError;
     }
 
+    const { link, error: linkError } = await stripePaymentLink({
+      priceId,
+      apiKey,
+    });
+    error = linkError;
+
     return NextResponse.json({
-      price: stripePrice,
-      pricePermissionError,
-      error: throwError,
+      priceId,
+      error,
+      link,
     });
   } catch (error: any) {
     console.error('🔑 error', error);

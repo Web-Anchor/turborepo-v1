@@ -104,7 +104,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-payment-link',
         method: 'POST',
-        data: { price: 15.5 },
+        data: { price: 18.75 },
       });
 
       console.log('✅ API RESPONSE', data);

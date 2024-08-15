@@ -2,6 +2,40 @@ import 'server-only';
 
 import { v4 as uuidv4 } from 'uuid';
 
+export async function stripePaymentLink(props: {
+  priceId?: string;
+  apiKey?: string | null;
+  quantity?: number;
+}): Promise<any> {
+  /**
+   * @description Get Stripe price
+   * @date 2024-08-15
+   * @author Ed Ancerys
+   */
+  try {
+    if (!props.apiKey || !props.apiKey) {
+      throw new Error('🔑 API Key & price id is required');
+    }
+
+    const stripe = require('stripe')(props.apiKey);
+    const link = await stripe.paymentLinks.create({
+      line_items: [
+        {
+          price: props?.priceId,
+          quantity: props?.quantity || 1,
+        },
+      ],
+    });
+
+    return { link };
+  } catch (error: any) {
+    return {
+      pricesPermissionError: error?.type === 'StripePermissionError',
+      error,
+    };
+  }
+}
+
 export async function stripePrice(props: {
   price: number;
   apiKey?: string | null;
