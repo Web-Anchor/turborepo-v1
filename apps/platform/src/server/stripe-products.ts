@@ -2,7 +2,39 @@ import 'server-only';
 
 import { v4 as uuidv4 } from 'uuid';
 
-export async function stripePaymentLink(props: {
+export async function retrieveStripePaymentLinks(props: {
+  priceId?: string;
+  apiKey?: string | null;
+  limit?: number;
+}): Promise<any> {
+  /**
+   * @description Get Stripe price
+   * @date 2024-08-15
+   * @author Ed Ancerys
+   */
+  try {
+    if (!props.apiKey || !props.apiKey) {
+      throw new Error('🔑 API Key & price id is required');
+    }
+
+    const stripe = require('stripe')(props.apiKey);
+    const links = await stripe.paymentLinks.list({
+      limit: props?.limit || 10,
+      expand: ['data'],
+    });
+
+    return { links };
+  } catch (error: any) {
+    console.log('🔑 error', error);
+
+    return {
+      pricesPermissionError: error?.type === 'StripePermissionError',
+      error,
+    };
+  }
+}
+
+export async function createStripePaymentLink(props: {
   priceId?: string;
   apiKey?: string | null;
   quantity?: number;

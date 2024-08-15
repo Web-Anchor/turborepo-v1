@@ -24,3 +24,4 @@ export * from './useTemplates';
 export * from './useStatistics';
 export * from './useComponents';
 export * from './useTestimonials';
+export * from './usePaymentLinks';

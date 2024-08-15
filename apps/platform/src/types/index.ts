@@ -27,6 +27,14 @@ type Address = {
   state?: string;
 };
 
+export type StripePaymentLink = {
+  active?: boolean;
+  currency?: string;
+  id?: string;
+  metadata?: any;
+  url?: string;
+};
+
 export type Customer = {
   id?: string;
   address?: Address;

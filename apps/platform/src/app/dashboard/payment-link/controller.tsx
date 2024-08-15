@@ -2,118 +2,42 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Button, HeaderSection, Wrapper } from '@repo/components';
+import { Button, HeaderSection, Table, Wrapper } from '@repo/components';
 import axios from 'axios';
+import { usePaymentLinks } from '@hooks/index';
+import { StripePaymentLink } from '@tsTypes/index';
+import Link from 'next/link';
 
 export default function Page() {
   const [state, setState] = useState<{
     fetching?: string;
   }>({});
+  const { links, isLoading } = usePaymentLinks({});
 
-  async function searchProduct() {
+  async function onClickPaymentLink(e: {
+    preventDefault: () => void;
+    currentTarget: HTMLFormElement | undefined;
+  }) {
     try {
       // --------------------------------------------------------------------------------
       // 📌  Add Stripe API key to db
       // --------------------------------------------------------------------------------
-      setState((prev) => ({ ...prev, fetching: 'search' }));
-
-      const { data, status } = await axios({
-        url: '/api/v1/stripe/on-click/get-product',
-        method: 'POST',
-        data: { price: 15.5 },
-      });
-
-      console.log('✅ API RESPONSE', data);
-
-      if (status !== 200 || data?.error) {
-        throw new Error(data?.error?.raw?.message);
-      }
-
-      // toast.success(`API key updated successfully`);
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message);
-    } finally {
-      setState((prev) => ({ ...prev, fetching: undefined }));
-    }
-  }
-
-  async function getPrices() {
-    try {
-      // --------------------------------------------------------------------------------
-      // 📌  Add Stripe API key to db
-      // --------------------------------------------------------------------------------
-      setState((prev) => ({ ...prev, fetching: 'prices' }));
-
-      const { data, status } = await axios({
-        url: '/api/v1/stripe/on-click/get-price',
-        method: 'POST',
-        data: { price: 18.75 },
-      });
-
-      console.log('✅ API RESPONSE', data);
-
-      if (status !== 200 || data?.error) {
-        throw new Error(data?.error?.raw?.message);
-      }
-
-      // toast.success(`API key updated successfully`);
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message);
-    } finally {
-      setState((prev) => ({ ...prev, fetching: undefined }));
-    }
-  }
-
-  async function newProduct() {
-    try {
-      // --------------------------------------------------------------------------------
-      // 📌  Add Stripe API key to db
-      // --------------------------------------------------------------------------------
-      setState((prev) => ({ ...prev, fetching: 'new' }));
-
-      const { data, status } = await axios({
-        url: '/api/v1/stripe/on-click/create-product',
-        method: 'POST',
-        data: { price: 18.75 },
-      });
-
-      console.log('✅ API RESPONSE', data);
-
-      if (status !== 200 || data?.error) {
-        throw new Error(data?.error?.raw?.message);
-      }
-
-      // toast.success(`API key updated successfully`);
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message);
-    } finally {
-      setState((prev) => ({ ...prev, fetching: undefined }));
-    }
-  }
-
-  async function paymentLink() {
-    try {
-      // --------------------------------------------------------------------------------
-      // 📌  Add Stripe API key to db
-      // --------------------------------------------------------------------------------
-      setState((prev) => ({ ...prev, fetching: 'link' }));
+      setState((prev) => ({ ...prev, fetching: 'create' }));
+      const form = new FormData(e.currentTarget);
+      const price = form.get('price');
 
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-payment-link',
         method: 'POST',
-        data: { price: 18.75 },
+        data: { price: Number(price) },
       });
-
-      console.log('✅ API RESPONSE', data);
 
       if (status !== 200 || data?.error) {
         throw new Error(data?.error?.raw?.message);
       }
 
-      // toast.success(`API key updated successfully`);
+      mutate(`/api/v1/stripe/on-click/retrieve-payment-links`);
+      toast.success(`Payment Link created successfully`);
     } catch (err: any) {
       console.error(err);
       toast.error(err.message);
@@ -125,33 +49,113 @@ export default function Page() {
   return (
     <Wrapper>
       <HeaderSection
-        title="Stripe API Keys. Enhance Your Platform with Secure Payment Integration."
-        description="Manage and secure your payment transactions by adding your Stripe API keys on our platform. Seamlessly integrate Stripe's powerful payment solutions, enhance transaction security, and unlock a world of possibilities for your business. Take control of your payment processes with ease and efficiency."
-        subtitle="Powering Secure Transactions, One Key at a Time!"
+        title="Generate Payment Links with Ease!"
+        description={[
+          "Quickly create secure and customizable payment links using our Stripe APIs. Whether you're handling single transactions or multiple items, our tool simplifies the process, allowing you to generate payment links in just a one click. Empower your business with seamless payment solutions that you can share with customers effortlessly.",
+        ]}
+        subtitle="Empowering your Secure Transactions!"
         type="page-header"
       />
 
-      <Button
-        title="Get Product"
-        onClick={searchProduct}
-        fetching={state.fetching === 'search'}
+      <form
+        className="card max-w-4xl lg:px-10 lg:py-8 bg-base-100 lg:shadow-xl"
+        onSubmit={onClickPaymentLink}
+      >
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Payment link Price
+          </label>
+          <div className="mt-2 mb-10">
+            <input
+              name="price"
+              type="number"
+              placeholder="example: 24.55"
+              required
+              className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+
+        <section className="flex justify-end">
+          <Button
+            title="Create Payment Link"
+            type="submit"
+            fetching={state.fetching === 'create'}
+          />
+        </section>
+      </form>
+
+      {!!links?.length && (
+        <HeaderSection
+          title="Recently Generated Payments Links."
+          type="page-header"
+          className="mt-0 lg:mt-16"
+        />
+      )}
+      <Table
+        fetching={isLoading}
+        header={[{ item: 'ID' }, { item: 'Link' }, { item: 'Copy' }]}
+        data={links?.map((item: StripePaymentLink) => {
+          return {
+            row: [
+              {
+                item: (
+                  <section className="max-w-48">
+                    <p className="truncate">{item.id}</p>
+                  </section>
+                ),
+                className: 'md:table-cell-auto min-w-28',
+              },
+              {
+                item: (
+                  <Link
+                    href={item.url!}
+                    passHref
+                    target="_blank"
+                    className="text-indigo-600"
+                  >
+                    Payment Link
+                  </Link>
+                ),
+                // className: 'hidden lg:table-cell',
+              },
+              {
+                item: (
+                  <Button
+                    title="Copy"
+                    style="secondary"
+                    onClick={() => {
+                      navigator.clipboard.writeText(item.url!);
+                      toast.success('Link copied to clipboard');
+                    }}
+                  />
+                ),
+              },
+            ],
+          };
+        })}
+        hidden={!links?.length}
       />
-      <Button
-        title="Create new Product"
-        onClick={newProduct}
-        fetching={state.fetching === 'new'}
-      />
-      <Button
-        title="Price Find"
-        onClick={getPrices}
-        fetching={state.fetching === 'prices'}
-      />
-      <Button
-        title="create Payment Link"
-        onClick={paymentLink}
-        fetching={state.fetching === 'link'}
-        style="secondary"
+
+      <HeaderSection
+        description={[
+          <p key="1">
+            *In order to enable{' '}
+            <span className="text-indigo-500">One Click Payment Links</span>{' '}
+            Please make sure that API for Payment Links is set to{' '}
+            <span className="font-bold">write permissions</span> in your Stripe
+            account.
+          </p>,
+        ]}
+        className="mt-5 lg:mt-16"
+        type="page-header"
       />
     </Wrapper>
   );
+}
+function mutate(arg0: string) {
+  throw new Error('Function not implemented.');
 }

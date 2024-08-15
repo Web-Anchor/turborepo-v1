@@ -6,6 +6,7 @@ import { users, keys as strKeys } from '@db/schema';
 import {
   createProductWithPrice,
   createStripePaymentLink,
+  retrieveStripePaymentLinks,
   stripePrice,
 } from '@server/stripe-products';
 
@@ -31,43 +32,19 @@ export async function POST(request: NextRequest) {
       .where(eq(strKeys.userId, dbUser[0].id));
 
     const apiKey = keys?.[0]?.restrictedAPIKey;
-
-    // --------------------------------------------------------------------------------
-    // 📌  Get price
-    // --------------------------------------------------------------------------------
     const body = await request.json();
-    let priceId: string | undefined;
-    let error: string | undefined;
 
     // --------------------------------------------------------------------------------
     // 📌  Retrieve Stripe price from api
     // --------------------------------------------------------------------------------
-    const { price, error: resError } = await stripePrice({
+    const { links, error } = await retrieveStripePaymentLinks({
       ...body,
       apiKey,
     });
-    priceId = price?.id;
-    error = resError;
-
-    if (!priceId) {
-      const { price, error: createError } = await createProductWithPrice({
-        ...body,
-        apiKey,
-      });
-      priceId = price?.id;
-      error = createError;
-    }
-
-    const { link, error: linkError } = await createStripePaymentLink({
-      priceId,
-      apiKey,
-    });
-    error = linkError;
 
     return NextResponse.json({
-      priceId,
       error,
-      link,
+      links,
     });
   } catch (error: any) {
     console.error('🔑 error', error);
@@ -76,4 +53,10 @@ export async function POST(request: NextRequest) {
       { status: error?.status || 500 }
     );
   }
+}
+
+function validateString(value: string | undefined | null) {
+  return typeof value === 'string' && value.length > 0 && value
+    ? value
+    : undefined;
 }
