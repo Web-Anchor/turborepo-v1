@@ -20,7 +20,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/get-product',
         method: 'POST',
-        data: { price: 11 },
+        data: { price: 15.5 },
       });
 
       console.log('✅ API RESPONSE', data);
@@ -34,7 +34,35 @@ export default function Page() {
       console.error(err);
       toast.error(err.message);
     } finally {
-      setState((prev) => ({ ...prev, fetching: undefined, edit: undefined }));
+      setState((prev) => ({ ...prev, fetching: undefined }));
+    }
+  }
+
+  async function getPrices() {
+    try {
+      // --------------------------------------------------------------------------------
+      // 📌  Add Stripe API key to db
+      // --------------------------------------------------------------------------------
+      setState((prev) => ({ ...prev, fetching: 'prices' }));
+
+      const { data, status } = await axios({
+        url: '/api/v1/stripe/on-click/get-prices',
+        method: 'POST',
+        data: { price: 15.5 },
+      });
+
+      console.log('✅ API RESPONSE', data);
+
+      if (status !== 200 || data?.error) {
+        throw new Error(data?.error?.raw?.message);
+      }
+
+      // toast.success(`API key updated successfully`);
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err.message);
+    } finally {
+      setState((prev) => ({ ...prev, fetching: undefined }));
     }
   }
 
@@ -48,7 +76,7 @@ export default function Page() {
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-product',
         method: 'POST',
-        data: { price: 11 },
+        data: { price: 15.5 },
       });
 
       console.log('✅ API RESPONSE', data);
@@ -62,7 +90,7 @@ export default function Page() {
       console.error(err);
       toast.error(err.message);
     } finally {
-      setState((prev) => ({ ...prev, fetching: undefined, edit: undefined }));
+      setState((prev) => ({ ...prev, fetching: undefined }));
     }
   }
 
@@ -84,6 +112,11 @@ export default function Page() {
         title="Create new Product"
         onClick={newProduct}
         fetching={state.fetching === 'new'}
+      />
+      <Button
+        title="Price List"
+        onClick={getPrices}
+        fetching={state.fetching === 'prices'}
       />
     </Wrapper>
   );
