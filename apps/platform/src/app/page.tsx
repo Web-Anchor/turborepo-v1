@@ -365,13 +365,12 @@ export default async function Home(params: { searchParams: { id: string } }) {
         }}
         image={
           <section className="relative bg-indigo-400 -ml-8 lg:ml-10 py-12 lg:rounded-tl-3xl overflow-hidden">
-            <div className="relative ml-8 sm:ml-12 h-96 w-full z-20 overflow-hidden sm:rounded-tl-2xl">
+            <div className="relative ml-8 sm:ml-12 h-[270px] sm:h-96 w-full z-20 overflow-hidden sm:rounded-tl-2xl">
               <Image
                 src={`${process.env.NEXT_PUBLIC_STORAGE_CDN}/evlQBzcrZpVwdbhxNZINrg.png`}
                 alt="Product screenshot"
-                height={684}
-                width={684}
-                className="absolute top-0 left-0 h-[384px]"
+                fill
+                className="rounded-tl-2xl object-cover h-full w-full"
               />
             </div>
             <div
