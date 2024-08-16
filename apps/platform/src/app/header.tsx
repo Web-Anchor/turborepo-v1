@@ -16,15 +16,18 @@ export default function Page(props: Props) {
   let { isSignedIn, user, isLoaded } = useUser();
   const path = usePathname()!;
 
-  let menu = isSignedIn
-    ? [
-        {
-          title: 'Dashboard',
-          link: '/dashboard',
-        } as Menu,
-      ]
-    : [];
+  let menu: Menu[] = [];
 
+  menu = addToArray({
+    isTrue: path !== '/' && !path.includes('/dashboard)'),
+    value: { title: 'Home', link: '/' },
+    arr: menu,
+  });
+  menu = addToArray({
+    isTrue: !!isSignedIn,
+    value: { title: 'Dashboard', link: '/dashboard' },
+    arr: menu,
+  });
   menu = addToArray({
     isTrue: path === '/',
     value: { title: 'Facts', link: '/#facts' },

@@ -10,7 +10,13 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { fakerStatsCharges } from '@lib/faker';
 import RateForm from '@components/RateForm';
-import { Badge, Button, HeaderSection, Wrapper } from '@repo/components';
+import {
+  Badge,
+  Button,
+  HeaderSection,
+  MediaScreenTitle,
+  Wrapper,
+} from '@repo/components';
 import Link from 'next/link';
 
 export default function Page() {
@@ -52,9 +58,14 @@ export default function Page() {
         <Wrapper>
           <Badge
             title={
-              <p>
-                <span className="text-indigo-600">invoicio.io</span> API key
-              </p>
+              <MediaScreenTitle
+                large={
+                  <p>
+                    <span className="text-indigo-600">invoicio.io</span> API key
+                  </p>
+                }
+                small={<p>API key</p>}
+              />
             }
             type="info"
             tooltip={`My invoicio.io API key: ${user?.id}. API key is used to access invoicio.io customer portal charges & invoices.`}
@@ -62,7 +73,12 @@ export default function Page() {
             description={
               <section className="flex flex-row gap-5 content-center justify-center">
                 <Button
-                  title={`Copy API Key: ${user?.id}`}
+                  title={
+                    <p className="max-w-64 lg:max-w-auto truncate">
+                      Copy API Key:{' '}
+                      <span className="text-indigo-600">{user?.id}</span>
+                    </p>
+                  }
                   style="ghost"
                   onClick={() => {
                     copyToClipboard(user?.id!);
@@ -76,7 +92,7 @@ export default function Page() {
           <Link
             href={process.env.NEXT_PUBLIC_PORTAL_URL!}
             target="_blank"
-            className="flex gap-5 items-center justify-center h-24 bg-gradient-to-r from-amber-500 to-pink-500 rounded-2xl bg-gray-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex gap-5 items-center justify-center bg-gradient-to-r from-amber-500 to-pink-500 rounded-2xl bg-gray-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <p className="text-3xl lg:text-6xl font-bold text-center">
               Visit Customer Portal

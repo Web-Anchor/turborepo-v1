@@ -5,7 +5,7 @@ import './styles.css';
 export type Props = {
   title?: string | number | React.ReactNode;
   description?: string | React.ReactElement;
-  tooltip?: string;
+  tooltip?: string | React.ReactElement;
   tooltipPosition?:
     | 'tooltip-right'
     | 'tooltip-left'
@@ -113,10 +113,26 @@ export function Badge({
           </button>
         )}
 
+        {/* .pill-tooltip[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  max-width: 300px;
+  font-size: 0.8em;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.3s;
+  width: max-content;
+} */}
+
         {tooltip && (
           <span
             className={classNames(
-              'tooltip truncate bg-gray-800 text-white text-xs py-1 px-2 rounded-md',
+              'tooltip bg-gray-800 text-white text-xs py-1 px-2 rounded-md max-w-64 w-max',
               tooltipClasses[tooltipPosition]
             )}
           >

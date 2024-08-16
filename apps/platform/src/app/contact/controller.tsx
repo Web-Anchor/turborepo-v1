@@ -100,7 +100,7 @@ export default function Page() {
 
       <form
         ref={formRef}
-        className="card max-w-4xl lg:px-10 lg:py-8 bg-base-100 lg:shadow-xl"
+        className="card max-w-4xl lg:px-10 lg:py-8 bg-base-100 mx-6 lg:mx-0 lg:shadow-xl"
         onSubmit={formHandler}
       >
         <div className="space-y-12">

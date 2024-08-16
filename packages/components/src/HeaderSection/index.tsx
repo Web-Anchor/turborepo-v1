@@ -21,7 +21,7 @@ export function HeaderSection(props: HeaderSectionProps) {
       className={classNames(
         'px-6 py-10 sm:py-16 lg:px-8 text-left lg:text-center',
         props.theme === 'dark' && 'bg-gray-800',
-        props.type === 'page-header' && 'lg:p-0 lg:text-left',
+        props.type === 'page-header' && 'py-5 lg:p-0 lg:text-left',
         props.className
       )}
       id={props.id}

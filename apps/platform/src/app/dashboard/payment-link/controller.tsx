@@ -84,6 +84,7 @@ export default function Page() {
             title="Create Payment Link"
             type="submit"
             fetching={state.fetching === 'create'}
+            className="bg-gradient-to-r from-amber-500 to-pink-500 text-white"
           />
         </section>
       </form>

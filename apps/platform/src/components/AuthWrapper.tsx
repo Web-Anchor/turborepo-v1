@@ -37,6 +37,23 @@ export function AuthWrapper({ children }: Props) {
    * @date 2024-08-13
    * @author Ed Ancerys
    */
+  let mobileMenu: Menu[] = [
+    {
+      title: 'Dashboard',
+      link: '/dashboard',
+    },
+    {
+      title: (
+        <p>
+          Payment Link{' '}
+          <span className="text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 to-pink-500 px-1 rounded-md">
+            New
+          </span>
+        </p>
+      ),
+      link: '/dashboard/payment-link',
+    },
+  ];
   let mainMenu: Menu[] = [
     {
       title: 'Dashboard',
@@ -78,7 +95,7 @@ export function AuthWrapper({ children }: Props) {
     value: {
       title: (
         <p>
-          Payment Link{' '}
+          Quick Payment Link{' '}
           <span className="text-xs font-semibold text-white bg-gradient-to-r from-indigo-500 to-pink-500 px-1 rounded-md">
             New
           </span>
@@ -634,7 +651,7 @@ export function AuthWrapper({ children }: Props) {
           ),
         };
       })}
-      mobileNavMenu={mainMenu?.map((item, key) => {
+      mobileNavMenu={mobileMenu?.map((item, key) => {
         return {
           component: (
             <Link
