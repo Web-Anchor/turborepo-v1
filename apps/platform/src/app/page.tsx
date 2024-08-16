@@ -572,6 +572,67 @@ export default async function Home(params: { searchParams: { id: string } }) {
         <Accordion
           items={[
             {
+              title: 'What is invoicio.io?',
+              body: 'invoicio.io is a comprehensive invoicing and payment management platform powered by Stripe. It allows users to manage, download, and edit invoices, generate secure payment links, and access advanced financial analytics.',
+            },
+            {
+              title: 'How do users can access invoices on the customer portal?',
+              body: 'Access to the portal requires an API key. API key can be accessed via dashboard if needed. Customer Links are generated with API key by default.',
+            },
+            {
+              title: 'Is the customer portal free to use?',
+              body: 'Yes, the customer portal is free for your customers who have been granted access. There are no additional charges.',
+            },
+            {
+              title: 'Can I edit my invoices on the platform?',
+              body: 'Yes, you can make necessary adjustments to your invoices, such as adding notes or updating billing details. However, unauthorized changes to pricing or other critical data are not allowed.',
+            },
+            {
+              title: 'How does the Stripe integration work?',
+              body: 'Our platform seamlessly integrates with Stripe via API. This allows you to connect your Stripe account, manage customers, process payments, and generate payment links directly from our platform.',
+            },
+            {
+              title: 'What are payment links, and how do I use them?',
+              body: 'Payment links are secure, customizable URLs generated through Stripe that you can share with customers to collect payments. You can easily create these links on our platform for any transaction.',
+            },
+            {
+              title: 'How secure is the platform?',
+              body: "Security is our top priority. Our platform uses advanced encryption and adheres to industry standards to protect your financial data. However, it's essential that you safeguard your account credentials.",
+            },
+            {
+              title: 'What analytics features does the platform offer?',
+              body: 'Our platform provides advanced analytics, including revenue insights, charge trends, RPC Revenue Insights, customer growth metrics, and more, all powered by Stripe’s Charge and Customer APIs.',
+            },
+            {
+              title: 'Can I track customer growth and revenue trends?',
+              body: 'Yes, the platform offers detailed insights into customer growth and revenue trends, helping you make informed decisions and optimize your business strategies.',
+            },
+            {
+              title:
+                'What should I do if my customers have trouble accessing the platform?',
+              body: 'If your customers encounter issues accessing the platform, first ensure that they have correct API key or link from you. If problems persist, contact our support team for assistance.',
+            },
+            {
+              title: 'What types of businesses can use this platform?',
+              body: "Our platform is designed for any business that needs to manage invoices, process payments, and analyze financial data. It's particularly suited for businesses already using Stripe for payment processing.",
+            },
+            {
+              title: 'How do I generate a payment link?',
+              body: 'To generate a payment link, simply enter the transaction details on our platform. The system will create a secure link that you can share with your customers for payment collection.',
+            },
+            {
+              title: 'Is my financial data safe on the platform?',
+              body: "Yes, your financial data is secured using industry-standard encryption and security practices. We also rely on Stripe's robust security infrastructure to ensure the safety of your transactions.",
+            },
+            {
+              title: 'Can I customize my invoices?',
+              body: 'Yes, the platform allows you to customize your invoices with different templates and branding options, making it easy to tailor them to your business needs.',
+            },
+            {
+              title: 'What if I need help or have a feature request?',
+              body: 'If you need assistance or have a feature request, you can reach out to our support team directly through the platform. We are here to help and continually improve our services based on your feedback.',
+            },
+            {
               title: 'How can I connect my Stripe account to the app?',
               body: 'Connecting your Stripe account is simple! Just go to the settings menu, select the payment integration option, and follow the prompts to link your account via API.',
             },
@@ -587,15 +648,6 @@ export default async function Home(params: { searchParams: { id: string } }) {
             {
               title: 'Are payments processed securely through the app?',
               body: 'Yes, we ensure secure payment processing by integrating with Stripe`s reliable payment system, providing a safe and trustworthy transaction environment.',
-            },
-            {
-              title: 'Can I set up automated reminders for overdue payments?',
-              body: 'Yes, our app allows you to configure automated reminders for outstanding invoices, helping you stay on top of payments and improve your cash flow.',
-            },
-            {
-              title:
-                'What kind of reporting features are available in the app?',
-              body: 'Our app offers detailed reporting features that provide insights into your invoicing activities, allowing you to track payments, pending invoices, and overall financial performance effortlessly.',
             },
             {
               title:

@@ -186,48 +186,95 @@ export default function Page() {
         <Accordion
           items={[
             {
+              title: 'What is invoicio.io?',
+              body: 'invoicio.io is a comprehensive invoicing and payment management platform powered by Stripe. It allows users to manage, download, and edit invoices, generate secure payment links, and access advanced financial analytics.',
+            },
+            {
+              title: 'How do users can access invoices on the customer portal?',
+              body: 'Access to the portal requires an API key. API key can be accessed via dashboard if needed. Customer Links are generated with API key by default.',
+            },
+            {
               title: 'Is the customer portal free to use?',
-              body: 'Yes, the customer portal is free to use. You can access your account and manage your financial activities without any additional charges. Simply follow the link provided by your vendor to access your invoices or add it via the portals dashboard page.',
+              body: 'Yes, the customer portal is free for your customers who have been granted access. There are no additional charges.',
             },
             {
-              title: 'How do I access my invoices?',
-              body: 'To access your invoices, you can log in to your account via the customer portal. Once you are logged in, you can view your transactions, download invoices, and make any necessary adjustments. If you have any questions or need assistance, please contact your vendor for more information.',
+              title: 'Can I edit my invoices on the platform?',
+              body: 'Yes, you can make necessary adjustments to your invoices, such as adding notes or updating billing details. However, unauthorized changes to pricing or other critical data are not allowed.',
             },
             {
-              title: 'Where do I get my API key?',
-              body: 'Your API key is provided by your vendor. If you do not have one, please contact your vendor to request an API key. Once you have your API key, you can use it to access your account and manage your financial activities via the customer portal.',
+              title: 'How does the Stripe integration work?',
+              body: 'Our platform seamlessly integrates with Stripe via API. This allows you to connect your Stripe account, manage customers, process payments, and generate payment links directly from our platform.',
             },
             {
-              title: 'Can I edit my invoice billing details?',
-              body: 'Yes, you can edit your invoice billing details directly within the portal. This includes updating your address, contact information, and any other relevant billing details.',
+              title: 'What are payment links, and how do I use them?',
+              body: 'Payment links are secure, customizable URLs generated through Stripe that you can share with customers to collect payments. You can easily create these links on our platform for any transaction.',
             },
             {
-              title: 'How secure is my financial information on the portal?',
-              body: 'We take the security of your financial information very seriously. Our platform uses the authentication and security protocols to ensure that your data is safe and secure.',
+              title: 'How secure is the platform?',
+              body: "Security is our top priority. Our platform uses advanced encryption and adheres to industry standards to protect your financial data. However, it's essential that you safeguard your account credentials.",
             },
             {
-              title: 'What if I have multiple vendors using the platform?',
-              body: 'You can easily manage invoices from multiple vendors within the same portal. Each vendor will provide you with a unique API key or link to access their specific invoices.',
+              title: 'What analytics features does the platform offer?',
+              body: 'Our platform provides advanced analytics, including revenue insights, charge trends, RPC Revenue Insights, customer growth metrics, and more, all powered by Stripe’s Charge and Customer APIs.',
             },
             {
-              title: 'How do I download my invoices?',
-              body: 'You can download your invoices directly from the portal. Simply navigate to the invoice section and select the invoices you wish to download. You can then choose to download them as a PDF file for your records. If you have any questions or need assistance, please contact your vendor for more information.',
+              title: 'Can I track customer growth and revenue trends?',
+              body: 'Yes, the platform offers detailed insights into customer growth and revenue trends, helping you make informed decisions and optimize your business strategies.',
             },
             {
-              title: 'Can I track my transactions on the portal?',
-              body: 'Yes, the portal allows you to track all your transactions in real-time. You can view the status of your invoices and payments at any time. This makes it easy to stay up-to-date on your financial activities and manage your records effectively.',
+              title:
+                'What should I do if my customers have trouble accessing the platform?',
+              body: 'If your customers encounter issues accessing the platform, first ensure that they have correct API key or link from you. If problems persist, contact our support team for assistance.',
             },
             {
-              title: 'How do I get support if I encounter an issue?',
-              body: 'Our support team is available to assist you with any issues you may encounter. You can reach out to us via the contact information provided within the portal. We are here to help you with any questions or concerns you may have.',
+              title: 'What types of businesses can use this platform?',
+              body: "Our platform is designed for any business that needs to manage invoices, process payments, and analyze financial data. It's particularly suited for businesses already using Stripe for payment processing.",
+            },
+            {
+              title: 'How do I generate a payment link?',
+              body: 'To generate a payment link, simply enter the transaction details on our platform. The system will create a secure link that you can share with your customers for payment collection.',
+            },
+            {
+              title: 'Is my financial data safe on the platform?',
+              body: "Yes, your financial data is secured using industry-standard encryption and security practices. We also rely on Stripe's robust security infrastructure to ensure the safety of your transactions.",
             },
             {
               title: 'Can I customize my invoices?',
-              body: "While you can edit billing details, customization options for the invoice layout itself may be limited based on the vendor's settings. Please check with your vendor for specific customization options.",
+              body: 'Yes, the platform allows you to customize your invoices with different templates and branding options, making it easy to tailor them to your business needs.',
             },
             {
-              title: 'Do I need to download any software to use the portal?',
-              body: 'No, there is no need to download any software. The portal is web-based and can be accessed from any device with an internet connection. Simply follow the link provided by your vendor to get started.',
+              title: 'What if I need help or have a feature request?',
+              body: 'If you need assistance or have a feature request, you can reach out to our support team directly through the platform. We are here to help and continually improve our services based on your feedback.',
+            },
+            {
+              title: 'How can I connect my Stripe account to the app?',
+              body: 'Connecting your Stripe account is simple! Just go to the settings menu, select the payment integration option, and follow the prompts to link your account via API.',
+            },
+            {
+              title: 'Can I customize the invoice templates?',
+              body: 'Absolutely! Our app offers customizable templates to help you personalize your invoices and showcase your brand identity.',
+            },
+            {
+              title:
+                'How do I access and download my invoices for self-printing?',
+              body: 'You can easily access and download your invoices by logging into your account and navigating to the invoices section. From there, you can view and download any invoice you need.',
+            },
+            {
+              title: 'Are payments processed securely through the app?',
+              body: 'Yes, we ensure secure payment processing by integrating with Stripe`s reliable payment system, providing a safe and trustworthy transaction environment.',
+            },
+            {
+              title:
+                'Do higher-tier plans include all the features of lower-tier plans?',
+              body: 'Yes, each subsequent plan includes all the features of the previous plans, ensuring that you have access to a cumulative set of benefits as you upgrade your subscription.',
+            },
+            {
+              title: 'Is customer support available for all plans?',
+              body: 'Yes, customer support is available for all our users. Enterprise plan subscribers, however, receive priority customer support for any queries or assistance they may need.',
+            },
+            {
+              title: 'How can I upgrade or downgrade my subscription plan?',
+              body: 'You can easily manage your subscription plan from your account settings. Simply select the plan you wish to switch to, and our system will guide you through the process seamlessly.',
             },
             // More questions...
           ]}
