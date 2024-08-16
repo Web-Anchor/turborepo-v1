@@ -522,11 +522,12 @@ export function AuthWrapper({ children }: Props) {
       link: '/dashboard/settings',
       initial: 'S',
     },
+    {
+      title: 'Terms & Conditions',
+      link: '/dashboard/terms-conditions',
+      initial: 'T',
+    },
   ];
-
-  function LimitedTO() {
-    return <p>Limited Time Only</p>;
-  }
 
   secondaryMenu = addToArray({
     isTrue: active,
