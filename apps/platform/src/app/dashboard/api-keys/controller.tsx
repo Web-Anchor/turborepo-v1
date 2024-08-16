@@ -140,7 +140,9 @@ export default function Page() {
 
       <HeaderSection
         title="Stripe API Keys. Enhance Your Platform with Secure Payment Integration."
-        description="Manage and secure your payment transactions by adding your Stripe API keys on our platform. Seamlessly integrate Stripe's powerful payment solutions, enhance transaction security, and unlock a world of possibilities for your business. Take control of your payment processes with ease and efficiency."
+        description={[
+          "Manage and secure your payment transactions by adding your Stripe API keys on our platform. Seamlessly integrate Stripe's powerful payment solutions, enhance transaction security, and unlock a world of possibilities for your business. Take control of your payment processes with ease and efficiency.",
+        ]}
         subtitle="Powering Secure Transactions, One Key at a Time!"
         type="page-header"
       />
@@ -180,19 +182,25 @@ export default function Page() {
           />
           {errorType === 'StripeAuthenticationError' && (
             <HeaderSection
-              description="Provided API Key is required to be a valid Stripe API key. Please update your keys to continue using the platform."
+              description={[
+                'Provided API Key is required to be a valid Stripe API key. Please update your keys to continue using the platform.',
+              ]}
               type="page-header"
             />
           )}
           {chargesPermissionError && (
             <HeaderSection
-              description="The provided API key is missing the required permissions to access charges. Please update your keys to continue using the platform. API key is required to have read permissions for charges."
+              description={[
+                'The provided API key is missing the required permissions to access charges. Please update your keys to continue using the platform. API key is required to have read permissions for charges.',
+              ]}
               type="page-header"
             />
           )}
           {customersPermissionError && (
             <HeaderSection
-              description="The provided API key is missing the required permissions to access customers. Please update your keys to continue using the platform. API key is required to have read permissions for customers."
+              description={[
+                'The provided API key is missing the required permissions to access customers. Please update your keys to continue using the platform. API key is required to have read permissions for customers.',
+              ]}
               type="page-header"
             />
           )}

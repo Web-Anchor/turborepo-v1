@@ -150,7 +150,9 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Stripe Customers. Manage Your Transactions with Ease."
-        description="Navigate your Stripe transactions effortlessly with our Stripe Customers page. Access detailed information, track payments, and manage customer interactions seamlessly to stay on top of your financial transactions. Simplify your payment management process and gain insights into your customer activity with ease."
+        description={[
+          'Navigate your Stripe transactions effortlessly with our Stripe Customers page. Access detailed information, track payments, and manage customer interactions seamlessly to stay on top of your financial transactions. Simplify your payment management process and gain insights into your customer activity with ease.',
+        ]}
         subtitle="Empowering Seamless Transactions, One Click at a Time!"
         type="page-header"
       />

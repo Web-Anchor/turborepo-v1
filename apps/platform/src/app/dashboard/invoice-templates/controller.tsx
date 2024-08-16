@@ -227,7 +227,9 @@ export default function Page() {
       )}
       <HeaderSection
         title="Invoice Templates. Personalize Your Brand, Impress Your Clients."
-        description="Discover a collection of customizable invoice templates on our platform to elevate your brand identity and create professional invoices effortlessly. Tailor your invoices to reflect your unique style, enhance client interactions, and make a lasting impression. Personalize your billing documents with ease and professionalism."
+        description={[
+          'Discover a collection of customizable invoice templates on our platform to elevate your brand identity and create professional invoices effortlessly. Tailor your invoices to reflect your unique style, enhance client interactions, and make a lasting impression. Personalize your billing documents with ease and professionalism.',
+        ]}
         subtitle="Crafting Elegance, Sealing Deals - Your Invoices, Your Brand!"
         type="page-header"
       />

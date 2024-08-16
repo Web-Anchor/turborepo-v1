@@ -157,7 +157,9 @@ export default function Page() {
 
       <HeaderSection
         title="Promote Your Brand Message! Build Your Own Components."
-        description="Customize your platform by adding unique components tailored to your needs. Select the type of component you want to add and provide the necessary content. Showcase your company's logo, tagline, or special offers in the header section of our customer portal. Reach your audience as soon as they log in to enhance brand visibility and engagement."
+        description={[
+          "Customize your platform by adding unique components tailored to your needs. Select the type of component you want to add and provide the necessary content. Showcase your company's logo, tagline, or special offers in the header section of our customer portal. Reach your audience as soon as they log in to enhance brand visibility and engagement.",
+        ]}
         subtitle="Empower Your Platform, Your Way!"
         type="page-header"
       />
@@ -316,7 +318,9 @@ export default function Page() {
 
         <HeaderSection
           title="Your Component Library List"
-          description="Explore and manage your custom components in one convenient place. Easily delete or live preview your components to optimize your platform's layout and functionality."
+          description={[
+            "Explore and manage your custom components in one convenient place. Easily delete or live preview your components to optimize your platform's layout and functionality.",
+          ]}
           subtitle="Manage Your Components with Ease!"
           type="page-header"
         />

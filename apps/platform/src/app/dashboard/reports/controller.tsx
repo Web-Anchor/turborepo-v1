@@ -18,14 +18,18 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Reports Hub. Gain Insights, Drive Decisions."
-        description="Explore comprehensive reports and analytics on our Reports page to gain valuable insights into your financial data. Track performance metrics, monitor trends, and make informed decisions to drive your business forward. Leverage data-driven insights to optimize your strategies and achieve success."
+        description={[
+          'Explore comprehensive reports and analytics on our Reports page to gain valuable insights into your financial data. Track performance metrics, monitor trends, and make informed decisions to drive your business forward. Leverage data-driven insights to optimize your strategies and achieve success.',
+        ]}
         subtitle="Informed Decisions, Thriving Business - Your Data, Your Power!"
         type="page-header"
       />
 
       <HeaderSection
         title="Revenue Explorer"
-        description=" Dive into detailed revenue analytics, transaction trends, and payment performance metrics with our Charges Insights Module. Unlock valuable insights into your financial data to optimize revenue streams and drive business growth."
+        description={[
+          'Dive into detailed revenue analytics, transaction trends, and payment performance metrics with our Charges Insights Module. Unlock valuable insights into your financial data to optimize revenue streams and drive business growth.',
+        ]}
         subtitle="Navigate Revenue Waters, Chart Your Success!"
         type="page-header"
       />
@@ -90,7 +94,9 @@ export default function Page() {
 
       <HeaderSection
         title="Customer Pulse"
-        description="Visualize key metrics from Stripe charges and customers API data in an easy-to-understand format with our Basic Charts Component. Gain insights into revenue trends, customer behavior, and payment performance at a glance."
+        description={[
+          'Visualize key metrics from Stripe charges and customers API data in an easy-to-understand format with our Basic Charts Component. Gain insights into revenue trends, customer behavior, and payment performance at a glance.',
+        ]}
         subtitle="Simplify Insights, Drive Growth - Charting Your Success!"
         type="page-header"
       />

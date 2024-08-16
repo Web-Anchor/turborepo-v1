@@ -65,12 +65,9 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Help & Support Form."
-        description=" Discover our Help & Support Center, where your queries are
-        prioritized, and our team is dedicated to providing prompt
-        responses to ensure your needs are addressed swiftly. Rest
-        assured that your tickets are handled with urgency, and we
-        strive to get back to you as soon as possible to offer the
-        assistance you deserve. Please fill out the form below with your inquiry, and our support team will get back to you as soon as possible. Your satisfaction is our priority, and we are committed to providing you with the help you need."
+        description={[
+          'Discover our Help & Support Center, where your queries are prioritized, and our team is dedicated to providing prompt responses to ensure your needs are addressed swiftly. Rest assured that your tickets are handled with urgency, and we strive to get back to you as soon as possible to offer the assistance you deserve. Please fill out the form below with your inquiry, and our support team will get back to you as soon as possible. Your satisfaction is our priority, and we are committed to providing you with the help you need.',
+        ]}
         subtitle="Your Guide to Seamless Assistance."
         type="page-header"
       />

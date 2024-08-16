@@ -23,14 +23,18 @@ export default function Page() {
     <Wrapper className="max-w-5xl">
       <HeaderSection
         title="Reports Hub. Gain Insights, Drive Decisions."
-        description="Explore comprehensive reports and analytics on our Reports page to gain valuable insights into your financial data. Track performance metrics, monitor trends, and make informed decisions to drive your business forward. Leverage data-driven insights to optimize your strategies and achieve success."
+        description={[
+          'Explore comprehensive reports and analytics on our Reports page to gain valuable insights into your financial data. Track performance metrics, monitor trends, and make informed decisions to drive your business forward. Leverage data-driven insights to optimize your strategies and achieve success.',
+        ]}
         subtitle="Informed Decisions, Thriving Business - Your Data, Your Power!"
         type="page-header"
       />
 
       <HeaderSection
         title="Advanced Revenue Analytics Suite"
-        description=" Dive into detailed revenue analytics, transaction trends, and payment performance metrics with our Charges Insights Module. Unlock valuable insights into your financial data to optimize revenue streams and drive business growth."
+        description={[
+          ' Dive into detailed revenue analytics, transaction trends, and payment performance metrics with our Charges Insights Module. Unlock valuable insights into your financial data to optimize revenue streams and drive business growth.',
+        ]}
         subtitle="Navigate Revenue Waters, Chart Your Success!"
         type="page-header"
       />
@@ -85,7 +89,9 @@ export default function Page() {
 
       <HeaderSection
         title="Advanced Customer Analytics."
-        description="Get a pulse on customer behavior, lifetime value trends, and acquisition insights with our Customers Insights Module. Understand your customer base better, segment effectively, and enhance retention strategies for sustainable growth."
+        description={[
+          'Get a pulse on customer behavior, lifetime value trends, and acquisition insights with our Customers Insights Module. Understand your customer base better, segment effectively, and enhance retention strategies for sustainable growth.',
+        ]}
         subtitle="Connecting with Customers, Growing Together!"
         className="order-1 lg:-order-none"
         type="page-header"
@@ -132,7 +138,9 @@ export default function Page() {
 
       <HeaderSection
         title="Revenue Insights & Trends."
-        description="Elevate your revenue analysis with our Advanced Revenue Analytics Suite, offering sophisticated chart components for in-depth financial metrics exploration. Uncover revenue trends, customer spending patterns, and subscription performance to drive strategic decision-making."
+        description={[
+          'Elevate your revenue analysis with our Advanced Revenue Analytics Suite, offering sophisticated chart components for in-depth financial metrics exploration. Uncover revenue trends, customer spending patterns, and subscription performance to drive strategic decision-making.',
+        ]}
         subtitle="Charting Success, Unveiling Opportunities!"
         type="page-header"
       />

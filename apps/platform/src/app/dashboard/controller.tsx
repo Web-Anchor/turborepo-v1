@@ -36,7 +36,9 @@ export default function Page() {
       <Wrapper>
         <HeaderSection
           title="Subscribe to a Plan to Access the Platform and Its Features"
-          description="Subscribe to a plan to access the platform and its features. Choose a plan that suits your needs and budget to get started."
+          description={[
+            'Subscribe to a plan to access the platform and its features. Choose a plan that suits your needs and budget to get started.',
+          ]}
           subtitle="Invoicio.io - Empowering Your Business!"
           type="page-header"
         />
@@ -49,7 +51,9 @@ export default function Page() {
     <Wrapper className="max-w-6xl">
       <HeaderSection
         title="Dashboard. Your Central Hub for Insights and Control."
-        description="Access real-time data, analytics, and key metrics on our Dashboard, empowering you with valuable insights to make informed decisions. Monitor performance, track trends, and stay in control of your operations from a centralized platform designed to streamline your workflow."
+        description={[
+          'Access real-time data, analytics, and key metrics on our Dashboard, empowering you with valuable insights to make informed decisions. Monitor performance, track trends, and stay in control of your operations from a centralized platform designed to streamline your workflow.',
+        ]}
         subtitle="Invoice Smarter, Grow Stronger - Empowering Your Business!"
         type="page-header"
       />

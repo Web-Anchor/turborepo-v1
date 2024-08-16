@@ -236,7 +236,9 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Stripe Charges: Monitor and Manage Your Payment Activity."
-        description="Stay informed and in control of your payment activity with our Stripe Charges page. Monitor transaction details, track payment statuses, and manage charges effectively to ensure smooth financial operations. Streamline your payment monitoring process and gain valuable insights into your transaction history effortlessly."
+        description={[
+          'Stay informed and in control of your payment activity with our Stripe Charges page. Monitor transaction details, track payment statuses, and manage charges effectively to ensure smooth financial operations. Streamline your payment monitoring process and gain valuable insights into your transaction history effortlessly.',
+        ]}
         subtitle="Tracking Transactions, Empowering Financial Clarity!"
         type="page-header"
       />

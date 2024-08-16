@@ -29,7 +29,9 @@ export default function Page() {
       {!html && !isLoading && (
         <HeaderSection
           title="Invoice Template Not Found"
-          description="No template found for the selected invoice. Please save the template to view it here."
+          description={[
+            'No template found for the selected invoice. Please save the template to view it here.',
+          ]}
           subtitle="Create, Save, and Preview Your Invoice Template."
           type="page-header"
         />

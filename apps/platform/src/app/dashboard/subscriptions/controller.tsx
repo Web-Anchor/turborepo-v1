@@ -43,7 +43,9 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Your subscriptions. Unlock Premium Features & Exclusive Content."
-        description="Subscribe to access your premium features, exclusive content, and member benefits tailored to enhance your experience. Choose a subscription plan that suits your needs and enjoy a seamless journey with our platform. Elevate your experience with our subscription services today."
+        description={[
+          'Subscribe to access your premium features, exclusive content, and member benefits tailored to enhance your experience. Choose a subscription plan that suits your needs and enjoy a seamless journey with our platform. Elevate your experience with our subscription services today.',
+        ]}
         subtitle="Unlock Premium Perks, Elevate Your Experience!"
         type="page-header"
       />

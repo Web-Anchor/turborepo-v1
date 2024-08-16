@@ -66,7 +66,9 @@ export default function Page() {
     <Wrapper>
       <HeaderSection
         title="Inspire Change, Drive Innovation - Your Ideas Matter!"
-        description="Submit your ideas and suggestions for new features to our Request New Features page. Your feedback is invaluable in helping us enhance our platform and tailor it to meet your evolving needs."
+        description={[
+          'Submit your ideas and suggestions for new features to our Request New Features page. Your feedback is invaluable in helping us enhance our platform and tailor it to meet your evolving needs.',
+        ]}
         subtitle="Shape the Future of Our Platform!"
         type="page-header"
       />
