@@ -24,7 +24,7 @@ export function ProfileButtonWrapper(props: {
       name={
         isCred
           ? `${user?.firstName || ''} ${user?.lastName || ''}`
-          : `${user?.emailAddresses}`
+          : `${user?.emailAddresses || ''}`
       }
       imgSrc={user?.imageUrl}
       className={props.className}
