@@ -7,6 +7,7 @@ import axios from 'axios';
 import { usePaymentLinks } from '@hooks/index';
 import { StripePaymentLink } from '@tsTypes/index';
 import Link from 'next/link';
+import { mutate } from 'swr';
 
 export default function Page() {
   const [state, setState] = useState<{
@@ -14,20 +15,15 @@ export default function Page() {
   }>({});
   const { links, isLoading } = usePaymentLinks({});
 
-  async function onClickPaymentLink(e: {
-    preventDefault: () => void;
-    currentTarget: HTMLFormElement | undefined;
-  }) {
+  async function onClickPaymentLink(e: React.FormEvent<HTMLFormElement>) {
     try {
       // --------------------------------------------------------------------------------
       // 📌  Add Stripe API key to db
       // --------------------------------------------------------------------------------
+      e.preventDefault();
       setState((prev) => ({ ...prev, fetching: 'create' }));
-      // e.preventDefault();
       const form = new FormData(e.currentTarget);
       const price = form.get('price');
-
-      return console.log('PRICE', price);
 
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-payment-link',
@@ -159,7 +155,4 @@ export default function Page() {
       />
     </Wrapper>
   );
-}
-function mutate(arg0: string) {
-  throw new Error('Function not implemented.');
 }
