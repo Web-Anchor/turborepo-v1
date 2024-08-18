@@ -15,12 +15,17 @@ export function ProfileButtonWrapper(props: {
   className?: string;
 }) {
   let { isSignedIn, user, isLoaded } = useUser();
+  const isCred = !!user?.firstName && !!user?.lastName;
   // user = fakerUser(true); // faker data
 
   return (
     <ProfileButton
       href="/dashboard"
-      name={`${user?.firstName || ''} ${user?.lastName || ''}`}
+      name={
+        isCred
+          ? `${user?.firstName || ''} ${user?.lastName || ''}`
+          : `${user?.emailAddresses}`
+      }
       imgSrc={user?.imageUrl}
       className={props.className}
       order={props.order}
