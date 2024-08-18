@@ -13,8 +13,9 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  let { isSignedIn, user, isLoaded } = useUser();
   const path = usePathname()!;
+  let { isSignedIn, user, isLoaded } = useUser();
+  const isCred = !!user?.firstName && !!user?.lastName;
 
   let menu: Menu[] = [];
 
@@ -68,7 +69,11 @@ export default function Page(props: Props) {
                 key={1}
                 order="revere"
                 href="/dashboard"
-                name={`${user?.firstName || ''} ${user?.lastName || ''}`}
+                name={
+                  isCred
+                    ? `${user?.firstName || ''} ${user?.lastName || ''}`
+                    : `${user?.emailAddresses || ''}`
+                }
                 imgSrc={user?.imageUrl}
               />,
             ]
