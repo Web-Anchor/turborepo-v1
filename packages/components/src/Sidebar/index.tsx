@@ -142,7 +142,7 @@ export function Sidebar({
         </Dialog>
 
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-          <div className="flex grow flex-col gap-y-5 border-r border-gray-200 px-6">
+          <div className="flex grow flex-col gap-y-5 border-r border-gray-200 px-6 overflow-y-auto">
             <div className="flex h-16 shrink-0 items-center">
               <LogoContainer logo={logoSrc} />
             </div>
@@ -170,6 +170,7 @@ export function Sidebar({
           </div>
         </div>
 
+        {/* mobile header */}
         <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button
             type="button"
