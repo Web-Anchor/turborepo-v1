@@ -23,8 +23,11 @@ export default function Page() {
       // 📌  Add Stripe API key to db
       // --------------------------------------------------------------------------------
       setState((prev) => ({ ...prev, fetching: 'create' }));
+      // e.preventDefault();
       const form = new FormData(e.currentTarget);
       const price = form.get('price');
+
+      return console.log('PRICE', price);
 
       const { data, status } = await axios({
         url: '/api/v1/stripe/on-click/create-payment-link',

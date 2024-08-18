@@ -579,7 +579,7 @@ export function AuthWrapper({ children }: Props) {
       })}
       navigationFooter={
         isLoading ? (
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col gap-2 mt-2">
             <SkeletonLine height="h-4" width="w-1/2" />
             <SkeletonLine height="h-4" width="w-4/5" />
             <SkeletonLine height="h-4" width="w-1/3" />
@@ -589,7 +589,7 @@ export function AuthWrapper({ children }: Props) {
       }
       secondaryNavFooter={
         isLoading ? (
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col gap-2 mt-2">
             <SkeletonLine height="h-4" width="w-1/3" />
             <SkeletonLine height="h-4" width="w-5/6" />
           </section>
