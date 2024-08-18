@@ -39,7 +39,7 @@ export default function Page() {
       toast.success(`Payment Link created successfully`);
     } catch (err: any) {
       console.error(err);
-      toast.error(err.message);
+      toast.error(errorCleaner(err.message));
     } finally {
       setState((prev) => ({ ...prev, fetching: undefined }));
     }
@@ -155,4 +155,14 @@ export default function Page() {
       />
     </Wrapper>
   );
+}
+
+function errorCleaner(error: string): string {
+  // Error: Invalid API Key provided: _rk_test************************************************************************************************LH9r
+  // if error contains more than 4 * characters replace with 4 * characters
+  if (error.includes('*')) {
+    return error.replace(/\*{4,}/g, '****');
+  }
+
+  return error;
 }
