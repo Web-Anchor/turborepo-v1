@@ -22,6 +22,8 @@ export function usePaymentLinks(props: Props) {
     data: obj,
     links: obj?.links?.data as StripePaymentLink[],
     has_more: obj?.links?.has_more,
+    StripeAuthenticationError: obj?.error?.type === 'StripeAuthenticationError',
+    StripePermissionError: obj?.error?.type === 'StripePermissionError',
     error,
     isLoading,
   };

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Button, HeaderSection, Table, Wrapper } from '@repo/components';
+import { Badge, Button, HeaderSection, Table, Wrapper } from '@repo/components';
 import axios from 'axios';
 import { usePaymentLinks } from '@hooks/index';
 import { StripePaymentLink } from '@tsTypes/index';
@@ -13,7 +13,8 @@ export default function Page() {
   const [state, setState] = useState<{
     fetching?: string;
   }>({});
-  const { links, isLoading } = usePaymentLinks({});
+  const { links, isLoading, StripeAuthenticationError, StripePermissionError } =
+    usePaymentLinks({});
 
   async function onClickPaymentLink(e: React.FormEvent<HTMLFormElement>) {
     try {
@@ -54,6 +55,23 @@ export default function Page() {
         ]}
         subtitle="Empowering your Secure Transactions!"
         type="page-header"
+      />
+
+      <Badge
+        title={
+          (StripeAuthenticationError && 'Invalid API Key') ||
+          (StripePermissionError && 'Invalid API Key permissions') ||
+          'Please check your Stripe API Key permissions'
+        }
+        hide={!StripeAuthenticationError && !StripePermissionError}
+        description={
+          (StripeAuthenticationError &&
+            'Invalid API Key provided. Please check your Stripe API Key.') ||
+          (StripePermissionError &&
+            'Please make sure that API for Payment Links is set to write permissions in your Stripe account, and that the API Key is correct.') ||
+          'Please check your Stripe API Key permissions'
+        }
+        type="error"
       />
 
       <form
