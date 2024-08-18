@@ -30,7 +30,13 @@ export function Table({
   hidden,
 }: Props): React.ReactElement | null {
   if (fetching) {
-    return <Skeleton type="table-large" dataAttribute="table-skeleton" />;
+    return (
+      <Skeleton
+        type="table-large"
+        dataAttribute="table-skeleton"
+        className="max-w-4xl"
+      />
+    );
   }
 
   if (hidden) {
@@ -38,7 +44,7 @@ export function Table({
   }
 
   return (
-    <div className="flex flex-col gap-5 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col gap-5 px-4 sm:px-6 lg:px-8 max-w-4xl">
       <div className="-mx-4 sm:-mx-0">
         <table className="min-w-full divide-y divide-gray-300">
           <thead>
