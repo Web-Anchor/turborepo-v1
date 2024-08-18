@@ -24,6 +24,7 @@
     "lodash": "^4.17.21",
     "next": "14.2.5",
     "next-recaptcha-v3": "^1.4.1",
+    "posthog-js": "^1.155.4",
     "puppeteer": "^23.0.2",
     "puppeteer-core": "^23.0.2",
     "react": "^18",

@@ -4,6 +4,7 @@ import { Nunito } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { classNames } from '@repo/lib';
 import './globals.css';
+import { CSPostHogProvider } from '@app/posthog';
 
 const fonts = Nunito({ subsets: ['latin'] });
 
@@ -38,14 +39,16 @@ export default function RootLayout({
   return (
     <html className="bg-white text-gray-800 duration-300" lang="en">
       <ClerkProvider>
-        <body className={classNames(fonts.className, 'h-screen')}>
-          <Toaster
-            // richColors // enable rich colors
-            // closeButton // close button cta on toast
-            position="top-center" // toast position
-          />
-          {children}
-        </body>
+        <CSPostHogProvider>
+          <body className={classNames(fonts.className, 'h-screen')}>
+            <Toaster
+              // richColors // enable rich colors
+              // closeButton // close button cta on toast
+              position="top-center" // toast position
+            />
+            {children}
+          </body>
+        </CSPostHogProvider>
       </ClerkProvider>
     </html>
   );
