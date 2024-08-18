@@ -59,8 +59,12 @@ export default function Page() {
 
       <Badge
         title={
-          (StripeAuthenticationError && 'Invalid API Key') ||
-          (StripePermissionError && 'Invalid API Key permissions') ||
+          (StripeAuthenticationError && (
+            <p className="truncate">Invalid API Key</p>
+          )) ||
+          (StripePermissionError && (
+            <p className="truncate">Invalid API Key permissions</p>
+          )) ||
           'Please check your Stripe API Key permissions'
         }
         hide={!StripeAuthenticationError && !StripePermissionError}

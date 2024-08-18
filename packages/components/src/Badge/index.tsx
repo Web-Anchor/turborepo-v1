@@ -76,7 +76,7 @@ export function Badge({
     <section className={classNames('flex flex-row gap-2')} data-tip={tooltip}>
       <span
         className={classNames(
-          'relative has-tooltip inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium',
+          'relative has-tooltip inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium h-fit my-auto',
           onClick && 'cursor-pointer',
           typeClasses[type],
           className
