@@ -15,7 +15,11 @@ type AccordionProps = {
 
 export function Accordion({ items }: AccordionProps) {
   return (
-    <section className={classNames('w-full divide-y rounded divide-slate-200')}>
+    <section
+      className={classNames(
+        'w-full divide-y rounded divide-slate-200 mx-auto max-w-4xl'
+      )}
+    >
       {items.map((item, index) => (
         <details
           className={classNames('px-4 py-6 group', item.className)}
