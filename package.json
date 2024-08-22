@@ -6,6 +6,7 @@
     "docs": "turbo dev --filter docs",
     "portal": "turbo dev --filter portal",
     "platform": "turbo dev --filter platform",
+    "labs": "turbo dev --filter web-software-labs",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
