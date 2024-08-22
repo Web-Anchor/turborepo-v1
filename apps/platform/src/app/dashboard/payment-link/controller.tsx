@@ -15,6 +15,7 @@ export default function Page() {
   }>({});
   const { links, isLoading, StripeAuthenticationError, StripePermissionError } =
     usePaymentLinks({});
+  console.log(links);
 
   async function onClickPaymentLink(e: React.FormEvent<HTMLFormElement>) {
     try {
