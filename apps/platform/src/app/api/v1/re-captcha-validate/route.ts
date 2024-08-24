@@ -7,6 +7,7 @@ import axios from 'axios';
 export async function POST(request: NextRequest) {
   try {
     const { token } = await request.json();
+    console.log('token', token);
     if (!token) {
       throw new Error('Token is required');
     }
@@ -21,6 +22,7 @@ export async function POST(request: NextRequest) {
         },
       }
     );
+    console.log('capcha_error', data);
 
     return NextResponse.json({
       score: data?.score,
