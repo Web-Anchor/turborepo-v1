@@ -33,6 +33,7 @@ export default function Page() {
 
       const assessment = await axios({
         url: `/api/v1/re-captcha-validate`,
+        method: 'POST',
         data: { token },
       });
 
