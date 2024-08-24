@@ -1,3 +1,0 @@
-[submodule "apps/web-software-labs"]
-    path = apps/web-software-labs
-    url = https://github.com/Web-Anchor/turborepo-v1.git
