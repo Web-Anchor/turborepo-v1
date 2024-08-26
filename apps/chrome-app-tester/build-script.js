@@ -1,7 +1,7 @@
 import fs, { copyFileSync, mkdirSync, readdirSync, statSync } from 'fs';
 import { resolve, join } from 'path';
 
-function copyDirectory(srcDir, destDir) {
+async function copyDirectory(srcDir, destDir) {
   // Ensure the destination directory exists
   mkdirSync(destDir, { recursive: true });
 
@@ -25,20 +25,14 @@ function copyDirectory(srcDir, destDir) {
 }
 
 try {
-  const srcDir = resolve('./workers'); // Adjust the source directory path as needed
-  const destDir = resolve('./dist/workers');
-
-  console.log(`🏋️‍♂️ Copying all content from ${srcDir} to ${destDir}`);
-
-  copyDirectory(srcDir, destDir);
-
-  console.log(`✨ Successfully copied all content to ${destDir}`);
-  packageVersion('patch');
+  await incPackageVersion('patch');
+  await patchManifestVersion();
+  await copyDir();
 } catch (error) {
   console.error('Error copying content', error);
 }
 
-function packageVersion(type = 'patch') {
+async function incPackageVersion(type = 'patch') {
   try {
     // update package version
     const packageJsonPath = resolve('package.json');
@@ -66,7 +60,48 @@ function packageVersion(type = 'patch') {
 
     packageJson.version = newVersion;
     console.log(`📦 Updating package version to ${packageJson.version}`);
+
+    fs.writeFileSync(
+      packageJsonPath,
+      JSON.stringify(packageJson, null, 2) + '\n'
+    );
   } catch (error) {
     console.error('Error updating package version', error);
   }
+}
+
+async function copyDir() {
+  try {
+    const srcDir = resolve('./workers'); // Adjust the source directory path as needed
+    const destDir = resolve('./dist/workers');
+
+    console.log(`🏋️‍♂️ Copying all content from ${srcDir} to ${destDir}`);
+
+    copyDirectory(srcDir, destDir);
+
+    console.log(`✨ Successfully copied all content to ${destDir}`);
+  } catch (error) {
+    console.error('Error copying content', error);
+  }
+}
+
+async function patchManifestVersion() {
+  // update manifest version
+  const packageJsonPath = resolve('package.json');
+  console.log(`📦 Reading package.json from ${packageJsonPath}`);
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  console.log(`📦 Current package version: ${packageJson.version}`);
+
+  const manifestJsonPath = resolve('public/manifest.json');
+  console.log(`📦 Reading manifest.json from ${manifestJsonPath}`);
+  const manifestJson = JSON.parse(fs.readFileSync(manifestJsonPath, 'utf-8'));
+
+  manifestJson.version = packageJson.version;
+  console.log(`📦 Updating manifest version to ${manifestJson.version}`);
+
+  fs.writeFileSync(
+    manifestJsonPath,
+    JSON.stringify(manifestJson, null, 2) + '\n'
+  );
 }
