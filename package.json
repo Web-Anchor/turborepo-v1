@@ -8,6 +8,7 @@
     "platform": "turbo dev --filter platform",
     "labs": "turbo dev --filter web-software-labs",
     "chrome-tester": "turbo dev --filter chrome-app-tester",
+    "build:chrome-tester": "cd apps/chrome-app-tester && npm run build && cd ../..",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
