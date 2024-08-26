@@ -4,36 +4,45 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
+const welcomePage = 'sidepanels/welcome-sp.html';
+const mainPage = 'sidepanels/main-sp.html';
+const GOOGLE_ORIGIN = 'https://www.google.com';
+
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.sidePanel.setOptions({ path: welcomePage });
+//   chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+// });
+
+chrome.tabs.onActivated.addListener(async (props) => {
+  /**
+   * @description Tab activated event listener
+   * @date 2024-08-26
+   * @author Ed Ancerys
+   */
+  const panel = await chrome.sidePanel.getOptions({ tabId: props.tabId });
+  console.log('Current path:', props, panel);
+
+  // if (path === welcomePage) {
+  //   chrome.sidePanel.setOptions({ path: mainPage });
+  // }
+});
+
 // Initialize the demo on install
 chrome.runtime.onInstalled.addListener((props) => {
+  console.log('onInstalled', props);
+
   chrome.action.onClicked.addListener(openDemoTab);
 });
 
 function openDemoTab() {
-  const GOOGLE_ORIGIN = 'https://www.google.com';
-
+  /**
+   * @description Open app on side panel
+   * @date 2024-08-26
+   * @author Ed Ancerys
+   */
   chrome.sidePanel
-    .setPanelBehavior({ openPanelOnActionClick: true })
+    .setPanelBehavior({
+      openPanelOnActionClick: true,
+    })
     .catch((error) => console.error(error));
-
-  // chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
-  //   console.log('Tab updated', tabId, info, tab);
-
-  //   if (!tab.url) return;
-  //   const url = new URL(tab.url);
-  //   // Enables the side panel on google.com
-  //   if (url.origin === GOOGLE_ORIGIN) {
-  //     await chrome.sidePanel.setOptions({
-  //       tabId,
-  //       path: 'sidepanel.html',
-  //       enabled: true,
-  //     });
-  //   } else {
-  //     // Disables the side panel on all other sites
-  //     await chrome.sidePanel.setOptions({
-  //       tabId,
-  //       enabled: false,
-  //     });
-  //   }
-  // });
 }
