@@ -5,45 +5,35 @@
 // https://developers.google.com/open-source/licenses/bsd
 
 // Initialize the demo on install
-chrome.runtime.onInstalled.addListener(({ reason }) => {
-  console.log('onInstalled', reason);
-
-  if (reason !== chrome.runtime.OnInstalledReason.INSTALL) {
-    return;
-  }
-
-  openDemoTab();
-
-  // Create an alarm so we have something to look at in the demo
-  chrome.alarms.create('demo-default-alarm', {
-    delayInMinutes: 1,
-    periodInMinutes: 1,
-  });
-});
-
-// Initialize the demo on install
 chrome.runtime.onInstalled.addListener((props) => {
-  console.log('Installed', props);
-
   chrome.action.onClicked.addListener(openDemoTab);
 });
 
 function openDemoTab() {
-  // chrome.tabs.create({ url: 'index.html' });
-  chrome.sidePanel.create({
-    url: 'index.html',
-    title: 'Demo Side Panel',
-    iconPath: 'icon.png',
-    open: true,
-  });
-  // open teh side menu
-  // chrome.action.onClicked.addListener((tab) => {
-  //   console.log('tab props', tab);
+  const GOOGLE_ORIGIN = 'https://www.google.com';
 
-  //   chrome.sidePanel.setOptions({
-  //     tabId: tab.id,
-  //     path: 'index.html',
-  //     open: true,
-  //   });
+  chrome.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch((error) => console.error(error));
+
+  // chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
+  //   console.log('Tab updated', tabId, info, tab);
+
+  //   if (!tab.url) return;
+  //   const url = new URL(tab.url);
+  //   // Enables the side panel on google.com
+  //   if (url.origin === GOOGLE_ORIGIN) {
+  //     await chrome.sidePanel.setOptions({
+  //       tabId,
+  //       path: 'sidepanel.html',
+  //       enabled: true,
+  //     });
+  //   } else {
+  //     // Disables the side panel on all other sites
+  //     await chrome.sidePanel.setOptions({
+  //       tabId,
+  //       enabled: false,
+  //     });
+  //   }
   // });
 }
