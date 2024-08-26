@@ -21,7 +21,7 @@
   ],
   "host_permissions": ["<all_urls>"],
   "background": {
-    "service_worker": "workers/background.js"
+    "service_worker": "workers/bg-wrapper.js"
   },
 
   "default_locale": "en",

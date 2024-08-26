@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync, readdirSync, statSync } from 'fs';
+import fs, { copyFileSync, mkdirSync, readdirSync, statSync } from 'fs';
 import { resolve, join } from 'path';
 
 function copyDirectory(srcDir, destDir) {
@@ -33,6 +33,40 @@ try {
   copyDirectory(srcDir, destDir);
 
   console.log(`✨ Successfully copied all content to ${destDir}`);
+  packageVersion('patch');
 } catch (error) {
   console.error('Error copying content', error);
+}
+
+function packageVersion(type = 'patch') {
+  try {
+    // update package version
+    const packageJsonPath = resolve('package.json');
+    console.log(`📦 Reading package.json from ${packageJsonPath}`);
+
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+    console.log(`📦 Current package version: ${packageJson.version}`);
+
+    const [major, minor, patch] = packageJson.version.split('.').map(Number);
+    let newVersion = packageJson.version;
+
+    switch (type) {
+      case 'major':
+        newVersion = `${major + 1}.0.0`;
+        break;
+      case 'minor':
+        newVersion = `${major}.${minor + 1}.0`;
+        break;
+      case 'patch':
+        newVersion = `${major}.${minor}.${patch + 1}`;
+        break;
+      default:
+        throw new Error(`Invalid version type: ${type}`);
+    }
+
+    packageJson.version = newVersion;
+    console.log(`📦 Updating package version to ${packageJson.version}`);
+  } catch (error) {
+    console.error('Error updating package version', error);
+  }
 }
