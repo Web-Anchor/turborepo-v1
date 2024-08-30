@@ -1,4 +1,9 @@
+import { useTester } from '@hooks/index';
+
 export default function Page() {
+  const { data } = useTester();
+  console.log('page loaded', data);
+
   async function actionOne() {
     console.log('Training model...');
   }
