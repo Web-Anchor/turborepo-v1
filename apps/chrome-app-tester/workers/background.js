@@ -43,6 +43,7 @@ function openDemoTab() {
   chrome.sidePanel
     .setPanelBehavior({
       openPanelOnActionClick: true,
+      width: 200,
     })
     .catch((error) => console.error(error));
 }
