@@ -68,8 +68,8 @@ export function Table({
               <tr>
                 <td colSpan={header?.length ?? 1}>
                   <section className="flex flex-col items-center justify-center p-4 text-gray-400">
-                    {noData?.title ?? "You don't have any data."}
-                    {noData?.description ?? 'Add new data to see here.'}
+                    <p>{noData?.title ?? "You don't have any data."}</p>
+                    <p>{noData?.description}</p>
                   </section>
                 </td>
               </tr>
