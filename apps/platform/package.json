@@ -6,6 +6,11 @@
     "dev": "next dev --port 8083",
     "build": "next build",
     "start": "next start",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "push": "drizzle-kit push",
+    "drop": "drizzle-kit drop",
+    "studio": "drizzle-kit studio",
     "lint": "next lint"
   },
   "dependencies": {
