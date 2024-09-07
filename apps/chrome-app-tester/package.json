@@ -1,7 +1,7 @@
 {
   "name": "chrome-app-tester",
   "type": "module",
-  "version": "0.0.20",
+  "version": "0.0.25",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
