@@ -9,6 +9,7 @@ export default function Page(): JSX.Element {
       <section className="flex flex-row flex-wrap gap-10">
         <Select
           label="In do ex culpa esse deserunt eu."
+          name="select"
           data={[
             { value: '1', title: 'Option 1' },
             { value: '2', title: 'Option 2' },

@@ -12,7 +12,7 @@ import { classNames } from '../../lib/helpers';
 
 type OptionTypes = {
   title: string;
-  value?: string;
+  value?: string | number;
 };
 
 type SelectTypes = {
@@ -31,8 +31,9 @@ type SelectTypes = {
 export function Select(props: SelectTypes) {
   const [selected, setSelected] = useState<string[] | undefined>();
   const selectedTitle =
-    props?.data?.find((item) => isSelectedValues(selected, item.value))
-      ?.title || 'Select an option';
+    props?.data?.find((item) =>
+      isSelectedValues(selected, item.value?.toString())
+    )?.title || 'Select an option';
   const VALUE = selectedTitle || props.selected || [];
 
   useEffect(() => {

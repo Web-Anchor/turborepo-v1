@@ -229,7 +229,7 @@ export default function Page() {
                       title: 'Company',
                     },
                   ]}
-                  onChange={(props) => {
+                  callBack={(props) => {
                     setState((prev) => ({ ...prev, type: props }));
                   }}
                 />
