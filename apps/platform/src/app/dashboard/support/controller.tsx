@@ -19,13 +19,13 @@ export default function Page() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const { count, isLoading } = useSupportTickets({});
-  console.log(count, isLoading);
 
   async function submit(form: any) {
     try {
       // --------------------------------------------------------------------------------
       // 📌  Add Stripe API key to db
       // --------------------------------------------------------------------------------
+
       setState((prev) => ({ ...prev, fetching: true }));
       const subject = form.get('subject');
       const message = form.get('message');

@@ -16,7 +16,10 @@ export async function POST(request: NextRequest) {
       .select()
       .from(users)
       .where(eq(users.clerkId, userId!));
-    console.log('👤 User: ', dbUser);
+    console.log('👤 User: ', userId, dbUser);
+    if (!dbUser?.[0]?.id) {
+      throw new Error('User not found');
+    }
 
     // --------------------------------------------------------------------------------
     // 📌  Retrieve customer tickets

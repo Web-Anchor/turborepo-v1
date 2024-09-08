@@ -1,163 +1,112 @@
 'use client';
 
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Listbox,
-  Transition,
-  ListboxOption,
-  ListboxOptions,
+  Label,
   ListboxButton,
+  ListboxOptions,
+  ListboxOption,
 } from '@headlessui/react';
 import { classNames } from '../../lib/helpers';
 
-type Props = {
-  data: { title: string | number; value: string | number | React.ReactNode }[];
-  label?: string;
-  placeholder?: string;
-  name?: string;
-  disabled?: boolean;
-  onChange?: (value?: string) => void;
-  className?: string;
+type OptionTypes = {
+  title: string;
+  value?: string;
 };
 
-export function Select({
-  data,
-  label,
-  placeholder = 'Select an option',
-  name,
-  disabled,
-  onChange,
-  className,
-}: Props) {
-  const [selected, setSelected] = useState<string | undefined>();
-  const selectedTitle = data?.filter((select) => select.value === selected)?.[0]
-    ?.title;
+type SelectTypes = {
+  label?: string;
+  data?: OptionTypes[];
+  placeholder?: string;
+  callBack?: (...args: any[]) => void;
+  name: string;
+  multiple?: boolean;
+  selected?: string[];
+  disabled?: boolean;
+  dropDownPosition?: 'top' | 'bottom';
+  fetching?: boolean;
+};
+
+export function Select(props: SelectTypes) {
+  const [selected, setSelected] = useState<string[] | undefined>();
+  const selectedTitle =
+    props?.data?.find((item) => isSelectedValues(selected, item.value))
+      ?.title || 'Select an option';
+  const VALUE = selectedTitle || props.selected || [];
 
   useEffect(() => {
-    onChange?.(selected);
-  }, [selected]);
+    setSelected(() => {
+      return props.multiple
+        ? props.selected
+        : returnFirstlySelectedValue(props.selected);
+    });
+  }, [props.multiple, props.selected]);
+
+  // --------------------------------------------------------------------------------
+  // 📌  Fall back error msg if there no options provided
+  // --------------------------------------------------------------------------------
+  let options = props?.data;
+  if (!options?.length) {
+    options = [{ title: 'No options available' }];
+  }
 
   return (
-    <section className={classNames('w-full', className)}>
-      <Listbox
-        name={name}
-        disabled={disabled}
-        value={selected}
-        onChange={setSelected}
-      >
-        {({ open }) => (
-          <>
-            {label && (
-              <label className="block text-sm font-medium leading-6 text-gray-800 mb-2">
-                {label}
-              </label>
+    <section className="relative flex flex-1 flex-col h-fit w-full">
+      <div className="w-full">
+        <Listbox value={selected} onChange={setSelected} name={props.name}>
+          <ListboxButton
+            className={classNames(
+              'min-h-8 rounded-xl border border-gray-200 p-1 relative block w-full rounded-lg py-1.5 pr-8 pl-3 text-left text-sm/6 text-gray-600',
+              'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-gray-400'
             )}
-            <div className="relative">
-              <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                <span className="block truncate">
-                  {selectedTitle || selected || placeholder}
-                </span>
-                <span
-                  className={classNames(
-                    'pointer-events-none absolute inset-y-0 right-0 flex items-center transition transform duration-300',
-                    open ? 'rotate-180' : 'rotate-0'
-                  )}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mx-2"
-                  >
-                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <rect width="24" height="24" fill="white"></rect>{' '}
-                      <path
-                        d="M17 9.5L12 14.5L7 9.5"
-                        stroke="#000000"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>{' '}
-                    </g>
-                  </svg>
-                </span>
-              </ListboxButton>
-
-              <Transition
-                show={open}
-                as={Fragment}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+          >
+            {VALUE}
+            {/* <ChevronDownIcon
+              className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+              aria-hidden="true"
+            /> */}
+          </ListboxButton>
+          <ListboxOptions
+            anchor="bottom"
+            transition
+            className={classNames(
+              'mt-3 w-[var(--button-width)] rounded-xl border border-gray-200 p-1 bg-white [--anchor-gap:var(--spacing-1)] focus:outline-none',
+              'transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0'
+            )}
+          >
+            {options.map((item, key) => (
+              <ListboxOption
+                key={key}
+                value={item.value}
+                className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none text-gray-600 data-[focus]:bg-gray-200 data-[focus]:text-indigo-600 cursor-pointer"
               >
-                <ListboxOptions className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {data?.map((item, key) => (
-                    <ListboxOption
-                      key={key}
-                      className={({ active }) =>
-                        classNames(
-                          active ? 'bg-indigo-600 text-white' : 'text-gray-800',
-                          'relative cursor-default select-none py-2 pl-8 pr-4'
-                        )
-                      }
-                      value={item.value}
-                    >
-                      {({ selected, active }) => (
-                        <>
-                          <span
-                            className={classNames(
-                              selected ? 'font-semibold' : 'font-normal',
-                              'block truncate'
-                            )}
-                          >
-                            {item.title || item.value}
-                          </span>
-
-                          {selected && (
-                            <span
-                              className={classNames(
-                                active ? 'text-white' : 'text-indigo-600',
-                                'absolute inset-y-0 left-0 flex items-center pl-1.5'
-                              )}
-                            >
-                              <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                              >
-                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                <g
-                                  id="SVGRepo_tracerCarrier"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                ></g>
-                                <g id="SVGRepo_iconCarrier">
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M17.0303 8.78039L8.99993 16.8107L5.4696 13.2804L6.53026 12.2197L8.99993 14.6894L15.9696 7.71973L17.0303 8.78039Z"
-                                    fill="#080341"
-                                  ></path>{' '}
-                                </g>
-                              </svg>
-                            </span>
-                          )}
-                        </>
-                      )}
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </Transition>
-            </div>
-          </>
-        )}
-      </Listbox>
+                {/* <CheckIcon className="invisible size-4 fill-white group-data-[selected]:visible" /> */}
+                <div className="text-sm/6">{item.title || key}</div>
+              </ListboxOption>
+            ))}
+          </ListboxOptions>
+        </Listbox>
+      </div>
     </section>
   );
+}
+
+function isSelectedValues(
+  options?: OptionTypes | OptionTypes[] | string | string[],
+  value?: string | string[]
+) {
+  if (Array.isArray(options)) {
+    return (options as string[])?.some((option) => option === value);
+  }
+
+  if (typeof options === 'object') {
+    return options?.value === value;
+  }
+
+  return options === value;
+}
+
+function returnFirstlySelectedValue(options?: string[]) {
+  return !!options?.length && options[0] ? [options[0]] : [];
 }
