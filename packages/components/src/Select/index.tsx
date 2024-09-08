@@ -55,7 +55,11 @@ export function Select(props: SelectTypes) {
   return (
     <section className="relative flex flex-1 flex-col h-fit w-full">
       <div className="w-full">
-        <Listbox value={selected} onChange={setSelected} name={props.name}>
+        <Listbox
+          value={selected || props.selected || ['']}
+          onChange={setSelected}
+          name={props.name}
+        >
           <ListboxButton
             className={classNames(
               'min-h-8 rounded-xl border border-gray-200 p-1 relative block w-full rounded-lg py-1.5 pr-8 pl-3 text-left text-sm/6 text-gray-600',
@@ -63,10 +67,29 @@ export function Select(props: SelectTypes) {
             )}
           >
             {VALUE}
-            {/* <ChevronDownIcon
-              className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
-              aria-hidden="true"
-            /> */}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute right-3 top-1/2 -mt-1.5 h-3 w-3 text-gray-600"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {' '}
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="#000000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>{' '}
+              </g>
+            </svg>
           </ListboxButton>
           <ListboxOptions
             anchor="bottom"
@@ -79,10 +102,9 @@ export function Select(props: SelectTypes) {
             {options.map((item, key) => (
               <ListboxOption
                 key={key}
-                value={item.value}
+                value={item.value || ''}
                 className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none text-gray-600 data-[focus]:bg-gray-200 data-[focus]:text-indigo-600 cursor-pointer"
               >
-                {/* <CheckIcon className="invisible size-4 fill-white group-data-[selected]:visible" /> */}
                 <div className="text-sm/6">{item.title || key}</div>
               </ListboxOption>
             ))}
