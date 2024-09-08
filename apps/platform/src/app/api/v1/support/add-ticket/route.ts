@@ -50,6 +50,18 @@ export async function POST(request: NextRequest) {
         <p>Message: <strong>${body.message}</strong></p>
       `,
     });
+    // --------------------------------------------------------------------------------
+    // 📌  Notify user about ticket added by ${dbUser[0].emailAddress
+    // --------------------------------------------------------------------------------
+    await email({
+      email: [dbUser[0].emailAddress],
+      subject: `${body.subject} Support Ticket Added. invoicio.io`,
+      html: `
+        <p>Thanks for submitting a message! We will get back to you shortly.</p>
+        <p>Subject: <strong>${body.subject}</strong></p>
+        <p>Message: <strong>${body.message}</strong></p>
+      `,
+    });
 
     return NextResponse.json({
       status: 200,
