@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
 
     await db.insert(tickets).values({
       id: uuidv4(),
-      userId: dbUser[0].id.toString(),
+      // userId: dbUser[0].id, // TODO: Add userId
+      clerkId: dbUser[0].clerkId.toString(),
       subject: body.subject,
       message: body.message,
       type: 'platform',
