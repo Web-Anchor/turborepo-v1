@@ -88,7 +88,9 @@ export default function Actions(props: {
     try {
       if (!props.id) throw new Error('Please add a template first to preview!');
 
-      router.push(`/dashboard/invoices/template-preview?id=${props.id}`);
+      router.push(
+        `/dashboard/invoice-templates/template-preview?id=${props.id}`
+      );
     } catch (error: any) {
       toast?.error(
         error?.message || 'An error occurred while previewing the document.'
