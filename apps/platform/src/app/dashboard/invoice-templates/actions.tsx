@@ -86,6 +86,7 @@ export default function Actions(props: {
 
   async function preview() {
     try {
+      setState((prev) => ({ ...prev, fetching: 'preview' }));
       if (!props.id) throw new Error('Please add a template first to preview!');
 
       router.push(
@@ -95,6 +96,8 @@ export default function Actions(props: {
       toast?.error(
         error?.message || 'An error occurred while previewing the document.'
       );
+    } finally {
+      setState((prev) => ({ ...prev, fetching: undefined }));
     }
   }
 
@@ -138,6 +141,7 @@ export default function Actions(props: {
         title="Preview"
         style="ghost"
         onClick={preview}
+        fetching={state.fetching === 'preview'}
         disabled={pending || props.hasUpdates || !!state?.fetching}
       />
       <Button
