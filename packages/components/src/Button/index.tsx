@@ -51,7 +51,7 @@ export function Button(props: Props): React.ReactElement | null {
     <button
       type={props.type}
       className={classNames(
-        'flex flex-row gap-2 relative truncate items-center',
+        'flex flex-row gap-2 relative truncate items-center h-fit',
         styles[props.style || 'primary'],
         props.disabled && 'bg-opacity-45 cursor-not-allowed',
         props.fetching && 'bg-opacity-45 cursor-wait',

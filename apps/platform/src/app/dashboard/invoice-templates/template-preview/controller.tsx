@@ -8,8 +8,6 @@ export default function Page() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id')!;
   const { html, isLoading } = useBuildTemplate({ id });
-  console.log('🔑 Page', html);
-
   //  Minimum width = 1200 pixels * 0.707 ≈ 848 pixels
   // Minimum height = 1754 pixels * 0.707 ≈ 1240 pixels
 
