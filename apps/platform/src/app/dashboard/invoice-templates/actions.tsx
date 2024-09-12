@@ -63,6 +63,7 @@ export default function Actions(props: {
           { id: props?.id }, // 🚧 POST request with body required
           { responseType: 'blob' }
         );
+        console.log('🔑 Data', data, attempt);
 
         return { data, status };
       } catch (error) {
@@ -86,20 +87,25 @@ export default function Actions(props: {
 
   async function preview() {
     try {
+      setState((prev) => ({ ...prev, fetching: 'preview' }));
       if (!props.id) throw new Error('Please add a template first to preview!');
 
-      router.push(`/dashboard/invoices/template-preview?id=${props.id}`);
+      router.push(
+        `/dashboard/invoice-templates/template-preview?id=${props.id}`
+      );
     } catch (error: any) {
       toast?.error(
         error?.message || 'An error occurred while previewing the document.'
       );
+    } finally {
+      setState((prev) => ({ ...prev, fetching: undefined }));
     }
   }
 
   const { pending } = useFormStatus();
 
   return (
-    <div className="flex flex-row gap-2 flex-wrap justify-end">
+    <div className="flex flex-row gap-2 flex-wrap justify-end items-center">
       <Button
         title="Save"
         type="submit"
@@ -136,6 +142,7 @@ export default function Actions(props: {
         title="Preview"
         style="ghost"
         onClick={preview}
+        fetching={state.fetching === 'preview'}
         disabled={pending || props.hasUpdates || !!state?.fetching}
       />
       <Button
