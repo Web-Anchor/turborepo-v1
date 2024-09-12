@@ -63,6 +63,7 @@ export default function Actions(props: {
           { id: props?.id }, // 🚧 POST request with body required
           { responseType: 'blob' }
         );
+        console.log('🔑 Data', data, attempt);
 
         return { data, status };
       } catch (error) {
@@ -104,7 +105,7 @@ export default function Actions(props: {
   const { pending } = useFormStatus();
 
   return (
-    <div className="flex flex-row gap-2 flex-wrap justify-end">
+    <div className="flex flex-row gap-2 flex-wrap justify-end items-center">
       <Button
         title="Save"
         type="submit"
